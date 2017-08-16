@@ -5,7 +5,7 @@ This is a living document. If you see something that could be improved, edit thi
 
 ## Setting up your development environment
 
-1. Download and install [Git](https://git-scm.com/downloads) and add it to your PATH
+1. Download and install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 
 1. Download and install [Android Studio](https://developer.android.com/studio/index.html) 
 
