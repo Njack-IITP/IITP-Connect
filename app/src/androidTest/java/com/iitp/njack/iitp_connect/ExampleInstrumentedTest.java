@@ -1,4 +1,4 @@
-package com.example.srv_twry.iitp_connect;
+package com.iitp.njack.iitp_connect;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
