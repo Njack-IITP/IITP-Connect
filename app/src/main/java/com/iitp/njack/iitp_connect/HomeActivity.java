@@ -1,5 +1,6 @@
-package com.example.srv_twry.iitp_connect.Activities;
+package com.iitp.njack.iitp_connect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.srv_twry.iitp_connect.R;
+import com.iitp.njack.iitp_connect.CodingCalendar.View.CodingCalendarHomeActivity;
+import com.iitp.njack.iitp_connect.R;
 
 /*
 *   The HomeActivity i.e. the starting point of the application.
@@ -85,8 +87,10 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_coding_calendar) {
+            //start coding calendar.
+            Intent i = new Intent(this,CodingCalendarHomeActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
