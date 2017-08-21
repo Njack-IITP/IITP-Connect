@@ -18,7 +18,7 @@ import com.iitp.njack.iitp_connect.CodingCalendar.View.CodingCalendarHomeActivit
 import com.iitp.njack.iitp_connect.R;
 
 /*
-*   The HomeActivity i.e. the starting point of the application.
+*   The HomeActivity i.e. the starting point of the application. slksdks
 * */
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
