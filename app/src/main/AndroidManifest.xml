@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.iitp.njack.iitp_connect.CodingCalendar.View.CodingCalendarHomeActivity"
+        <activity android:name="com.iitp.njack.iitp_connect.CodingCalendar.Activities.CodingCalendarHomeActivity"
             android:parentActivityName=".HomeActivity"></activity>
     </application>
 
