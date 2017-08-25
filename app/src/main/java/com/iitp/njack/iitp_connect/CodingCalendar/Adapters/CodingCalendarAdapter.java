@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Presenter;
+package com.iitp.njack.iitp_connect.CodingCalendar.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

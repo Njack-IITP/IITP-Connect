@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.View;
+package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

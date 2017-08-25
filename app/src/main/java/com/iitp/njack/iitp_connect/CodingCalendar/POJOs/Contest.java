@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Model;
+package com.iitp.njack.iitp_connect.CodingCalendar.POJOs;
 
 import java.util.Date;
 
