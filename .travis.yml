@@ -7,6 +7,9 @@ android:
     - build-tools-26.0.1
     - android-25
 
+before_install:
+  - chmod +x gradlew
+
 script:
   - ./gradlew build connectedCheck
   - ./gradlew findbugs -Pandroid.useDexArchive=false
