@@ -24,7 +24,5 @@ before_install:
   - ./gradlew dependencies || true
 
 script:
-  - ./gradlew checkstyle -Pandroid.useDexArchive=false
+  - ./gradlew checkstyle
 
-after_failure: 
-  - "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
