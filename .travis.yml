@@ -1,0 +1,17 @@
+language: android
+android:
+  components:
+    - tools 
+    - tools
+    - platform-tools
+    - build-tools-26.0.1
+    - android-25
+
+script:
+  - ./gradlew build connectedCheck
+  - ./gradlew findbugs -Pandroid.useDexArchive=false
+  - ./gradlew lint -Pandroid.useDexArchive=false
+  - ./gradlew checkstyle -Pandroid.useDexArchive=false
+
+after_failure: 
+  - "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
