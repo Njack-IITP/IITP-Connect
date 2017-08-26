@@ -9,6 +9,8 @@ android:
     - platform-tools
     - build-tools-26.0.1
     - android-25
+    - sys-img-armeabi-v7a-addon-google_apis-google-$25
+    - sys-img-armeabi-v7a-addon-google_apis-google-$25
   
   licenses:
     - android-sdk-preview-license-.+
