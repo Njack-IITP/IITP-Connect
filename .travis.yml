@@ -23,6 +23,4 @@ before_install:
   - chmod +x gradlew
   - ./gradlew dependencies || true
 
-script:
-  - ./gradlew checkstyle
 
