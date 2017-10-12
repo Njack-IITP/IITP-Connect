@@ -1,7 +1,7 @@
 package com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.iitp.njack.iitp_connect.Database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
 
 import org.json.JSONArray;
@@ -26,9 +27,11 @@ public class DataScraper {
     private static final String HACKERRANK_API_URL = "https://www.hackerrank.com/calendar/feed.json";
     private final Context context;
     private static RequestQueue requestQueue;
+    private final onLoadingFinishedListener onLoadingFinishedListener;
 
-    public DataScraper(Context context){
+    public DataScraper(Context context ,onLoadingFinishedListener onLoadingFinishedListener){
         this.context = context;
+        this.onLoadingFinishedListener = onLoadingFinishedListener;
         requestQueue = Volley.newRequestQueue(context);
     }
 
@@ -37,6 +40,7 @@ public class DataScraper {
             @Override
             public void onResponse(JSONObject response) {
                 addToDatabase(response);
+                onLoadingFinishedListener.onLoadingFinished();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -62,15 +66,23 @@ public class DataScraper {
                 String end = obj.getString("end");
                 String url = obj.getString("url");
 
-                //Logging for debugging process.
-                Log.v("Contest Title",title);
-                Log.v("Contest description",description);
-                Log.v("Contest start",start);
-                Log.v("Contest end",end);
-                Log.v("Contest url",url);
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_TITLE,title);
+                contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_DESCRIPTION,description);
+                contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_URL,url);
+                contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_START_TIME,start);
+                contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_END_TIME,end);
+
+                //Adding the data to the database.
+                context.getContentResolver().insert(DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS,contentValues);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public interface onLoadingFinishedListener{
+        void onLoadingFinished();
     }
 }
