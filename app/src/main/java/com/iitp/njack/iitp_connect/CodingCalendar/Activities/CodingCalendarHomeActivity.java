@@ -21,6 +21,7 @@ import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
 import com.iitp.njack.iitp_connect.Database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,10 +58,10 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         * */
         startLoadingData();
 
-        CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
-        gridLayoutManager = new GridLayoutManager(getBaseContext(),2);
-        contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
-        contestRecyclerView.setLayoutManager(gridLayoutManager);
+//        CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
+//        gridLayoutManager = new GridLayoutManager(getBaseContext(),2);
+//        contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
+//        contestRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
     void startLoadingData(){
@@ -91,7 +92,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new AsyncTaskLoader<Cursor>(getContext()) {
+        return new AsyncTaskLoader<Cursor>(getBaseContext()) {
 
             Cursor mCursor;
 
@@ -122,20 +123,30 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         };
     }
 
+    void logData(ArrayList<Contest> c){
+
+        for (int i=0;i<c.size();i++){
+            Contest temp = c.get(i);
+            Log.v("LOGGED CONTEST",temp.getTitle());
+        }
+
+    }
+
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if(data !=null){
             contestArrayList = convertCursorToArrayList(data);
-            ContestRecyclerViewAdapter contestRecyclerViewAdapter = new ContestRecyclerViewAdapter(contestArrayList,this);
-            contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
-            contestRecyclerView.invalidate();
-            loadingContestsProgressBar.setVisibility(View.GONE);
-            contestRecyclerView.setVisibility(View.VISIBLE);
+//            CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
+//            contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
+//            contestRecyclerView.invalidate();
+//            contestRecyclerView.setVisibility(View.VISIBLE);
 
-            //scrolling the recyclerview to the last visited position.
-            if (recyclerViewState != null){
-                gridLayoutManager.onRestoreInstanceState(recyclerViewState);
-            }
+            logData(contestArrayList);
+
+//            //scrolling the recyclerview to the last visited position.
+//            if (recyclerViewState != null){
+//                gridLayoutManager.onRestoreInstanceState(recyclerViewState);
+//            }
         }
     }
 
@@ -177,12 +188,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         Date result;
         try {
             TimeZone tz = TimeZone.getTimeZone("UTC");
-            //TimeZone tz = TimeZone.getTimeZone("Asia/Calcutta");
-            //Calendar cal = Calendar.getInstance(tz);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-            //sdf.setCalendar(cal);
-            //cal.setTime(sdf.parse(string));
-            //result = cal.getTime();
             sdf.setTimeZone(tz);
             result = sdf.parse(string);
             Log.v(TAG,string);
