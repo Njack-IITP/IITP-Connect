@@ -75,7 +75,4 @@ before_script:
 script:
   - ./gradlew build
   - ./gradlew build connectedAndroidTest --stacktrace
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./upload-apk.sh; fi'
+  
