@@ -8,4 +8,5 @@
     <string name="coding_calendar">Coding calendar</string>
     <string name="check_your_internet_connection">Check your connection!</string>
     <string name="authority">com.iitp.njack.iitp_connect</string>
+    <string name="participate">Participate</string>
 </resources>
