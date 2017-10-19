@@ -201,6 +201,6 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
 
     @Override
     public void onContestListItemClicked(Contest clickedContest) {
-
+        Log.v(TAG,"Contest clicked with title- "+ clickedContest.getTitle());
     }
 }
