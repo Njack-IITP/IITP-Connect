@@ -33,13 +33,12 @@ import butterknife.ButterKnife;
 
 import static java.security.AccessController.getContext;
 
-public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , DataScraper.onLoadingFinishedListener {
+public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , DataScraper.onLoadingFinishedListener , CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
     private static final String TAG = CodingCalendarHomeActivity.class.getSimpleName();
 
     private ArrayList<Contest> contestArrayList = new ArrayList<>();
-//    @BindView(R.id.pb_loading_contests)
-//    ProgressBar loadingContestsProgressBar;
+    ProgressBar loadingContestsProgressBar;
     @BindView(R.id.rv_coding_calendar)
     RecyclerView contestRecyclerView;
     private GridLayoutManager gridLayoutManager;
@@ -51,17 +50,21 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coding_calendar_home);
 
-        ButterKnife.bind(this);
+        loadingContestsProgressBar = (ProgressBar) findViewById(R.id.pb_loading_contests);
+        contestRecyclerView = (RecyclerView) findViewById(R.id.rv_coding_calendar);
 
         /*
         *Fetch the data.
         * */
         startLoadingData();
 
-//        CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
-//        gridLayoutManager = new GridLayoutManager(getBaseContext(),2);
-//        contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
-//        contestRecyclerView.setLayoutManager(gridLayoutManager);
+        loadingContestsProgressBar.setVisibility(View.VISIBLE);
+        contestRecyclerView.setVisibility(View.INVISIBLE);
+        CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
+        gridLayoutManager = new GridLayoutManager(CodingCalendarHomeActivity.this,1);
+        contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
+        contestRecyclerView.setLayoutManager(gridLayoutManager);
+
     }
 
     void startLoadingData(){
@@ -123,25 +126,15 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         };
     }
 
-    void logData(ArrayList<Contest> c){
-
-        for (int i=0;i<c.size();i++){
-            Contest temp = c.get(i);
-            Log.v("LOGGED CONTEST",temp.getTitle());
-        }
-
-    }
-
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if(data !=null){
             contestArrayList = convertCursorToArrayList(data);
-//            CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
-//            contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
-//            contestRecyclerView.invalidate();
-//            contestRecyclerView.setVisibility(View.VISIBLE);
-
-            logData(contestArrayList);
+            CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
+            contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
+            contestRecyclerView.invalidate();
+            loadingContestsProgressBar.setVisibility(View.INVISIBLE);
+            contestRecyclerView.setVisibility(View.VISIBLE);
 
 //            //scrolling the recyclerview to the last visited position.
 //            if (recyclerViewState != null){
@@ -204,5 +197,10 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
     public void onLoadingFinished() {
         // Start the loader to fetch the updated data.
         getDataFromDatabase();
+    }
+
+    @Override
+    public void onContestListItemClicked(Contest clickedContest) {
+
     }
 }
