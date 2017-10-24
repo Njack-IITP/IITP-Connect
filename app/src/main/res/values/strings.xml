@@ -9,4 +9,6 @@
     <string name="check_your_internet_connection">Check your connection!</string>
     <string name="authority">com.iitp.njack.iitp_connect</string>
     <string name="participate">Participate</string>
+    <string name="total_classes">Total Classes :</string>
+    <string name="classes_present">Classes Present :</string>
 </resources>
