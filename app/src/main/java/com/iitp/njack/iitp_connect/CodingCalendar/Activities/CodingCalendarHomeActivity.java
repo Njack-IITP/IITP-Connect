@@ -1,6 +1,7 @@
 package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,6 +37,7 @@ import static java.security.AccessController.getContext;
 public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , DataScraper.onLoadingFinishedListener , CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
     private static final String TAG = CodingCalendarHomeActivity.class.getSimpleName();
+    public static final String INTENT_EXTRA = "IntentExtra";
 
     private ArrayList<Contest> contestArrayList = new ArrayList<>();
     ProgressBar loadingContestsProgressBar;
@@ -201,6 +203,8 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
 
     @Override
     public void onContestListItemClicked(Contest clickedContest) {
-        Log.v(TAG,"Contest clicked with title- "+ clickedContest.getTitle());
+        Intent i = new Intent(CodingCalendarHomeActivity.this,ContestDetailsActivity.class);
+        i.putExtra(INTENT_EXTRA,clickedContest);
+        startActivity(i);
     }
 }

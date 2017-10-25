@@ -9,4 +9,9 @@
     <string name="check_your_internet_connection">Check your connection!</string>
     <string name="authority">com.iitp.njack.iitp_connect</string>
     <string name="participate">Participate</string>
+    <string name="duration_approximately">Duration: Approximately </string>
+    <string name="hours"> hours</string>
+    <string name="contest_description_coding_contest_for_programming_enthusiasts">Contest Description: Coding Contest for Programming enthusiasts</string>
+    <string name="contest_description">Contest Description:</string>
+
 </resources>
