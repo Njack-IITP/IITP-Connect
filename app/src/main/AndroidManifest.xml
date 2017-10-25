@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.srv_twry.iitp_connect">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.iitp.njack.iitp_connect">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".Database.DatabaseContentProvider"
+            android:authorities="@string/authority"
+            android:exported="false"
+            android:syncable="true"
+            tools:ignore="InnerclassSeparator" />
+
+        <activity
+            android:name=".CodingCalendar.Activities.CodingCalendarHomeActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".CodingCalendar.Activities.ContestDetailsActivity"
+            android:parentActivityName=".CodingCalendar.Activities.CodingCalendarHomeActivity"></activity>
     </application>
 
 </manifest>
