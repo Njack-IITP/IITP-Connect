@@ -22,3 +22,7 @@ The project is actively maintained by
 + Mayank vaidya([@mayank8318](https://github.com/mayank8318))
 + Arundhati gupta([@arundhati24](https://github.com/arundhati24))
 + Saurav tiwary([@srv-twry](https://github.com/srv-twry))
+
+## License
+
+This project is currently licensed under The MIT License (MIT). A copy of [LICENSE.md](LICENSE.md) should be present along with the source code.
