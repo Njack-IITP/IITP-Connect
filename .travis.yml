@@ -31,7 +31,7 @@ android:
     - '.+'
     # Specify at least one system image
     - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL_22
+    - sys-img-armeabi-v7a-android-22
     
 # prevents reuploading of Cache
 before_cache:
