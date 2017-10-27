@@ -1,11 +1,11 @@
 language: android
-jdk: 
- - oraclejdk8
-# Use the Travis Container-Based Infrastructure
+sudo: required
+jdk: oraclejdk8
 
 env:
   global:
     - ANDROID_API_LEVEL=25
+    - ANDROID_API_LEVEL_22=22
     - ANDROID_BUILD_TOOLS_VERSION=26.0.1
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TARGET=android-25
@@ -43,15 +43,9 @@ before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-
-  - export NDK_VERSION=r10e
-  - curl -L http://dl.google.com/android/ndk/android-ndk-${NDK_VERSION}-linux-x86_64.bin -O
-  - chmod u+x android-ndk-${NDK_VERSION}-linux-x86_64.bin
-  - ./android-ndk-${NDK_VERSION}-linux-x86_64.bin > /dev/null
-  - rm android-ndk-${NDK_VERSION}-linux-x86_64.bin
-  - export ANDROID_NDK_HOME=`pwd`/android-ndk-${NDK_VERSION}
-  - export PATH=${ANDROID_NDK_HOME}:${PATH}
-
+  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+  - chmod +x gradlew
 
 cache:
   directories:
@@ -74,5 +68,4 @@ before_script:
 
 script:
   - ./gradlew build
-  - ./gradlew build connectedAndroidTest --stacktrace
   
