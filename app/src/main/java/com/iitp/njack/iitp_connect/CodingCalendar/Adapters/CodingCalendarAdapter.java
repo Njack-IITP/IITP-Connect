@@ -2,6 +2,7 @@ package com.iitp.njack.iitp_connect.CodingCalendar.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.Utils.DatabaseUtilities;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -72,7 +75,7 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
         }
 
         public void bind(int position) {
-//            setImageViewUsingUrl(contestArrayList.get(position).getUrl());
+            setImageViewUsingUrl(contestArrayList.get(position).getUrl());
             String contestTitleString = contestArrayList.get(position).getTitle();
             if (contestTitleString.length() >=34 && !isLandscape){
                 String temp = contestTitleString.substring(0,31) + "...";
@@ -82,6 +85,32 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
             }
             SpannableString contestStartTimeString = DatabaseUtilities.getStartTimeTextContestList(contestArrayList.get(position).getStartTime());
             contestStartTime.setText(contestStartTimeString);
+        }
+
+        private void setImageViewUsingUrl(String url) {
+            URL urlPlatform;
+            try{
+                urlPlatform = new URL(url);
+                //get the platform of the contest.
+                String platformString = urlPlatform.getHost();
+                Log.v("ContestRecyclerViewAdap",platformString);
+
+                if (platformString.equals("www.topcoder.com")){
+                    contestPlatform.setImageResource(R.mipmap.topcoder_logo);
+                }else if (platformString.equals("www.codechef.com")){
+                    contestPlatform.setImageResource(R.mipmap.codechef_logo);
+                }else if(platformString.equals("www.hackerrank.com")){
+                    contestPlatform.setImageResource(R.mipmap.hackerrank_logo);
+                }else if(platformString.equals("www.hackerearth.com")){
+                    contestPlatform.setImageResource(R.mipmap.hackerearth_logo);
+                }else if(platformString.equals("codeforces.com")){
+                    contestPlatform.setImageResource(R.mipmap.codeforces_logo);
+                }
+
+            }catch (MalformedURLException e){
+                e.printStackTrace();
+                contestPlatform.setVisibility(View.GONE);
+            }
         }
     }
 }
