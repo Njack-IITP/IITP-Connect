@@ -13,5 +13,6 @@
     <string name="hours"> hours</string>
     <string name="contest_description_coding_contest_for_programming_enthusiasts">Contest Description: Coding Contest for Programming enthusiasts</string>
     <string name="contest_description">Contest Description:</string>
-
+    <string name="total_classes">Total Classes :</string>
+    <string name="classes_present">Classes Present :</string>
 </resources>

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by srv_twry on 19/8/17.
@@ -94,7 +95,24 @@ public class DatabaseContentProvider extends ContentProvider{
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        throw new UnsupportedOperationException("Not implemented");
+        SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
+        int itemsDeleted;
+
+        int match = uriMatcher.match(uri);
+
+        switch (match) {
+            case CONTESTS:
+                itemsDeleted = db.delete(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, null, null);
+                Log.v("ContentProvider", "All the previous contests deleted i.e. " + itemsDeleted + " contests");
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+
+        if (itemsDeleted !=0){
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return itemsDeleted;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -54,6 +55,10 @@ public class DataScraper {
     // Parse the JSON Response and add to database
     private void addToDatabase(JSONObject response) {
         try{
+
+            //deleting the previous table of contests
+            Uri uri = DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS;
+            context.getContentResolver().delete(uri,null,null);
 
             JSONArray models = response.getJSONArray("models");
 
