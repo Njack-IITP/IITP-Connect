@@ -14,6 +14,8 @@ import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.Utils.DatabaseUtilities;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -52,6 +54,7 @@ public class ContestDetailsActivity extends AppCompatActivity {
         contestTitle.setText(mContest.getTitle());
         contestDescription.setText(mContest.getDescription());
 
+        contestCoverImageView.setImageResource(getCoverImage(mContest.getUrl()));
 
         SpannableString contestDetailsStartTime = DatabaseUtilities.getStartTimeTextDetailsFragment(mContest.getStartTime());
         contestStartTime.setText(contestDetailsStartTime);
@@ -77,5 +80,39 @@ public class ContestDetailsActivity extends AppCompatActivity {
         long difference = endTime- startTime;
         difference = TimeUnit.MILLISECONDS.toHours(difference);        // returning the difference in hours.
         return difference;
+    }
+
+    //Helper method to get the Cover image of the Contest
+    public static int getCoverImage(String url) {
+        URL urlPlatform;
+        int returnId;
+        try{
+            urlPlatform = new URL(url);
+            String platformString = urlPlatform.getHost();
+
+            switch (platformString){
+                case "www.topcoder.com":
+                    returnId= R.drawable.topcoder_cover;
+                    break;
+                case "www.codechef.com":
+                    returnId=R.drawable.codechef_cover;
+                    break;
+                case "www.hackerrank.com":
+                    returnId = R.drawable.hackerrank_cover;
+                    break;
+                case "www.hackerearth.com":
+                    returnId = R.drawable.hackerearth_cover;
+                    break;
+                case "codeforces.com":
+                    returnId = R.drawable.codeforces_cover;
+                    break;
+                default:
+                    returnId = R.drawable.ic_code;
+            }
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            returnId = R.drawable.ic_code;
+        }
+        return returnId;
     }
 }
