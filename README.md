@@ -9,6 +9,7 @@ This project is meant to encourage the emerging developers of IIT Patna to take 
 
 ## Features
 1. **Coding Calendar** - Work in Progress.
+1. **Attendance Manager** - Work in Progress.
 
 ## Branch Policy
 1. **master** - This branch contains the most stable version of the application.  
