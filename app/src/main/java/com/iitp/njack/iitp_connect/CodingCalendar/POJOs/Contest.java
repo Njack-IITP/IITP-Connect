@@ -3,35 +3,30 @@ package com.iitp.njack.iitp_connect.CodingCalendar.POJOs;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
- * Created by srv_twry on 20/8/17.
- * The POJO for a single contest.
+ *Model class for a single contest
  */
 
-public class Contest implements Parcelable {
-    private final String title;
-    private final String description;
-    private final String url;
-    private final Date startTime;
-    private final Date endTime;
+public class Contest {
+    private String title;
+    private String description;
+    private String url;
 
-    public Contest(String title,String description,String url,Date startTime,Date endTime){
-        this.title=title;
-        this.description= description;
-        this.url=url;
-        this.startTime=startTime;
-        this.endTime=endTime;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
+    @SerializedName("start")
+    private Date startTime;
+    @SerializedName("end")
+    private Date endTme;
 
     public String getDescription() {
         return description;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getUrl() {
@@ -42,43 +37,27 @@ public class Contest implements Parcelable {
         return startTime;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public Date getEndTme() {
+        return endTme;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.title);
-        dest.writeString(this.description);
-        dest.writeString(this.url);
-        dest.writeLong(this.startTime != null ? this.startTime.getTime() : -1);
-        dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    protected Contest(Parcel in) {
-        this.title = in.readString();
-        this.description = in.readString();
-        this.url = in.readString();
-        long tmpStartTime = in.readLong();
-        this.startTime = tmpStartTime == -1 ? null : new Date(tmpStartTime);
-        long tmpEndTime = in.readLong();
-        this.endTime = tmpEndTime == -1 ? null : new Date(tmpEndTime);
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public static final Parcelable.Creator<Contest> CREATOR = new Parcelable.Creator<Contest>() {
-        @Override
-        public Contest createFromParcel(Parcel source) {
-            return new Contest(source);
-        }
+    public void setEndTme(Date endTme) {
+        this.endTme = endTme;
+    }
 
-        @Override
-        public Contest[] newArray(int size) {
-            return new Contest[size];
-        }
-    };
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
