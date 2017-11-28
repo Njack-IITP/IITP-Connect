@@ -1,7 +1,6 @@
 package com.iitp.njack.iitp_connect.Retrofit;
 
-import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.ContestList;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,6 +9,6 @@ import retrofit2.http.GET;
  */
 
 public interface Client {
-    @GET("/calender/feed.json")
-    Call<ContestList> Contests();
+    @GET("/calendar/feed.json")
+    Call<ResponseBody> Contests();
 }

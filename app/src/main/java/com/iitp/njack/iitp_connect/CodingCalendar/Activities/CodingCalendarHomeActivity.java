@@ -17,12 +17,11 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.iitp.njack.iitp_connect.CodingCalendar.Adapters.CodingCalendarAdapter;
-import com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils.DataScraper;
+import com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils.NetworkCall;
 import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
 import com.iitp.njack.iitp_connect.Database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ import butterknife.ButterKnife;
 
 import static java.security.AccessController.getContext;
 
-public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , DataScraper.onLoadingFinishedListener , CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
+public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , NetworkCall.onLoadingFinishedListener1, CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
     private static final String TAG = CodingCalendarHomeActivity.class.getSimpleName();
     public static final String INTENT_EXTRA = "IntentExtra";
@@ -72,8 +71,8 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
     void startLoadingData(){
         //If the device is online then get the updated data from the server otherwise use the cached data from the database.
         if (isOnline()){
-            DataScraper dataScraper = new DataScraper(getBaseContext(),this);
-            dataScraper.fetchContest();
+            NetworkCall networkCall=new NetworkCall(getBaseContext(),this);
+            networkCall.fetchContest();
         }else{
             getDataFromDatabase();
         }
@@ -165,7 +164,6 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
 
             Date startTime = getDateFromString(start);
             Date endTime = getDateFromString(end);
-
             returnArrayList.add(new Contest(title,description,url,startTime,endTime));
         }
         return returnArrayList;

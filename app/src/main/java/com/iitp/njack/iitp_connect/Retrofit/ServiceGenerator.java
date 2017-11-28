@@ -5,24 +5,18 @@ import com.iitp.njack.iitp_connect.BuildConfig;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Service Generator class
  */
 
 public class ServiceGenerator {
-
+    private static final String HACKERRANK_API_URL="https://www.hackerrank.com/";
     private static String apiUrl;
-
-    public ServiceGenerator(String url) {
-        apiUrl = url;
-    }
 
     //Define the retrofit builder object
     private static Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl(apiUrl)
-            .addConverterFactory(GsonConverterFactory.create());
+            .baseUrl(HACKERRANK_API_URL);
 
     //Build the Retrofit object
     private static Retrofit retrofit = builder.build();
