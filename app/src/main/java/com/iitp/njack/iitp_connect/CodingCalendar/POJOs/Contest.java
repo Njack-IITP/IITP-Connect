@@ -8,6 +8,8 @@ import java.util.Date;
  *Model class for a single contest
  */
 
+
+
 public class Contest implements Parcelable {
     private final String title;
     private final String description;
@@ -23,12 +25,13 @@ public class Contest implements Parcelable {
         this.endTime=endTime;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getUrl() {
@@ -42,6 +45,7 @@ public class Contest implements Parcelable {
     public Date getEndTime() {
         return endTime;
     }
+
     @Override
     public int describeContents() {
         return 0;
@@ -54,8 +58,8 @@ public class Contest implements Parcelable {
         dest.writeString(this.url);
         dest.writeLong(this.startTime != null ? this.startTime.getTime() : -1);
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
-
     }
+    
     protected Contest(Parcel in) {
         this.title = in.readString();
         this.description = in.readString();
