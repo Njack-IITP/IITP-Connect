@@ -9,11 +9,11 @@ import java.util.Date;
  */
 
 public class Contest implements Parcelable {
-    private String title;
-    private String description;
-    private String url;
-    private Date startTime;
-    private Date endTime;
+    private final String title;
+    private final String description;
+    private final String url;
+    private final Date startTime;
+    private final Date endTime;
 
     public Contest(String title,String description,String url,Date startTime,Date endTime){
         this.title=title;
@@ -42,27 +42,6 @@ public class Contest implements Parcelable {
     public Date getEndTime() {
         return endTime;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     @Override
     public int describeContents() {
         return 0;
