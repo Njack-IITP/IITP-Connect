@@ -32,13 +32,13 @@ public class NetworkCall {
     }
 
     public void fetchContest(){
-        Client client= ServiceGenerator.createService(Client.class);
+        Client client= ServiceGenerator.createService(Client.class);    //Create the client and call object
         Call<ResponseBody> myCall=client.Contests();
-        myCall.enqueue(new Callback<ResponseBody>() {
+        myCall.enqueue(new Callback<ResponseBody>() {                   //.enqueue() makes async https call to the api
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                ResponseBody res = response.body();
-                String baseJson=null;
+                ResponseBody res = response.body();                     //res stores the raw json response recieved
+                String baseJson=null;                
                 try {
                     baseJson=res.string();
                 } catch (IOException e) {
@@ -52,14 +52,14 @@ public class NetworkCall {
                 }
                 JSONArray models=null;
                 try {
-                    models=baseObject.getJSONArray("models");
+                    models=baseObject.getJSONArray("models");           //models stores the array "models" containing json objects describing contests
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 if(models!=null)
                     addToDatabase(models);
-                OnLoadingFinishedListener1.onLoadingFinished();
-
+                OnLoadingFinishedListener1.onLoadingFinished();         //call the onLoadingFinished method implemented by the CodingCalenderHome activity
+                
             }
 
             @Override
@@ -83,9 +83,6 @@ public class NetworkCall {
                 String start = obj.getString("start");
                 String end = obj.getString("end");
                 String url = obj.getString("url");
-
-
-
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_TITLE, title);
                 contentValues.put(DatabaseContract.ContestEntry.CONTEST_COLUMN_DESCRIPTION, description);
@@ -101,7 +98,7 @@ public class NetworkCall {
         }
     }
 
-    public interface onLoadingFinishedListener1{
+    public interface onLoadingFinishedListener1{        //interface to be implemented by the class calling the methods of this class
         void onLoadingFinished();
     }
 
