@@ -2,13 +2,13 @@ package com.iitp.njack.iitp_connect.CodingCalendar.POJOs;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.Date;
 
 /**
- * Created by srv_twry on 20/8/17.
- * The POJO for a single contest.
+ *Model class for a single contest
  */
+
+
 
 public class Contest implements Parcelable {
     private final String title;
@@ -59,7 +59,7 @@ public class Contest implements Parcelable {
         dest.writeLong(this.startTime != null ? this.startTime.getTime() : -1);
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
     }
-
+    
     protected Contest(Parcel in) {
         this.title = in.readString();
         this.description = in.readString();

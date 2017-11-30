@@ -9,3 +9,6 @@
 /captures
 .externalNativeBuild
 android-sdk.zip
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/modules.xml
