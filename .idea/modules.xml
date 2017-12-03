@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IITP-Connect.iml" filepath="$PROJECT_DIR$/IITP-Connect.iml" />
-      <module fileurl="file://F:\nw\IITP-Connect\IITP-Connect.iml" filepath="F:\nw\IITP-Connect\IITP-Connect.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://F:\nw\IITP-Connect\app\app.iml" filepath="F:\nw\IITP-Connect\app\app.iml" />
     </modules>
   </component>
 </project>
