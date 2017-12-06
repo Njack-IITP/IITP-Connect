@@ -26,9 +26,7 @@ The project is actively maintained by
 + Saurav tiwary([@srv-twry](https://github.com/srv-twry))
 
 ## License
-
 This project is currently licensed under The MIT License (MIT). A copy of [LICENSE.md](LICENSE.md) should be present along with the source code.
 
 ## Roadmap and Future Plans
-
- The future plans are to add various features such as Attendance Manager,College Events and News,Contest Details and Coding Calendar("Work in Progress") by taking contributions from emerging developers of IIT Patna and to make the app live by the end of NWOC.
+The future plans are to add various features such as Attendance Manager,College Events and News,Contest Details and Coding Calendar("Work in Progress") by taking contributions from emerging developers of IIT Patna and to make the app live by the end of NWOC.
