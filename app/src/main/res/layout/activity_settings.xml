@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Filter"
+        android:textSize="28dp"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <CheckBox
+            android:id="@+id/codechef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codechef"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/codeForces"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codeforces"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/hackerearth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hackerearth"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/hackerRank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hackerrank"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/topCoder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/topcoder"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/URIOJ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/urioj"
+            android:textSize="18dp" />
+
+
+    </LinearLayout>
+</LinearLayout>

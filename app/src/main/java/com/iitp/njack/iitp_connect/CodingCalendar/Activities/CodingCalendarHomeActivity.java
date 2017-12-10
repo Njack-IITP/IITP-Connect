@@ -2,9 +2,11 @@ package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
@@ -13,6 +15,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -22,6 +26,8 @@ import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
 import com.iitp.njack.iitp_connect.Database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,9 +35,6 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import static java.security.AccessController.getContext;
 
 public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , NetworkCall.onLoadingFinishedListener1, CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
@@ -57,15 +60,22 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         /*
         *Fetch the data.
         * */
-        startLoadingData();
 
-        loadingContestsProgressBar.setVisibility(View.VISIBLE);
-        contestRecyclerView.setVisibility(View.INVISIBLE);
+
+
         CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
         gridLayoutManager = new GridLayoutManager(CodingCalendarHomeActivity.this,1);
         contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
         contestRecyclerView.setLayoutManager(gridLayoutManager);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startLoadingData();
+        loadingContestsProgressBar.setVisibility(View.VISIBLE);
+        contestRecyclerView.setVisibility(View.INVISIBLE);
     }
 
     void startLoadingData(){
@@ -131,6 +141,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if(data !=null){
             contestArrayList = convertCursorToArrayList(data);
+            contestArrayList=prepareContestList(contestArrayList);
             CodingCalendarAdapter contestRecyclerViewAdapter = new CodingCalendarAdapter(this,contestArrayList);
             contestRecyclerView.setAdapter(contestRecyclerViewAdapter);
             contestRecyclerView.invalidate();
@@ -204,5 +215,69 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
         Intent i = new Intent(CodingCalendarHomeActivity.this,ContestDetailsActivity.class);
         i.putExtra(INTENT_EXTRA,clickedContest);
         startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.calender_home,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        ;
+        if (id == R.id.settings_menu_item) {
+            Intent settingsIntent = new Intent(this, Settings.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<Contest> prepareContestList(ArrayList<Contest> list){
+        ArrayList<Contest>ans=new ArrayList<>();
+        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Boolean Codechef=p.getBoolean(getString(R.string.codechef),true);
+        Boolean Codeforces=p.getBoolean(getString(R.string.codeforces),true);
+        Boolean Hackerrank=p.getBoolean(getString(R.string.hackerrank),true);
+        Boolean Topcoder=p.getBoolean(getString(R.string.topcoder),true);
+        Boolean Urioj=p.getBoolean(getString(R.string.urioj),true);
+        Boolean Hackerearth=p.getBoolean(getString(R.string.hackerearth),true);
+        for(Contest c:list){
+            URL urlPlatform;
+            String url=c.getUrl();
+            try {
+                urlPlatform=new URL(url);
+                String host=urlPlatform.getHost();
+                if(host.equals("www.topcoder.com")||url.contains("topcoder")){
+                    if(Topcoder==true)
+                        ans.add(c);
+                }
+                else if(host.equals("www.codechef.com")){
+                    if(Codechef==true)
+                        ans.add(c);
+                }
+                else if(host.equals("www.hacerrank.com")){
+                    if(Hackerrank==true)
+                        ans.add(c);
+                }
+                else if(host.equals("www.urionlinejudge.com.br")){
+                    if(Urioj==true)
+                        ans.add(c);
+                }
+                else if(host.equals("codeforces.com")){
+                    if(Codeforces==true)
+                        ans.add(c);
+                }
+                else if(host.equals("www.hackerearth.com")){
+                    if(Hackerearth==true)
+                        ans.add(c);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+        return ans;
     }
 }
