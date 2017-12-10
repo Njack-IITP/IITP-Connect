@@ -95,16 +95,19 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
                 String platformString = urlPlatform.getHost();
                 Log.v("ContestRecyclerViewAdap",platformString);
 
-                if (platformString.equals("www.topcoder.com")){
+                if (url.contains("topcoder")){
                     contestPlatform.setImageResource(R.mipmap.topcoder_logo);
-                }else if (platformString.equals("www.codechef.com")){
+                }else if (platformString.contains("codechef")){
                     contestPlatform.setImageResource(R.mipmap.codechef_logo);
-                }else if(platformString.equals("www.hackerrank.com")){
+                }else if(platformString.contains("hackerrank")){
                     contestPlatform.setImageResource(R.mipmap.hackerrank_logo);
-                }else if(platformString.equals("www.hackerearth.com")){
+                }else if(platformString.contains("hackerearth")){
                     contestPlatform.setImageResource(R.mipmap.hackerearth_logo);
-                }else if(platformString.equals("codeforces.com")){
+                }else if(platformString.contains("codeforces")){
                     contestPlatform.setImageResource(R.mipmap.codeforces_logo);
+                }
+                else if(platformString.contains("urionlinejudge")){
+                    contestPlatform.setImageResource(R.mipmap.urioj_logo);
                 }
 
             }catch (MalformedURLException e){
