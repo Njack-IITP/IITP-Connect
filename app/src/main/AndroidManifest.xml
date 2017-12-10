@@ -35,8 +35,10 @@
         <activity
             android:name=".CodingCalendar.Activities.CodingCalendarHomeActivity"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".CodingCalendar.Activities.ContestDetailsActivity"
-            android:parentActivityName=".CodingCalendar.Activities.CodingCalendarHomeActivity"></activity>
+        <activity
+            android:name=".CodingCalendar.Activities.ContestDetailsActivity"
+            android:parentActivityName=".CodingCalendar.Activities.CodingCalendarHomeActivity" />
+        <activity android:name=".CodingCalendar.Activities.Settings"></activity>
     </application>
 
 </manifest>

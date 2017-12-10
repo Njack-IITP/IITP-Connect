@@ -15,4 +15,10 @@
     <string name="contest_description">Contest Description:</string>
     <string name="total_classes">Total Classes :</string>
     <string name="classes_present">Classes Present :</string>
+    <string name="codechef">CODECHEF</string>
+    <string name="codeforces">CODEFORCES</string>
+    <string name="hackerrank">HACKERRANK</string>
+    <string name="topcoder">TOPCODER</string>
+    <string name="urioj">URIOJ</string>
+    <string name="hackerearth">HACKEREARTH</string>
 </resources>
