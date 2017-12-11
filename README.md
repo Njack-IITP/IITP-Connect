@@ -26,6 +26,14 @@ The project is actively maintained by
 + Arundhati gupta([@arundhati24](https://github.com/arundhati24))
 + Saurav tiwary([@srv-twry](https://github.com/srv-twry))
 
+## Roadmap and Future Plans
+The future plans are to add various features such as
+•Attendance Manager
+•College Events and News
+•Contest Details
+•Coding Calendar("Work in Progress")
+This shall be achieved by taking contributions from emerging developers of IIT Patna and to make the app live by the end of NWOC.
+
 ## License
 
 This project is currently licensed under The MIT License (MIT). A copy of [LICENSE.md](LICENSE.md) should be present along with the source code.
