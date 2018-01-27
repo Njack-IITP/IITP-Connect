@@ -2,49 +2,24 @@ package com.iitp.njack.iitp_connect.CodingCalendar.POJOs;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
- *Model class for a single contest
+ * Model class for a single contest
  */
 
-
-
+@AllArgsConstructor
+@Getter
 public class Contest implements Parcelable {
     private final String title;
     private final String description;
     private final String url;
     private final Date startTime;
     private final Date endTime;
-
-    public Contest(String title,String description,String url,Date startTime,Date endTime){
-        this.title=title;
-        this.description= description;
-        this.url=url;
-        this.startTime=startTime;
-        this.endTime=endTime;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
 
     @Override
     public int describeContents() {
@@ -59,7 +34,7 @@ public class Contest implements Parcelable {
         dest.writeLong(this.startTime != null ? this.startTime.getTime() : -1);
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
     }
-    
+
     protected Contest(Parcel in) {
         this.title = in.readString();
         this.description = in.readString();
