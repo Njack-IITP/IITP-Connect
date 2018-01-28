@@ -16,6 +16,7 @@ public class DatabaseContract {
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
     public static final String PATH_CONTESTS = "contests";
+    public static final String PATH_SUBJECTS = "subjects";
 
     //Class for the Coding-Calendar Table
     public static final class ContestEntry implements BaseColumns {
@@ -33,5 +34,18 @@ public class DatabaseContract {
         public static final String CONTEST_COLUMN_END_TIME = "endTime";
     }
 
+    //Class for the Attendance manager subject table.
+    public static final class SubjectsEntry implements BaseColumns {
 
+        public static final Uri CONTENT_URI_SUBJECTS = BASE_CONTENT_URI.buildUpon().appendPath(PATH_SUBJECTS).build();
+
+        //Table name
+        public static final String TABLE_NAME_SUBJECTS = "subjectsTable";
+
+        //Table columns
+        public static final String TABLE_COLUMN_SUBJECT_NAME = "subjectName";
+        public static final String TABLE_COLUMN_SUBJECT_CODE = "subjectCode";
+        public static final String TABLE_COLUMN_DAYS_ATTENDED = "subjectDateAttended";
+        public static final String TABLE_COLUMN_TOTAL_DAYS = "subjectTotalDays";
+    }
 }

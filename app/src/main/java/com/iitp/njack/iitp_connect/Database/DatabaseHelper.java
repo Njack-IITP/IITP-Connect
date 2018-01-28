@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME= "iitp-connect.db";
 
     //update this version every time you make change to the schema.
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, VERSION);
@@ -30,12 +30,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DatabaseContract.ContestEntry.CONTEST_COLUMN_START_TIME + " TEXT NOT NULL, " +
                 DatabaseContract.ContestEntry.CONTEST_COLUMN_END_TIME + " TEXT NOT NULL);";
 
+        final String CREATE_SUBJECTS_TABLE = "CREATE TABLE " + DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS + " (" +
+                DatabaseContract.ContestEntry._ID  + " INTEGER PRIMARY KEY, " +
+                DatabaseContract.SubjectsEntry.TABLE_COLUMN_SUBJECT_NAME + " TEXT NOT NULL, " +
+                DatabaseContract.SubjectsEntry.TABLE_COLUMN_SUBJECT_CODE + " TEXT NOT NULL, " +
+                DatabaseContract.SubjectsEntry.TABLE_COLUMN_DAYS_ATTENDED + " INTEGER NOT NULL, " +
+                DatabaseContract.SubjectsEntry.TABLE_COLUMN_TOTAL_DAYS + " INTEGER NOT NULL);";
+
         sqLiteDatabase.execSQL(CREATE_CONTEST_TABLE);
+        sqLiteDatabase.execSQL(CREATE_SUBJECTS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS);
         onCreate(sqLiteDatabase);
     }
 }
