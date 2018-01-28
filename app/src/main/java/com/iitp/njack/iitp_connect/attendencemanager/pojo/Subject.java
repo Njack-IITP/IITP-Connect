@@ -8,7 +8,7 @@ import lombok.Data;
 
 /**
  * Created by srv_twry on 28/1/18.
- * The POJO class for holding information of a single subject associated with a semester.
+ * The POJO class for holding information of a single subject associated with the current semester.
  * Implements Parceable interface and hence can be passed around with Intents.
  */
 
