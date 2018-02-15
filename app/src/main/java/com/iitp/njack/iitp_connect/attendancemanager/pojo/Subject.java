@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.attendencemanager.pojo;
+package com.iitp.njack.iitp_connect.attendancemanager.pojo;
 
 import android.os.Parcel;
 import android.os.Parcelable;

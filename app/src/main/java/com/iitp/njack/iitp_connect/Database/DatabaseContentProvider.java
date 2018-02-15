@@ -19,13 +19,17 @@ import android.util.Log;
 public class DatabaseContentProvider extends ContentProvider{
 
     private static final int CONTESTS = 100;
+    private static final int SUBJECTS = 200;
+    private static final int SUBJECT_INDIVIDUAL = 201;
 
     private static final UriMatcher uriMatcher = buildUriMatcher();
 
     private static UriMatcher buildUriMatcher(){
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-        uriMatcher.addURI(DatabaseContract.AUTHORITY,DatabaseContract.PATH_CONTESTS,CONTESTS);
+        uriMatcher.addURI(DatabaseContract.AUTHORITY, DatabaseContract.PATH_CONTESTS, CONTESTS);
+        uriMatcher.addURI(DatabaseContract.AUTHORITY, DatabaseContract.PATH_CONTESTS, SUBJECTS);
+        uriMatcher.addURI(DatabaseContract.AUTHORITY, DatabaseContract.PATH_CONTESTS + "/#", SUBJECT_INDIVIDUAL);
 
         return uriMatcher;
     }
@@ -46,9 +50,12 @@ public class DatabaseContentProvider extends ContentProvider{
         int match = uriMatcher.match(uri);
         Cursor returnCursor;
 
-        switch(match){
+        switch(match) {
             case CONTESTS:
-                returnCursor = db.query(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS,projection,selection,selectionArgs,null,null,sortOrder);
+                returnCursor = db.query(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, projection, selection, selectionArgs, null, null, sortOrder);
+                break;
+            case SUBJECTS:
+                returnCursor = db.query(DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -85,6 +92,14 @@ public class DatabaseContentProvider extends ContentProvider{
                     throw new android.database.SQLException("Failed to insert contest row into " + uri);
                 }
                 break;
+            case SUBJECTS:
+                id = db.insert(DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS, null, values);
+                if (id >0){
+                    returnUri = ContentUris.withAppendedId(uri,id);
+                }else{
+                    throw new android.database.SQLException("Failed to insert subject row into " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -104,6 +119,14 @@ public class DatabaseContentProvider extends ContentProvider{
             case CONTESTS:
                 itemsDeleted = db.delete(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, null, null);
                 Log.v("ContentProvider", "All the previous contests deleted i.e. " + itemsDeleted + " contests");
+                break;
+            case SUBJECTS:
+                itemsDeleted = db.delete(DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS, null, null);
+                Log.v("ContentProvider", "All the previous subjects deleted i.e. " + itemsDeleted + " subjects");
+                break;
+            case SUBJECT_INDIVIDUAL:
+                String stringIds = uri.getPathSegments().get(1);
+                itemsDeleted = db.delete(DatabaseContract.SubjectsEntry.TABLE_NAME_SUBJECTS, "_id=?", new String[]{stringIds});
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
