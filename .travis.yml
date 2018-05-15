@@ -23,5 +23,3 @@ install:
 script:
   - ./gradlew build
   - ./gradlew testDebugUnitTestCoverage
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
