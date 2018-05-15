@@ -1,71 +1,25 @@
 language: android
-sudo: required
-jdk: oraclejdk8
-
-env:
-  global:
-    - ANDROID_API_LEVEL=25
-    - ANDROID_API_LEVEL_22=22
-    - ANDROID_BUILD_TOOLS_VERSION=26.0.1
-    - ANDROID_ABI=armeabi-v7a
-    - ANDROID_TARGET=android-25
-    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
-
+sudo: false
+jdk:
+    - oraclejdk8
 android:
   components:
     - tools
+    - android-27
+    - build-tools-27.0.3
     - platform-tools
-    - android-$ANDROID_API_LEVEL_22
-    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    - android-$ANDROID_API_LEVEL
-    # For Google APIs
-    - addon-google_apis-google-$ANDROID_API_LEVEL
-    # Google Play Services
-    - extra-google-google_play_services
-    # Support library
-    - extra-android-support
-    # Latest artifacts in local repository
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - android-sdk-license-.+
-    - '.+'
-    # Specify at least one system image
-    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL_22
-    
-# prevents reuploading of Cache
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
-# list of directories to Cache
-
-before_install:
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
-  - chmod +x gradlew
-
 cache:
-  directories:
-    - "${TRAVIS_BUILD_DIR}/android/gradle/caches/"
-    - "${TRAVIS_BUILD_DIR}/android/gradle/wrapper/dists/"
-    - "$HOME/android/.gradle/caches/"
-    - "$HOME/android/.gradle/wrapper/"
-    - "$HOME/.android/build-cache"
-
-licenses:
-    - 'android-sdk-preview-license-.+'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
-
-before_script:
-  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-
+    directories:
+      - "${TRAVIS_BUILD_DIR}/gradle/caches/"
+      - "${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/"
+      - "$HOME/.gradle/caches/"
+      - "$HOME/.gradle/wrapper/"
+install:
+  - echo yes | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-27"
 script:
   - ./gradlew build
-  
+  - ./gradlew testDebugUnitTestCoverage
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
