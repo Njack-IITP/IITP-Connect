@@ -1,18 +1,13 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
+package com.iitp.njack.iitp_connect.core.codingcalendar.views;
 
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.iitp.njack.iitp_connect.R;
 

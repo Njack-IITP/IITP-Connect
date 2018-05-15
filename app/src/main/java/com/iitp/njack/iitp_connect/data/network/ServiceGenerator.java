@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.Retrofit;
+package com.iitp.njack.iitp_connect.data.network;
 
 import com.iitp.njack.iitp_connect.BuildConfig;
 

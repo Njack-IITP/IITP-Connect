@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.Utils;
+package com.iitp.njack.iitp_connect.common.utils;
 
 import android.graphics.Color;
 import android.text.Spannable;
@@ -10,10 +10,10 @@ import java.util.Date;
 
 /**
  * Created by srv_twry on 19/10/17.
- * Contains helper methods to work with the Database.
+ * Contains helper methods to work with the Strings.
  */
 
-public class DatabaseUtilities {
+public class StringUtils {
 
     //Helper method to return the start time in the desired format for the contest list.
     public static SpannableString getStartTimeTextContestList(Date startTime){

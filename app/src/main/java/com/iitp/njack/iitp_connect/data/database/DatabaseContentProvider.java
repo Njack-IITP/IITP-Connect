@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.Database;
+package com.iitp.njack.iitp_connect.data.database;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

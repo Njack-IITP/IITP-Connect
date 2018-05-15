@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
+package com.iitp.njack.iitp_connect.core.codingcalendar.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.iitp.njack.iitp_connect.CodingCalendar.Adapters.CodingCalendarAdapter;
-import com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils.NetworkCall;
-import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
-import com.iitp.njack.iitp_connect.Database.DatabaseContract;
+import com.iitp.njack.iitp_connect.core.codingcalendar.adapters.CodingCalendarAdapter;
+import com.iitp.njack.iitp_connect.core.codingcalendar.networkutils.NetworkCall;
+import com.iitp.njack.iitp_connect.data.models.Contest;
+import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
 
 import java.net.MalformedURLException;

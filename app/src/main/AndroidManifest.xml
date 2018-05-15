@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HomeActivity"
+            android:name=".core.home.HomeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
@@ -26,19 +26,19 @@
         </activity>
 
         <provider
-            android:name=".Database.DatabaseContentProvider"
+            android:name=".data.database.DatabaseContentProvider"
             android:authorities="@string/authority"
             android:exported="false"
             android:syncable="true"
             tools:ignore="InnerclassSeparator" />
 
         <activity
-            android:name=".CodingCalendar.Activities.CodingCalendarHomeActivity"
-            android:parentActivityName=".HomeActivity" />
+            android:name=".core.codingcalendar.views.CodingCalendarHomeActivity"
+            android:parentActivityName=".core.home.HomeActivity" />
         <activity
-            android:name=".CodingCalendar.Activities.ContestDetailsActivity"
-            android:parentActivityName=".CodingCalendar.Activities.CodingCalendarHomeActivity" />
-        <activity android:name=".CodingCalendar.Activities.Settings"></activity>
+            android:name=".core.codingcalendar.views.ContestDetailsActivity"
+            android:parentActivityName=".core.codingcalendar.views.CodingCalendarHomeActivity" />
+        <activity android:name=".core.codingcalendar.views.Settings"></activity>
     </application>
 
 </manifest>

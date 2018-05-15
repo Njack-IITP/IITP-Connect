@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect;
+package com.iitp.njack.iitp_connect.core.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.iitp.njack.iitp_connect.CodingCalendar.Activities.CodingCalendarHomeActivity;
+import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.core.codingcalendar.views.CodingCalendarHomeActivity;
 
 /*
 *   The HomeActivity i.e. the starting point of the application.

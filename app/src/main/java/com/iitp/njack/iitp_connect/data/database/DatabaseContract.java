@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.Database;
+package com.iitp.njack.iitp_connect.data.database;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
