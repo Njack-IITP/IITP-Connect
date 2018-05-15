@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.POJOs;
+package com.iitp.njack.iitp_connect.data.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

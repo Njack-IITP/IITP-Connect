@@ -1,15 +1,14 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.NetworkUtils;
+package com.iitp.njack.iitp_connect.core.codingcalendar.networkutils;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.iitp.njack.iitp_connect.Database.DatabaseContract;
+import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.Retrofit.Client;
-import com.iitp.njack.iitp_connect.Retrofit.ServiceGenerator;
+import com.iitp.njack.iitp_connect.data.network.Client;
+import com.iitp.njack.iitp_connect.data.network.ServiceGenerator;
 
 import org.json.JSONArray;
 import org.json.JSONException;

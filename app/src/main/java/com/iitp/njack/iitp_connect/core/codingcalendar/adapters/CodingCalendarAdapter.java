@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Adapters;
+package com.iitp.njack.iitp_connect.core.codingcalendar.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
+import com.iitp.njack.iitp_connect.data.models.Contest;
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.Utils.DatabaseUtilities;
+import com.iitp.njack.iitp_connect.common.utils.StringUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -83,7 +83,7 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
             }else{
                 contestTitle.setText(contestTitleString);
             }
-            SpannableString contestStartTimeString = DatabaseUtilities.getStartTimeTextContestList(contestArrayList.get(position).getStartTime());
+            SpannableString contestStartTimeString = StringUtils.getStartTimeTextContestList(contestArrayList.get(position).getStartTime());
             contestStartTime.setText(contestStartTimeString);
         }
 

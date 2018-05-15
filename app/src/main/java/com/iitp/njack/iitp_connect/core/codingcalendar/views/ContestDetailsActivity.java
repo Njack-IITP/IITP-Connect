@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.CodingCalendar.Activities;
+package com.iitp.njack.iitp_connect.core.codingcalendar.views;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iitp.njack.iitp_connect.CodingCalendar.POJOs.Contest;
+import com.iitp.njack.iitp_connect.data.models.Contest;
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.Utils.DatabaseUtilities;
+import com.iitp.njack.iitp_connect.common.utils.StringUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class ContestDetailsActivity extends AppCompatActivity {
 
         contestCoverImageView.setImageResource(getCoverImage(mContest.getUrl()));
 
-        SpannableString contestDetailsStartTime = DatabaseUtilities.getStartTimeTextDetailsFragment(mContest.getStartTime());
+        SpannableString contestDetailsStartTime = StringUtils.getStartTimeTextDetailsFragment(mContest.getStartTime());
         contestStartTime.setText(contestDetailsStartTime);
         String duration = getString(R.string.duration_approximately)+" "+getContestDuration(mContest.getStartTime(),mContest.getEndTime())+" "+getString(R.string.hours);
         contestDuration.setText(duration);
