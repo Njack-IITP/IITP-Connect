@@ -18,8 +18,8 @@ import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.codingcalendar.views.CodingCalendarHomeActivity;
 
 /*
-*   The HomeActivity i.e. the starting point of the application.
-* */
+ *   The HomeActivity i.e. the starting point of the application.
+ * */
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_coding_calendar) {
             //start coding calendar.
-            Intent i = new Intent(this,CodingCalendarHomeActivity.class);
+            Intent i = new Intent(this, CodingCalendarHomeActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_gallery) {
 

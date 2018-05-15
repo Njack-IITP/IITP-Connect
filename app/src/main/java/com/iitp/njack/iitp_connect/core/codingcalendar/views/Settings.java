@@ -122,7 +122,8 @@ public class Settings extends AppCompatActivity {
         }
 
     }
-    public void save(){
+
+    public void save() {
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final SharedPreferences.Editor e = i.edit();
         e.putBoolean(getString(R.string.codechef), CODECHEF);

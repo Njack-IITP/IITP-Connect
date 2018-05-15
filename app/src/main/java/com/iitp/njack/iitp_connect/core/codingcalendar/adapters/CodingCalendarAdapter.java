@@ -27,7 +27,7 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
     private final ArrayList<Contest> contestArrayList;
     private final ContestRecyclerViewOnClickListener contestRecyclerViewOnClickListener;
 
-    public CodingCalendarAdapter(ContestRecyclerViewOnClickListener contestRecyclerViewOnClickListener, ArrayList<Contest> contestArrayList){
+    public CodingCalendarAdapter(ContestRecyclerViewOnClickListener contestRecyclerViewOnClickListener, ArrayList<Contest> contestArrayList) {
         this.contestArrayList = contestArrayList;
         this.contestRecyclerViewOnClickListener = contestRecyclerViewOnClickListener;
     }
@@ -35,7 +35,7 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.contest_recyclerview_view_holder,parent,false);
+        View view = inflater.inflate(R.layout.contest_recyclerview_view_holder, parent, false);
         return new ViewHolder(view);
     }
 
@@ -49,17 +49,17 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
         return contestArrayList.size();
     }
 
-    public interface ContestRecyclerViewOnClickListener{
+    public interface ContestRecyclerViewOnClickListener {
         void onContestListItemClicked(Contest clickedContest);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView contestPlatform;
         TextView contestTitle;
         TextView contestStartTime;
         final boolean isLandscape;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
             contestTitle = (TextView) view.findViewById(R.id.tv_contest_platform_name);
             contestStartTime = (TextView) view.findViewById(R.id.tv_contest_start_time);
@@ -77,10 +77,10 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
         public void bind(int position) {
             setImageViewUsingUrl(contestArrayList.get(position).getUrl());
             String contestTitleString = contestArrayList.get(position).getTitle();
-            if (contestTitleString.length() >=34 && !isLandscape){
-                String temp = contestTitleString.substring(0,31) + "...";
+            if (contestTitleString.length() >= 34 && !isLandscape) {
+                String temp = contestTitleString.substring(0, 31) + "...";
                 contestTitle.setText(temp);
-            }else{
+            } else {
                 contestTitle.setText(contestTitleString);
             }
             SpannableString contestStartTimeString = StringUtils.getStartTimeTextContestList(contestArrayList.get(position).getStartTime());
@@ -89,28 +89,27 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
 
         private void setImageViewUsingUrl(String url) {
             URL urlPlatform;
-            try{
+            try {
                 urlPlatform = new URL(url);
                 //get the platform of the contest.
                 String platformString = urlPlatform.getHost();
-                Log.v("ContestRecyclerViewAdap",platformString);
+                Log.v("ContestRecyclerViewAdap", platformString);
 
-                if (url.contains("topcoder")){
+                if (url.contains("topcoder")) {
                     contestPlatform.setImageResource(R.mipmap.topcoder_logo);
-                }else if (platformString.contains("codechef")){
+                } else if (platformString.contains("codechef")) {
                     contestPlatform.setImageResource(R.mipmap.codechef_logo);
-                }else if(platformString.contains("hackerrank")){
+                } else if (platformString.contains("hackerrank")) {
                     contestPlatform.setImageResource(R.mipmap.hackerrank_logo);
-                }else if(platformString.contains("hackerearth")){
+                } else if (platformString.contains("hackerearth")) {
                     contestPlatform.setImageResource(R.mipmap.hackerearth_logo);
-                }else if(platformString.contains("codeforces")){
+                } else if (platformString.contains("codeforces")) {
                     contestPlatform.setImageResource(R.mipmap.codeforces_logo);
-                }
-                else if(platformString.contains("urionlinejudge")){
+                } else if (platformString.contains("urionlinejudge")) {
                     contestPlatform.setImageResource(R.mipmap.urioj_logo);
                 }
 
-            }catch (MalformedURLException e){
+            } catch (MalformedURLException e) {
                 e.printStackTrace();
                 contestPlatform.setVisibility(View.GONE);
             }

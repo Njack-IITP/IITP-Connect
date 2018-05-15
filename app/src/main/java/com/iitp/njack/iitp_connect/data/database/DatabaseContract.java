@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     // Constants for the database
-    public static final String AUTHORITY= "com.iitp.njack.iitp_connect";
+    public static final String AUTHORITY = "com.iitp.njack.iitp_connect";
 
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 

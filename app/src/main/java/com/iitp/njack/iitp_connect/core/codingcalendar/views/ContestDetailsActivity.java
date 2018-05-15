@@ -20,8 +20,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /*
-* The Activity to show the details of a particular contest.
-* */
+ * The Activity to show the details of a particular contest.
+ * */
 
 public class ContestDetailsActivity extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class ContestDetailsActivity extends AppCompatActivity {
         setDataToViews();
     }
 
-    void setDataToViews(){
+    void setDataToViews() {
         contestTitle.setText(mContest.getTitle());
         contestDescription.setText(mContest.getDescription());
 
@@ -58,7 +58,7 @@ public class ContestDetailsActivity extends AppCompatActivity {
 
         SpannableString contestDetailsStartTime = StringUtils.getStartTimeTextDetailsFragment(mContest.getStartTime());
         contestStartTime.setText(contestDetailsStartTime);
-        String duration = getString(R.string.duration_approximately)+" "+getContestDuration(mContest.getStartTime(),mContest.getEndTime())+" "+getString(R.string.hours);
+        String duration = getString(R.string.duration_approximately) + " " + getContestDuration(mContest.getStartTime(), mContest.getEndTime()) + " " + getString(R.string.hours);
         contestDuration.setText(duration);
 
 
@@ -73,11 +73,11 @@ public class ContestDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private long getContestDuration(Date start, Date end){
+    private long getContestDuration(Date start, Date end) {
         long startTime = start.getTime();
         long endTime = end.getTime();
 
-        long difference = endTime- startTime;
+        long difference = endTime - startTime;
         difference = TimeUnit.MILLISECONDS.toHours(difference);        // returning the difference in hours.
         return difference;
     }
@@ -86,16 +86,16 @@ public class ContestDetailsActivity extends AppCompatActivity {
     public static int getCoverImage(String url) {
         URL urlPlatform;
         int returnId;
-        try{
+        try {
             urlPlatform = new URL(url);
             String platformString = urlPlatform.getHost();
 
-            switch (platformString){
+            switch (platformString) {
                 case "www.topcoder.com":
-                    returnId= R.drawable.topcoder_cover;
+                    returnId = R.drawable.topcoder_cover;
                     break;
                 case "www.codechef.com":
-                    returnId=R.drawable.codechef_cover;
+                    returnId = R.drawable.codechef_cover;
                     break;
                 case "www.hackerrank.com":
                     returnId = R.drawable.hackerrank_cover;
@@ -109,7 +109,7 @@ public class ContestDetailsActivity extends AppCompatActivity {
                 default:
                     returnId = R.drawable.ic_code;
             }
-        }catch (MalformedURLException e){
+        } catch (MalformedURLException e) {
             e.printStackTrace();
             returnId = R.drawable.ic_code;
         }

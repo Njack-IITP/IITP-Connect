@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="Filter"
-        android:textSize="28dp"
         android:textColor="#000000"
+        android:textSize="28dp"
         android:textStyle="bold" />
 
     <LinearLayout

@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
  */
 
 public class ServiceGenerator {
-    private static final String HACKERRANK_API_URL="https://www.hackerrank.com/";
+    private static final String HACKERRANK_API_URL = "https://www.hackerrank.com/";
     private static String apiUrl;
 
     //Define the retrofit builder object
