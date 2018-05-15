@@ -7,9 +7,9 @@ The application provides various useful modules which enables the students to st
 
 This project is meant to encourage the emerging developers of IIT Patna to take part in this project as a collaborative open-source team and in the process build something useful for the student community.
 
-## Features
-1. **Coding Calendar** - Work in Progress.
-1. **Attendance Manager** - Work in Progress.
+## Features and Future Plans
+[ ] **Coding Calendar** - Work in Progress.
+[ ] **Attendance Manager** 
 
 ## Branch Policy
 1. **master** - This branch contains the most stable version of the application.  
@@ -22,17 +22,7 @@ Read the [Contributing guidelines](CONTRIBUTING.md) to get started.
 ## Maintainers
 The project is actively maintained by
 
-+ Mayank vaidya([@mayank8318](https://github.com/mayank8318))
-+ Arundhati gupta([@arundhati24](https://github.com/arundhati24))
 + Saurav tiwary([@srv-twry](https://github.com/srv-twry))
-
-## Roadmap and Future Plans
-The future plans are to add various features such as
-•Attendance Manager
-•College Events and News
-•Contest Details
-•Coding Calendar("Work in Progress")
-This shall be achieved by taking contributions from emerging developers of IIT Patna and to make the app live by the end of NWOC.
 
 ## License
 
