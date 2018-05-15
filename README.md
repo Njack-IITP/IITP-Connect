@@ -7,6 +7,12 @@ The application provides various useful modules which enables the students to st
 
 This project is meant to encourage the emerging developers of IIT Patna to take part in this project as a collaborative open-source team and in the process build something useful for the student community.
 
+Have an issue? Create one using these:
+
+[![Bug](https://img.shields.io/badge/issues-bug-red.svg)](https://github.com/Njack-IITP/IITP-Connect/issues/new?template=bug.md)
+[![Feature](https://img.shields.io/badge/issues-feature-green.svg)](https://github.com/Njack-IITP/IITP-Connect/issues/new?template=feature.md)
+[![Chore](https://img.shields.io/badge/issues-chore-blue.svg)](https://github.com/Njack-IITP/IITP-Connect/issues/new?template=chore.md)
+
 ## Features and Future Plans
 
 - [ ] **Coding Calendar** - Work in Progress
