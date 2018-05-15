@@ -8,8 +8,9 @@ The application provides various useful modules which enables the students to st
 This project is meant to encourage the emerging developers of IIT Patna to take part in this project as a collaborative open-source team and in the process build something useful for the student community.
 
 ## Features and Future Plans
-[ ] **Coding Calendar** - Work in Progress.
-[ ] **Attendance Manager** 
+
+- [ ] **Coding Calendar** - Work in Progress
+- [ ] **Attendance Manager** 
 
 ## Branch Policy
 1. **master** - This branch contains the most stable version of the application.  
