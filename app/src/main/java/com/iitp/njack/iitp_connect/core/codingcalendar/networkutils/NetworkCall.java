@@ -25,40 +25,41 @@ import retrofit2.Response;
 public class NetworkCall {
     private Context context;
     private final onLoadingFinishedListener1 OnLoadingFinishedListener1;
-    public NetworkCall(Context context, onLoadingFinishedListener1 onLoadingFinishedListener1){
-        this.context=context;
+
+    public NetworkCall(Context context, onLoadingFinishedListener1 onLoadingFinishedListener1) {
+        this.context = context;
         OnLoadingFinishedListener1 = onLoadingFinishedListener1;
     }
 
-    public void fetchContest(){
-        Client client= ServiceGenerator.createService(Client.class);    //Create the client and call object
-        Call<ResponseBody> myCall=client.Contests();
+    public void fetchContest() {
+        Client client = ServiceGenerator.createService(Client.class);    //Create the client and call object
+        Call<ResponseBody> myCall = client.Contests();
         myCall.enqueue(new Callback<ResponseBody>() {                   //.enqueue() makes async https call to the api
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 ResponseBody res = response.body();                     //res stores the raw json response recieved
-                String baseJson=null;                
+                String baseJson = null;
                 try {
-                    baseJson=res.string();
+                    baseJson = res.string();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                JSONObject baseObject=null;
+                JSONObject baseObject = null;
                 try {
-                    baseObject=new JSONObject(baseJson);
+                    baseObject = new JSONObject(baseJson);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                JSONArray models=null;
+                JSONArray models = null;
                 try {
-                    models=baseObject.getJSONArray("models");           //models stores the array "models" containing json objects describing contests
+                    models = baseObject.getJSONArray("models");           //models stores the array "models" containing json objects describing contests
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if(models!=null)
+                if (models != null)
                     addToDatabase(models);
                 OnLoadingFinishedListener1.onLoadingFinished();         //call the onLoadingFinished method implemented by the CodingCalenderHome activity
-                
+
             }
 
             @Override
@@ -92,12 +93,12 @@ public class NetworkCall {
                 //Adding the data to the database.
                 context.getContentResolver().insert(DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS, contentValues);
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public interface onLoadingFinishedListener1{        //interface to be implemented by the class calling the methods of this class
+    public interface onLoadingFinishedListener1 {        //interface to be implemented by the class calling the methods of this class
         void onLoadingFinished();
     }
 

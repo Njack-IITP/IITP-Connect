@@ -16,16 +16,16 @@ import android.util.Log;
  * The content provider for the SQLite database.
  */
 
-public class DatabaseContentProvider extends ContentProvider{
+public class DatabaseContentProvider extends ContentProvider {
 
     private static final int CONTESTS = 100;
 
     private static final UriMatcher uriMatcher = buildUriMatcher();
 
-    private static UriMatcher buildUriMatcher(){
+    private static UriMatcher buildUriMatcher() {
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-        uriMatcher.addURI(DatabaseContract.AUTHORITY,DatabaseContract.PATH_CONTESTS,CONTESTS);
+        uriMatcher.addURI(DatabaseContract.AUTHORITY, DatabaseContract.PATH_CONTESTS, CONTESTS);
 
         return uriMatcher;
     }
@@ -46,9 +46,9 @@ public class DatabaseContentProvider extends ContentProvider{
         int match = uriMatcher.match(uri);
         Cursor returnCursor;
 
-        switch(match){
+        switch (match) {
             case CONTESTS:
-                returnCursor = db.query(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS,projection,selection,selectionArgs,null,null,sortOrder);
+                returnCursor = db.query(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -76,12 +76,12 @@ public class DatabaseContentProvider extends ContentProvider{
 
         long id;
 
-        switch (match){
+        switch (match) {
             case CONTESTS:
-                id = db.insert(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS,null,values);
-                if (id >0){
-                    returnUri = ContentUris.withAppendedId(uri,id);
-                }else{
+                id = db.insert(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, null, values);
+                if (id > 0) {
+                    returnUri = ContentUris.withAppendedId(uri, id);
+                } else {
                     throw new android.database.SQLException("Failed to insert contest row into " + uri);
                 }
                 break;
@@ -109,7 +109,7 @@ public class DatabaseContentProvider extends ContentProvider{
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
 
-        if (itemsDeleted !=0){
+        if (itemsDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return itemsDeleted;
