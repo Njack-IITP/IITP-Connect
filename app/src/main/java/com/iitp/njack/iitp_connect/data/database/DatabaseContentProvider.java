@@ -94,7 +94,6 @@ public class DatabaseContentProvider extends ContentProvider {
         return returnUri;
     }
 
-    @SuppressLint("TimberArgCount")
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
@@ -105,7 +104,8 @@ public class DatabaseContentProvider extends ContentProvider {
         switch (match) {
             case CONTESTS:
                 itemsDeleted = db.delete(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, null, null);
-                Timber.v("ContentProvider", "All the previous contests deleted i.e. " + itemsDeleted + " contests");
+                String concatMsg = "All the previous contests deleted i.e. " + itemsDeleted + " contests";
+                Timber.v(concatMsg);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
