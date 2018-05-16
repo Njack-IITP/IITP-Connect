@@ -2,17 +2,17 @@ package com.iitp.njack.iitp_connect.core.codingcalendar.views;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iitp.njack.iitp_connect.data.models.Contest;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.common.utils.StringUtils;
+import com.iitp.njack.iitp_connect.data.models.Contest;
 
 import java.net.MalformedURLException;
 import java.net.URL;

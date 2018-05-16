@@ -16,7 +16,7 @@ import java.util.Date;
 public class StringUtils {
 
     //Helper method to return the start time in the desired format for the contest list.
-    public static SpannableString getStartTimeTextContestList(Date startTime){
+    public static SpannableString getStartTimeTextContestList(Date startTime) {
         String startTimeString = startTime.toString();
         String modifiedString;
 
@@ -41,9 +41,9 @@ public class StringUtils {
         String originalString = startTime.toString();
         String modifiedString;
 
-        modifiedString = originalString.substring(0,3) +
-                "\n" + originalString.substring(4,10) +
-                "\n" + originalString.substring(11,16) + " Local";
+        modifiedString = originalString.substring(0, 3) +
+                "\n" + originalString.substring(4, 10) +
+                "\n" + originalString.substring(11, 16) + " Local";
 
         SpannableString returningSpannableString = new SpannableString(modifiedString);
         returningSpannableString.setSpan(new RelativeSizeSpan(1.50f), 0, 3,

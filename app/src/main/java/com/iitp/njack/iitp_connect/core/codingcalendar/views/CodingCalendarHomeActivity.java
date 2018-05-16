@@ -6,25 +6,24 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.codingcalendar.adapters.CodingCalendarAdapter;
 import com.iitp.njack.iitp_connect.core.codingcalendar.networkutils.NetworkCall;
-import com.iitp.njack.iitp_connect.data.models.Contest;
 import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
-import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.data.models.Contest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,7 +38,6 @@ import timber.log.Timber;
 
 public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, NetworkCall.onLoadingFinishedListener1, CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
-    private static final String TAG = CodingCalendarHomeActivity.class.getSimpleName();
     public static final String INTENT_EXTRA = "IntentExtra";
 
     private ArrayList<Contest> contestArrayList = new ArrayList<>();
@@ -129,7 +127,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
                 try {
                     return getContentResolver().query(DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS, null, null, null, null);
                 } catch (Exception e) {
-                    Timber.e(TAG, "Failed to asynchronously load data.");
+                    Timber.e("Failed to asynchronously load data.");
                     e.printStackTrace();
                     return null;
                 }
@@ -195,8 +193,8 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             sdf.setTimeZone(tz);
             result = sdf.parse(string);
-            Log.v(TAG, string);
-            Log.v(TAG, result.toString());
+            Timber.v(string);
+            Timber.v(result.toString());
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
