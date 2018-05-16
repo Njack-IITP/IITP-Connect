@@ -42,6 +42,8 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$rootProject.lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$rootProject.lombokVersion"
 
+
+
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
@@ -49,6 +51,9 @@ dependencies {
     // butterknife
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.0'
 
     //testing
     testImplementation 'junit:junit:4.12'
