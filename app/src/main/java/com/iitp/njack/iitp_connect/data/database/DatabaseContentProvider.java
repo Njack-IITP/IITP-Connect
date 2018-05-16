@@ -1,5 +1,6 @@
 package com.iitp.njack.iitp_connect.data.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -9,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import timber.log.Timber;
 
 /**
  * Created by srv_twry on 19/8/17.
@@ -93,6 +94,7 @@ public class DatabaseContentProvider extends ContentProvider {
         return returnUri;
     }
 
+    @SuppressLint("TimberArgCount")
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
@@ -103,7 +105,7 @@ public class DatabaseContentProvider extends ContentProvider {
         switch (match) {
             case CONTESTS:
                 itemsDeleted = db.delete(DatabaseContract.ContestEntry.TABLE_NAME_CONTESTS, null, null);
-                Log.v("ContentProvider", "All the previous contests deleted i.e. " + itemsDeleted + " contests");
+                Timber.v("ContentProvider", "All the previous contests deleted i.e. " + itemsDeleted + " contests");
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);

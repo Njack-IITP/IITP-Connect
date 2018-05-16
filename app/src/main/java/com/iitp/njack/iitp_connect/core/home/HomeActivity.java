@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.codingcalendar.views.CodingCalendarHomeActivity;
 
+import timber.log.Timber;
+
 /*
  *   The HomeActivity i.e. the starting point of the application.
  * */
@@ -29,6 +31,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Timber.plant(new Timber.DebugTree());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

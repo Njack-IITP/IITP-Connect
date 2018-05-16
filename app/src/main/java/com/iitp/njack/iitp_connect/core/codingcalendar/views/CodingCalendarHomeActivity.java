@@ -35,6 +35,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, NetworkCall.onLoadingFinishedListener1, CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
@@ -128,7 +129,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
                 try {
                     return getContentResolver().query(DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS, null, null, null, null);
                 } catch (Exception e) {
-                    Log.e(TAG, "Failed to asynchronously load data.");
+                    Timber.e(TAG, "Failed to asynchronously load data.");
                     e.printStackTrace();
                     return null;
                 }
