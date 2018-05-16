@@ -26,8 +26,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
@@ -42,16 +42,26 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$rootProject.lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$rootProject.lombokVersion"
 
-    // retrofit
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
-    // butterknife
+    // Butterknife
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    // Dagger2
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+
+    // Rx Java
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
 
     //testing
     testImplementation 'junit:junit:4.12'
