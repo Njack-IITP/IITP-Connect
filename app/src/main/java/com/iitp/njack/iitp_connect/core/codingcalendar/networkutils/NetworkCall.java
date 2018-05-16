@@ -5,8 +5,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
 import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
 import com.iitp.njack.iitp_connect.data.network.Client;
 import com.iitp.njack.iitp_connect.data.network.ServiceGenerator;
 

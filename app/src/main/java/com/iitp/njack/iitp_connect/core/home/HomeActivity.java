@@ -1,5 +1,6 @@
 package com.iitp.njack.iitp_connect.core.home;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.codingcalendar.views.CodingCalendarHomeActivity;
+
+import timber.log.Timber;
 
 /*
  *   The HomeActivity i.e. the starting point of the application.

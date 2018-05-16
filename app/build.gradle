@@ -50,6 +50,9 @@ dependencies {
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+
     //testing
     testImplementation 'junit:junit:4.12'
 }

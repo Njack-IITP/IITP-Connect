@@ -2,20 +2,21 @@ package com.iitp.njack.iitp_connect.core.codingcalendar.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iitp.njack.iitp_connect.data.models.Contest;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.common.utils.StringUtils;
+import com.iitp.njack.iitp_connect.data.models.Contest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import timber.log.Timber;
 
 /**
  * Created by srv_twry on 20/8/17.
@@ -87,13 +88,14 @@ public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarAd
             contestStartTime.setText(contestStartTimeString);
         }
 
+
         private void setImageViewUsingUrl(String url) {
             URL urlPlatform;
             try {
                 urlPlatform = new URL(url);
                 //get the platform of the contest.
                 String platformString = urlPlatform.getHost();
-                Log.v("ContestRecyclerViewAdap", platformString);
+                Timber.v(platformString);
 
                 if (url.contains("topcoder")) {
                     contestPlatform.setImageResource(R.mipmap.topcoder_logo);
