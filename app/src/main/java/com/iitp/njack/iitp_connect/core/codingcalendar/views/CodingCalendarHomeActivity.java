@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +34,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 public class CodingCalendarHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , NetworkCall.onLoadingFinishedListener1, CodingCalendarAdapter.ContestRecyclerViewOnClickListener {
 
@@ -53,6 +53,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coding_calendar_home);
+        Timber.plant(new Timber.DebugTree());
 
         loadingContestsProgressBar = (ProgressBar) findViewById(R.id.pb_loading_contests);
         contestRecyclerView = (RecyclerView) findViewById(R.id.rv_coding_calendar);
@@ -129,7 +130,7 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
                 try{
                     return getContentResolver().query(DatabaseContract.ContestEntry.CONTENT_URI_CONTESTS,null,null,null,null);
                 } catch (Exception e) {
-                    Log.e(TAG, "Failed to asynchronously load data.");
+                    Timber.e(TAG, "Failed to asynchronously load data.");
                     e.printStackTrace();
                     return null;
                 }
@@ -195,8 +196,8 @@ public class CodingCalendarHomeActivity extends AppCompatActivity implements Loa
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             sdf.setTimeZone(tz);
             result = sdf.parse(string);
-            Log.v(TAG,string);
-            Log.v(TAG,result.toString());
+            Timber.v(TAG,string);
+            Timber.v(TAG,result.toString());
         }catch (ParseException e){
             e.printStackTrace();
             return null;
