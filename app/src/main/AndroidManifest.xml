@@ -41,6 +41,9 @@
             android:parentActivityName=".core.calendar.views.CodingCalendarHomeActivity" />
         <activity android:name=".core.calendar.views.Settings"></activity>
 
+        <provider
+            android:authorities="com.iitp.njack.iitp_connect"
+            android:name=".IITPConnectProvider"/>
     </application>
 
 </manifest>
