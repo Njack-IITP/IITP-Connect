@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.codingcalendar.networkutils;
+package com.iitp.njack.iitp_connect.core.calendar.networkutils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
-import com.iitp.njack.iitp_connect.data.network.Client;
+import com.iitp.njack.iitp_connect.data.network.Network;
 import com.iitp.njack.iitp_connect.data.network.ServiceGenerator;
 
 import org.json.JSONArray;
@@ -32,8 +32,8 @@ public class NetworkCall {
     }
 
     public void fetchContest() {
-        Client client = ServiceGenerator.createService(Client.class);    //Create the client and call object
-        Call<ResponseBody> myCall = client.Contests();
+        Network network = ServiceGenerator.createService(Network.class);    //Create the network and call object
+        Call<ResponseBody> myCall = network.Contests();
         myCall.enqueue(new Callback<ResponseBody>() {                   //.enqueue() makes async https call to the api
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

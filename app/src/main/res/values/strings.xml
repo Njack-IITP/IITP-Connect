@@ -21,4 +21,8 @@
     <string name="topcoder">TOPCODER</string>
     <string name="urioj">URIOJ</string>
     <string name="hackerearth">HACKEREARTH</string>
+    <string name="settings">Settings</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.codingcalendar.views;
+package com.iitp.njack.iitp_connect.core.calendar.views;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -91,21 +91,22 @@ public class ContestDetailsActivity extends AppCompatActivity {
             String platformString = urlPlatform.getHost();
 
             switch (platformString) {
-                case "www.topcoder.com":
-                    returnId = R.drawable.topcoder_cover;
-                    break;
-                case "www.codechef.com":
-                    returnId = R.drawable.codechef_cover;
-                    break;
-                case "www.hackerrank.com":
-                    returnId = R.drawable.hackerrank_cover;
-                    break;
-                case "www.hackerearth.com":
-                    returnId = R.drawable.hackerearth_cover;
-                    break;
-                case "codeforces.com":
-                    returnId = R.drawable.codeforces_cover;
-                    break;
+                // TODO: Fix it
+//                case "www.topcoder.com":
+//                    returnId = R.drawable.topcoder_cover;
+//                    break;
+//                case "www.codechef.com":
+//                    returnId = R.drawable.codechef_cover;
+//                    break;
+//                case "www.hackerrank.com":
+//                    returnId = R.drawable.hackerrank_cover;
+//                    break;
+//                case "www.hackerearth.com":
+//                    returnId = R.drawable.hackerearth_cover;
+//                    break;
+//                case "codeforces.com":
+//                    returnId = R.drawable.codeforces_cover;
+//                    break;
                 default:
                     returnId = R.drawable.ic_code;
             }

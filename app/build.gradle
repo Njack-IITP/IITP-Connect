@@ -36,6 +36,15 @@ dependencies {
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
 
+    // Architecture components
+    implementation "android.arch.lifecycle:runtime:$architectureComponentsVersion"
+    implementation "android.arch.lifecycle:extensions:$architectureComponentsVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$architectureComponentsVersion"
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    annotationProcessor "android.arch.persistence.room:$roomVersion"
+
     // Lombok
     implementation "org.projectlombok:lombok:$rootProject.lombokVersion"
     testImplementation "org.projectlombok:lombok:$rootProject.lombokVersion"

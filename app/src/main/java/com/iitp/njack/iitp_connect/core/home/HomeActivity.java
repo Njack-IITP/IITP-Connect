@@ -1,6 +1,5 @@
 package com.iitp.njack.iitp_connect.core.home;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,9 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.core.codingcalendar.views.CodingCalendarHomeActivity;
-
-import timber.log.Timber;
+import com.iitp.njack.iitp_connect.core.calendar.views.CodingCalendarHomeActivity;
 
 /*
  *   The HomeActivity i.e. the starting point of the application.
@@ -94,18 +91,7 @@ public class HomeActivity extends AppCompatActivity
             //start coding calendar.
             Intent i = new Intent(this, CodingCalendarHomeActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

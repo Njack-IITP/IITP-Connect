@@ -8,7 +8,8 @@ import retrofit2.http.GET;
  * Interface for retrofit network calls
  */
 
-public interface Client {
+public interface Network {
+
     @GET("/calendar/feed.json")
     Call<ResponseBody> Contests();
 }

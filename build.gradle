@@ -32,6 +32,12 @@ ext {
     buildToolsVersion = '27.0.3'
     supportLibraryVersion = '27.1.1'
 
+    // architecture components
+    architectureComponentsVersion = '1.1.1'
+
+    // room
+    roomVersion = '1.1.0'
+
     // lombok
     lombokVersion = '1.16.20'
 
