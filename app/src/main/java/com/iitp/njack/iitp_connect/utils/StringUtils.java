@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.common.utils;
+package com.iitp.njack.iitp_connect.utils;
 
 import android.graphics.Color;
 import android.text.Spannable;

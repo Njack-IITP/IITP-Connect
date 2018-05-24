@@ -27,6 +27,12 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -56,8 +62,12 @@ dependencies {
     testAnnotationProcessor "org.projectlombok:lombok:$rootProject.lombokVersion"
 
     // Retrofit
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.github.jasminb:jsonapi-converter:0.8.1'
 
     // Butterknife
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
@@ -77,6 +87,21 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
-    //testing
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
+
+    // Stetho
+    implementation "com.facebook.stetho:stetho:$rootProject.stetho"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho"
+
+    //Testing
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-inline:2.8.9'
+    testImplementation 'org.json:json:20180130'
+    testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
 }

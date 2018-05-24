@@ -8,6 +8,8 @@ public final class Constants {
     //No network available string
     public static final String NO_NETWORK = "ContestApi Not Available";
 
+    public static final String SHARED_PREFS_SAVED_EMAIL = "Saved Email";
+
     private Constants() {
         // Never Called
     }

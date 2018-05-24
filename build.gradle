@@ -51,6 +51,15 @@ ext {
     // dagger
     daggerVersion = '2.11'
 
+    // jackson
+    jacksonVersion = '2.9.5'
+
     // rx java
     rxjavaVersion = '2.0.2'
+
+    //stetho
+    stetho = '1.5.0'
+
+    // roboelectric
+    roboelectric = '3.4.2'
 }
