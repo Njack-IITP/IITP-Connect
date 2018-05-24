@@ -1,6 +1,7 @@
-package com.iitp.njack.iitp_connect.data.network;
+package com.iitp.njack.iitp_connect;
 
 import com.iitp.njack.iitp_connect.BuildConfig;
+import com.iitp.njack.iitp_connect.common.Constants;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -11,12 +12,9 @@ import retrofit2.Retrofit;
  */
 
 public class ServiceGenerator {
-    private static final String HACKERRANK_API_URL = "https://www.hackerrank.com/";
-    private static String apiUrl;
-
     //Define the retrofit builder object
     private static Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl(HACKERRANK_API_URL);
+            .baseUrl(Constants.HACKERRANK_API);
 
     //Build the Retrofit object
     private static Retrofit retrofit = builder.build();

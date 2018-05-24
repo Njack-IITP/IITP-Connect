@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.common.utils.StringUtils;
-import com.iitp.njack.iitp_connect.data.models.Contest;
+import com.iitp.njack.iitp_connect.data.contest.Contest;
 
 import java.net.MalformedURLException;
 import java.net.URL;

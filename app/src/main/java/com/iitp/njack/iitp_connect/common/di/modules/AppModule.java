@@ -1,16 +1,14 @@
 package com.iitp.njack.iitp_connect.common.di.modules;
 
-import android.content.Context;
-
-import com.iitp.njack.iitp_connect.IITPConnectApplication;
-
 import dagger.Module;
-import dagger.Provides;
 
-@Module
+@Module(includes = {
+        AndroidModule.class,
+        RepoModule.class,
+        ModelModule.class,
+        NetworkModule.class,
+        ViewModelModule.class
+})
 public class AppModule {
-    @Provides
-    Context provideContext(IITPConnectApplication application) {
-        return application.getApplicationContext();
-    }
+    // Add misc dependencies
 }

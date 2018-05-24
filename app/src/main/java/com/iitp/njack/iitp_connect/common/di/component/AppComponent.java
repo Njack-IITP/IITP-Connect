@@ -1,8 +1,8 @@
 package com.iitp.njack.iitp_connect.common.di.component;
 
 import com.iitp.njack.iitp_connect.IITPConnectApplication;
-import com.iitp.njack.iitp_connect.common.di.modules.ActivityBuildersModule;
 import com.iitp.njack.iitp_connect.common.di.modules.AppModule;
+import com.iitp.njack.iitp_connect.common.di.modules.android.ActivityBuildersModule;
 
 import javax.inject.Singleton;
 

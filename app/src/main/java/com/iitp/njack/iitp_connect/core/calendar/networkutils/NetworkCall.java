@@ -6,9 +6,9 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
-import com.iitp.njack.iitp_connect.data.network.Network;
-import com.iitp.njack.iitp_connect.data.network.ServiceGenerator;
+import com.iitp.njack.iitp_connect.data.database.room.DatabaseContract;
+import com.iitp.njack.iitp_connect.data.contest.ContestApi;
+import com.iitp.njack.iitp_connect.ServiceGenerator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +32,8 @@ public class NetworkCall {
     }
 
     public void fetchContest() {
-        Network network = ServiceGenerator.createService(Network.class);    //Create the network and call object
-        Call<ResponseBody> myCall = network.Contests();
+        ContestApi contestApi = ServiceGenerator.createService(ContestApi.class);    //Create the contestApi and call object
+        Call<ResponseBody> myCall = contestApi.Contests();
         myCall.enqueue(new Callback<ResponseBody>() {                   //.enqueue() makes async https call to the api
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

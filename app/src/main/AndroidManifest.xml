@@ -27,7 +27,7 @@
         </activity>
 
         <provider
-            android:name=".data.database.DatabaseContentProvider"
+            android:name=".data.database.room.DatabaseContentProvider"
             android:authorities="@string/authority"
             android:exported="false"
             android:syncable="true"

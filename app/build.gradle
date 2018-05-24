@@ -23,6 +23,10 @@ android {
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -71,6 +75,7 @@ dependencies {
     // Rx Java
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxjavaVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
     //testing
     testImplementation 'junit:junit:4.12'

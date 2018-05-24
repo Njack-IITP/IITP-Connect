@@ -22,8 +22,8 @@ import android.widget.ProgressBar;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.adapters.CodingCalendarAdapter;
 import com.iitp.njack.iitp_connect.core.calendar.networkutils.NetworkCall;
-import com.iitp.njack.iitp_connect.data.database.DatabaseContract;
-import com.iitp.njack.iitp_connect.data.models.Contest;
+import com.iitp.njack.iitp_connect.data.database.room.DatabaseContract;
+import com.iitp.njack.iitp_connect.data.contest.Contest;
 
 import java.net.MalformedURLException;
 import java.net.URL;

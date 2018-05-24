@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.data.database;
+package com.iitp.njack.iitp_connect.data.database.room;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

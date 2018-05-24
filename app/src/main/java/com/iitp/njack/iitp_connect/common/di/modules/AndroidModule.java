@@ -5,9 +5,7 @@ import android.content.SharedPreferences;
 
 import com.f2prateek.rx.preferences2.RxSharedPreferences;
 import com.iitp.njack.iitp_connect.IITPConnectProvider;
-
-import org.fossasia.openevent.app.OrgaProvider;
-import org.fossasia.openevent.app.common.Constants;
+import com.iitp.njack.iitp_connect.common.Constants;
 
 import javax.inject.Singleton;
 
@@ -26,7 +24,7 @@ public class AndroidModule {
     @Provides
     @Singleton
     SharedPreferences sharedPreferences(Context context) {
-        return context.getSharedPreferences(Constants.FOSS_PREFS, Context.MODE_PRIVATE);
+        return context.getSharedPreferences(Constants.IITP_CONNECT_PREFS, Context.MODE_PRIVATE);
     }
 
     @Provides
