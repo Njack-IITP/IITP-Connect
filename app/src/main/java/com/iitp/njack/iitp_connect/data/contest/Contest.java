@@ -1,20 +1,30 @@
 package com.iitp.njack.iitp_connect.data.contest;
 
-import java.util.Date;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.github.jasminb.jsonapi.annotations.Type;
+
+import org.threeten.bp.LocalDateTime;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
+@Builder
 @AllArgsConstructor
-@Getter
-@Setter
+@Type("contest")
+@JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
+@Entity(tableName = "contests")
 public class Contest {
-    private String title;
-    private String description;
-    private String url;
-    private Date startTime;
-    private Date endTime;
+    @PrimaryKey(autoGenerate = true)
+    int id;
+    String title;
+    String description;
+    String url;
+    LocalDateTime startDate;
+    LocalDateTime endDate;
 }

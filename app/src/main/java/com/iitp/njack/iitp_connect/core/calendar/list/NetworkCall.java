@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.networkutils;
+package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.database.room.DatabaseContract;
 import com.iitp.njack.iitp_connect.data.contest.ContestApi;
-import com.iitp.njack.iitp_connect.ServiceGenerator;
 
 import org.json.JSONArray;
 import org.json.JSONException;

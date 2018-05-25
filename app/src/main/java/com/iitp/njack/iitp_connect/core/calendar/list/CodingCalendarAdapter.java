@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.adapters;
+package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;

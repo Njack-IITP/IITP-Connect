@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.views;
+package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,8 +20,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.core.calendar.adapters.CodingCalendarAdapter;
-import com.iitp.njack.iitp_connect.core.calendar.networkutils.NetworkCall;
+import com.iitp.njack.iitp_connect.core.calendar.details.ContestDetailsActivity;
 import com.iitp.njack.iitp_connect.data.database.room.DatabaseContract;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 

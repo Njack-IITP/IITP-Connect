@@ -38,7 +38,7 @@ public class AndroidUtils implements ContextUtils {
 
     @Override
     public Completable deleteDatabase() {
-        // TODO: Implement deletion of Database
+        // TODO: Implement deletion of IITPConnectDatabase
         return Completable.complete();
     }
 }

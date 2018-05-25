@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.views;
+package com.iitp.njack.iitp_connect.core.calendar.details;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarHomeActivity;
 import com.iitp.njack.iitp_connect.utils.StringUtils;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 

@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.core.calendar.views.CodingCalendarHomeActivity;
+import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarHomeActivity;
 
 /*
  *   The HomeActivity i.e. the starting point of the application.

@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.views;
+package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

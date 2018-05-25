@@ -48,6 +48,9 @@ ext {
     // butterknife
     butterknifeVersion = '8.6.0'
 
+    // threetenbp
+    threetenbpVersion = '1.1.0'
+
     // dagger
     daggerVersion = '2.11'
 

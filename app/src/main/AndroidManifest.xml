@@ -34,12 +34,12 @@
             tools:ignore="InnerclassSeparator" />
 
         <activity
-            android:name=".core.calendar.views.CodingCalendarHomeActivity"
+            android:name=".core.calendar.list.CodingCalendarHomeActivity"
             android:parentActivityName=".core.home.HomeActivity" />
         <activity
-            android:name=".core.calendar.views.ContestDetailsActivity"
-            android:parentActivityName=".core.calendar.views.CodingCalendarHomeActivity" />
-        <activity android:name=".core.calendar.views.Settings"></activity>
+            android:name=".core.calendar.details.ContestDetailsActivity"
+            android:parentActivityName=".core.calendar.list.CodingCalendarHomeActivity" />
+        <activity android:name=".core.calendar.list.Settings"></activity>
 
         <provider
             android:authorities="com.iitp.njack.iitp_connect"
