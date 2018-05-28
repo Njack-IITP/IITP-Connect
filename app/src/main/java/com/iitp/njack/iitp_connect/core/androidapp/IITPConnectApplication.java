@@ -6,10 +6,6 @@ import com.iitp.njack.iitp_connect.core.Injection.Component.ApplicationComponent
 import com.iitp.njack.iitp_connect.core.Injection.Component.DaggerApplicationComponent;
 import com.iitp.njack.iitp_connect.core.Injection.Module.ApplicationModule;
 
-import javax.inject.Inject;
-
-import dagger.android.support.DaggerApplication;
-import retrofit2.Retrofit;
 import timber.log.Timber;
 
 public class IITPConnectApplication extends Application {
@@ -29,7 +25,5 @@ public class IITPConnectApplication extends Application {
                 .build();
         applicationComponent.Inject(this);
         singleton = this;
-
-
     }
 }
