@@ -3,6 +3,8 @@ package com.iitp.njack.iitp_connect.common.di.modules;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.iitp.njack.iitp_connect.common.di.IITPConnectViewModelFactory;
+import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarRepository;
+import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -23,4 +25,6 @@ public abstract class ViewModelModule {
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);
 
+    @Binds
+    public abstract CodingCalendarViewModel bindCodingCalendarViewModel(CodingCalendarRepository codingCalendarRepository);
 }

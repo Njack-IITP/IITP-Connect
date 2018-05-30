@@ -25,6 +25,6 @@ public interface ContestDao {
     @Delete
     void deleteContest(Contest contest);
 
-    @Update(onConflict = REPLACE)
+    @Update
     void updateContest(Contest contest);
 }

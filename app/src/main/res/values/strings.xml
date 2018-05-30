@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="coding_calendar">Coding calendar</string>
+    <string name="coding_calendar">Coding Calendar</string>
     <string name="check_your_internet_connection">Check your connection!</string>
     <string name="authority">com.iitp.njack.iitp_connect</string>
     <string name="participate">Participate</string>
@@ -26,7 +26,6 @@
     <string name="share">Share</string>
     <string name="save">Save</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">IITP Connect</string>
     <string name="nav_header_desc">Navigation header</string>
 </resources>

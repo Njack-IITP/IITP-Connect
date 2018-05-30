@@ -18,6 +18,18 @@
             android:name=".IITPConnectProvider"
             android:authorities="com.iitp.njack.iitp_connect" />
 
+        <activity
+            android:name=".core.home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".core.calendar.list.CodingCalendarActivity"
+            android:label="@string/coding_calendar"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
