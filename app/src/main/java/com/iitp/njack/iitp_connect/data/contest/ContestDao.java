@@ -16,6 +16,9 @@ public interface ContestDao {
     @Query("SELECT * FROM " + Contest.TABLE_NAME)
     LiveData<List<Contest>> getContests();
 
+    @Query("SELECT * FROM " + Contest.TABLE_NAME + " WHERE id=:id")
+    LiveData<Contest> getContestById(long id);
+
     @Insert(onConflict = REPLACE)
     void addContest(Contest contest);
 

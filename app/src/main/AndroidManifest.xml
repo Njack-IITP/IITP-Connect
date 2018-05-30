@@ -14,32 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".core.home.HomeActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <provider
-            android:name=".data.database.room.DatabaseContentProvider"
-            android:authorities="@string/authority"
-            android:exported="false"
-            android:syncable="true"
-            tools:ignore="InnerclassSeparator" />
-
-        <activity
-            android:name=".core.calendar.list.CodingCalendarHomeActivity"
-            android:parentActivityName=".core.home.HomeActivity" />
-        <activity
-            android:name=".core.calendar.details.ContestDetailsActivity"
-            android:parentActivityName=".core.calendar.list.CodingCalendarHomeActivity" />
-        <activity android:name=".core.calendar.list.Settings"></activity>
 
         <provider
             android:authorities="com.iitp.njack.iitp_connect"

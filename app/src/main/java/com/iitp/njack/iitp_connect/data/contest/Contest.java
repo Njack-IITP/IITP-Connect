@@ -13,13 +13,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import static com.iitp.njack.iitp_connect.data.contest.Contest.TABLE_NAME;
+
 @Data
 @Builder
 @AllArgsConstructor
 @Type("contest")
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
-@Entity(tableName = "contests")
+@Entity(tableName = TABLE_NAME)
 public class Contest {
+    public static final String TABLE_NAME = "contests";
     @PrimaryKey(autoGenerate = true)
     int id;
     String title;
