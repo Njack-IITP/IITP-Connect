@@ -11,10 +11,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class CodingCalendarRepository {
     private final ContestDao contestDao;
     private final ContestApi contestApi;
     private final ConnectionStatusImpl connectionStatus;
+    private Disposable contestDisposable;
 
     @Inject
     public CodingCalendarRepository(ContestDao contestDao, ContestApi contestApi, ConnectionStatusImpl connectionStatus) {
@@ -25,8 +30,14 @@ public class CodingCalendarRepository {
 
     protected LiveData<List<Contest>> fetchContests() {
         if (connectionStatus.isConnected()) {
-            contestApi.getContests()
+            if (contestDisposable != null) {
+                contestDisposable.dispose();
+            }
+            contestDisposable = contestApi.getContests()
                     .doOnNext(contestDao::addContest)
+                    .doOnComplete(() -> contestDisposable.dispose())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe();
         }
         return contestDao.getContests();

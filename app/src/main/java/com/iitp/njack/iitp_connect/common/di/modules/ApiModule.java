@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 public class ApiModule {
     @Provides
     @Singleton
-    ContestApi providesContestApi(Retrofit retrofit) {
+    public ContestApi providesContestApi(Retrofit retrofit) {
         return retrofit.create(ContestApi.class);
     }
 }

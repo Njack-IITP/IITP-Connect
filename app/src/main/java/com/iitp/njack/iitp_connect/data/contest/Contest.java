@@ -12,6 +12,7 @@ import org.threeten.bp.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import static com.iitp.njack.iitp_connect.data.contest.Contest.TABLE_NAME;
 
@@ -19,6 +20,7 @@ import static com.iitp.njack.iitp_connect.data.contest.Contest.TABLE_NAME;
 @Builder
 @AllArgsConstructor
 @Type("contest")
+@EqualsAndHashCode
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
 @Entity(tableName = TABLE_NAME)
 public class Contest {

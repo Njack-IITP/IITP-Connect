@@ -11,5 +11,5 @@ import dagger.Module;
 public abstract class DaoModule {
     @Binds
     @Singleton
-    abstract ContestDao bindsContestDao();
+    public abstract ContestDao bindsContestDao(ContestDao contestDao);
 }

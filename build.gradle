@@ -17,6 +17,7 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url 'https://maven.google.com' }
     }
 }
 
@@ -34,9 +35,6 @@ ext {
 
     // architecture components
     architectureComponentsVersion = '1.1.1'
-
-    // room
-    roomVersion = '1.1.0'
 
     // lombok
     lombokVersion = '1.16.20'

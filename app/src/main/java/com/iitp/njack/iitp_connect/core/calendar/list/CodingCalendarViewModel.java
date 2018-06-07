@@ -10,11 +10,16 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class CodingCalendarViewModel extends ViewModel {
-    @Inject
-    private CodingCalendarRepository codingCalendarRepository;
+    private final CodingCalendarRepository codingCalendarRepository;
     private LiveData<List<Contest>> contests;
 
-    protected void init() {
+    @Inject
+    public CodingCalendarViewModel(CodingCalendarRepository codingCalendarRepository) {
+        this.codingCalendarRepository = codingCalendarRepository;
+        init();
+    }
+
+    private void init() {
         if (contests != null) {
             return;
         }

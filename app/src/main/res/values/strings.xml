@@ -28,4 +28,5 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="nav_header_title">IITP Connect</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

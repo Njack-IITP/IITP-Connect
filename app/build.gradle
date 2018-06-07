@@ -13,16 +13,26 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled = true
         }
     }
 
     lintOptions {
         abortOnError false
     }
+
+    dataBinding {
+        enabled true
+    }
+
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
@@ -31,8 +41,14 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            unitTests.returnDefaultValues = true
         }
     }
+}
+
+check {
+    apply plugin: 'checkstyle'
+    apply plugin: 'findbugs'
 }
 
 dependencies {
@@ -42,7 +58,7 @@ dependencies {
     })
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:1.1.0"
+    implementation "com.android.support.constraint:constraint-layout:1.1.1"
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
 
@@ -52,8 +68,11 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$architectureComponentsVersion"
 
     // Room
-    implementation "android.arch.persistence.room:runtime:$roomVersion"
-    annotationProcessor "android.arch.persistence.room:$roomVersion"
+    def room_version = "1.1.0"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
+    testImplementation "android.arch.persistence.room:testing:$room_version"
 
     // Lombok
     implementation "org.projectlombok:lombok:$rootProject.lombokVersion"
