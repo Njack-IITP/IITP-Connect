@@ -13,12 +13,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import static com.iitp.njack.iitp_connect.data.contest.Contest.TABLE_NAME;
 
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Type("contest")
 @EqualsAndHashCode
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)

@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-
+    <group android:id="@+id/subMenu" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_coding_calendar"
+            android:icon="@drawable/ic_code"
+            android:title="@string/coding_calendar" />
     </group>
 </menu>

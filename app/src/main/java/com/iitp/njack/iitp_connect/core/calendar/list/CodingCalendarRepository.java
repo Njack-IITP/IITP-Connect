@@ -1,6 +1,7 @@
 package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 import com.iitp.njack.iitp_connect.data.contest.ContestApi;
@@ -28,14 +29,18 @@ public class CodingCalendarRepository {
         this.connectionStatus = connectionStatus;
     }
 
-    protected LiveData<List<Contest>> fetchContests() {
+    protected LiveData<List<Contest>> fetchContests(MutableLiveData<Boolean> progress) {
         if (connectionStatus.isConnected()) {
             if (contestDisposable != null) {
                 contestDisposable.dispose();
             }
             contestDisposable = contestApi.getContests()
                     .doOnNext(contestDao::addContest)
-                    .doOnComplete(() -> contestDisposable.dispose())
+                    .doOnSubscribe(contest -> progress.setValue(true))
+                    .doOnComplete(() -> {
+                        contestDisposable.dispose();
+                        progress.setValue(false);
+                    })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe();

@@ -2,11 +2,10 @@ package com.iitp.njack.iitp_connect.common.di.modules;
 
 import com.iitp.njack.iitp_connect.data.AndroidUtils;
 import com.iitp.njack.iitp_connect.data.ContextUtils;
+import com.iitp.njack.iitp_connect.data.Preferences;
 import com.iitp.njack.iitp_connect.data.SharedPreferencesImpl;
 import com.iitp.njack.iitp_connect.data.network.ConnectionStatus;
 import com.iitp.njack.iitp_connect.data.network.ConnectionStatusImpl;
-
-import java.util.prefs.Preferences;
 
 import javax.inject.Singleton;
 

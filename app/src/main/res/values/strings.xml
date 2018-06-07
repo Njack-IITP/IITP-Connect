@@ -25,8 +25,10 @@
     <string name="communicate">Communicate</string>
     <string name="share">Share</string>
     <string name="save">Save</string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="nav_header_title">IITP Connect</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="text_empty">Nothing to show here</string>
+    <string name="empty_view_icon">Empty View Icon</string>
+    <string name="refresh_complete">Refresh Complete</string>
 </resources>
