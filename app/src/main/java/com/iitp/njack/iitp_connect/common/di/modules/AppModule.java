@@ -4,7 +4,6 @@ import dagger.Module;
 
 @Module(includes = {
         AndroidModule.class,
-        RepoModule.class,
         ModelModule.class,
         NetworkModule.class,
         ViewModelModule.class,

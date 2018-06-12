@@ -23,11 +23,9 @@ public class IITPConnectApplication extends Application implements HasActivityIn
 
         AppInjector.init(this);
 
-        setupTimber();
-    }
-
-    private void setupTimber() {
-        Timber.plant(new Timber.DebugTree());
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     @Override

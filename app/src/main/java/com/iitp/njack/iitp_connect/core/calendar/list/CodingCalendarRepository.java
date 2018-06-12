@@ -23,23 +23,24 @@ public class CodingCalendarRepository {
     private Disposable contestDisposable;
 
     @Inject
-    public CodingCalendarRepository(ContestDao contestDao, ContestApi contestApi, ConnectionStatusImpl connectionStatus) {
+    public CodingCalendarRepository(ContestDao contestDao, ContestApi contestApi,
+                                    ConnectionStatusImpl connectionStatus) {
         this.contestDao = contestDao;
         this.contestApi = contestApi;
         this.connectionStatus = connectionStatus;
     }
 
-    protected LiveData<List<Contest>> fetchContests(MutableLiveData<Boolean> progress) {
-        if (connectionStatus.isConnected()) {
+    protected LiveData<List<Contest>> fetchContests(MutableLiveData<Boolean> progress, boolean reload) {
+        if (connectionStatus.isConnected() && reload) {
             if (contestDisposable != null) {
                 contestDisposable.dispose();
             }
             contestDisposable = contestApi.getContests()
                     .doOnNext(contestDao::addContest)
-                    .doOnSubscribe(contest -> progress.setValue(true))
-                    .doOnComplete(() -> {
+                    .doOnSubscribe(contest -> progress.postValue(true))
+                    .doFinally(() -> {
                         contestDisposable.dispose();
-                        progress.setValue(false);
+                        progress.postValue(false);
                     })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

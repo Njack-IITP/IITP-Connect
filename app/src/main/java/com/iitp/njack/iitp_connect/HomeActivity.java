@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.home;
+package com.iitp.njack.iitp_connect;
 
 import android.content.Intent;
 import android.os.Bundle;

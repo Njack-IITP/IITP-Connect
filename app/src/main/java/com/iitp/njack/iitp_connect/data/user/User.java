@@ -5,6 +5,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.github.jasminb.jsonapi.LongIdHandler;
+import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Type;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +21,8 @@ import lombok.Data;
 @Entity(tableName = "users")
 @SuppressWarnings("PMD.TooManyFields")
 public class User {
+    @Id(LongIdHandler.class)
     @PrimaryKey
-    int id;
+    Long id;
     String userName;
 }

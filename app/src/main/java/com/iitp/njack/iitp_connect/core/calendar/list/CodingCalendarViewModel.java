@@ -25,8 +25,10 @@ public class CodingCalendarViewModel extends ViewModel {
     protected LiveData<List<Contest>> loadContests(boolean reload) {
         if (contests != null && !reload) {
             return contests;
+        } else if (contests == null) {
+            reload = true;
         }
-        contests = codingCalendarRepository.fetchContests(progress);
+        contests = codingCalendarRepository.fetchContests(progress, reload);
         return contests;
     }
 

@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.1.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -50,17 +50,18 @@ ext {
     threetenbpVersion = '1.1.0'
 
     // dagger
-    daggerVersion = '2.11'
+    daggerVersion = '2.14.1'
 
     // jackson
     jacksonVersion = '2.9.5'
 
     // rx java
-    rxjavaVersion = '2.0.2'
+    rxjavaVersion = '2.1.10'
+    rxAndroidVersion = '2.0.2'
 
     //stetho
     stetho = '1.5.0'
 
     // roboelectric
-    roboelectric = '3.4.2'
+    roboelectric = '3.8'
 }

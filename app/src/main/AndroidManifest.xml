@@ -19,7 +19,7 @@
             android:authorities="com.iitp.njack.iitp_connect" />
 
         <activity
-            android:name=".core.home.HomeActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 

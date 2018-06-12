@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.iitp.njack.iitp_connect.IITPConnectApplication;
 import com.iitp.njack.iitp_connect.common.di.component.DaggerAppComponent;
@@ -21,9 +22,8 @@ public final class AppInjector {
     }
 
     public static void init(IITPConnectApplication iitpConnectApplication) {
-        DaggerAppComponent
-                .create()
-                .inject(iitpConnectApplication);
+        DaggerAppComponent.builder().application(iitpConnectApplication)
+                .build().inject(iitpConnectApplication);
         iitpConnectApplication
                 .registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
                     @Override
@@ -64,7 +64,7 @@ public final class AppInjector {
     }
 
     private static void handleActivity(Activity activity) {
-        if (activity instanceof HasSupportFragmentInjector) {
+        if (activity instanceof HasSupportFragmentInjector || activity instanceof AppCompatActivity) {
             AndroidInjection.inject(activity);
         }
         if (activity instanceof FragmentActivity) {

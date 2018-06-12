@@ -35,7 +35,8 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_coding_calendar);
-        codingCalendarViewModel = ViewModelProviders.of(this, viewModelFactory).get(CodingCalendarViewModel.class);
+        codingCalendarViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(CodingCalendarViewModel.class);
     }
 
     @Override

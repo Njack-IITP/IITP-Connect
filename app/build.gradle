@@ -102,13 +102,14 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
     // Dagger2
-    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger:${rootProject.daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${rootProject.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.daggerVersion}"
 
     // Rx Java
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
