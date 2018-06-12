@@ -40,7 +40,7 @@ public class CodingCalendarRepository {
                     .doOnSubscribe(contest -> progress.postValue(true))
                     .doFinally(() -> {
                         contestDisposable.dispose();
-                        progress.postValue(false);
+                        progress.setValue(false);
                     })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
