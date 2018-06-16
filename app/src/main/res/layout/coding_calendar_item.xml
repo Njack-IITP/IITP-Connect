@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="contest"
             type="com.iitp.njack.iitp_connect.data.contest.Contest" />
+
+        <import type="com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarUtil"/>
+
+        <import type="android.view.View"/>
     </data>
 
     <android.support.v7.widget.CardView
@@ -13,6 +17,45 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_small">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/contest_platform_image"
+                android:layout_width="@dimen/image_small"
+                android:layout_height="match_parent"
+                android:minHeight="@dimen/image_small"
+                android:scaleType="centerCrop"
+                android:src="@{ CodingCalendarUtil.getContestLogo(contest) }"
+                tools:ignore="ContentDescription"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_extra_small">
+
+                <TextView
+                    android:id="@+id/contest_platform_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{ contest.title }"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Title"/>
+
+                <TextView
+                    android:id="@+id/contest_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{ CodingCalendarUtil.getContestStartDate(contest) }"
+                    android:textStyle="italic"
+                    tools:text="Start time"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>

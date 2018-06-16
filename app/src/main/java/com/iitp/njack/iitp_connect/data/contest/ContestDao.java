@@ -27,6 +27,9 @@ public interface ContestDao {
     @Delete
     void deleteContest(Contest contest);
 
+    @Query("DELETE FROM " + Contest.TABLE_NAME)
+    void deleteAll();
+
     @Update
     void updateContest(Contest contest);
 }

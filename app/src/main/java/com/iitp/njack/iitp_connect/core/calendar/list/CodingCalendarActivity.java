@@ -16,6 +16,8 @@ import com.iitp.njack.iitp_connect.data.contest.Contest;
 import com.iitp.njack.iitp_connect.databinding.ActivityCodingCalendarBinding;
 import com.iitp.njack.iitp_connect.ui.ViewUtils;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -82,6 +84,7 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
 
     @Override
     public void showResults(List<Contest> items) {
+        Collections.reverse(items);
         codingCalendarAdapter.setContests(items);
     }
 

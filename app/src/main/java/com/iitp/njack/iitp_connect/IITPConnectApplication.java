@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.iitp.njack.iitp_connect.common.di.AppInjector;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import javax.inject.Inject;
 
@@ -26,6 +27,7 @@ public class IITPConnectApplication extends Application implements HasActivityIn
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+        AndroidThreeTen.init(this);
     }
 
     @Override

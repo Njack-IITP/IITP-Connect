@@ -42,6 +42,7 @@ public class CodingCalendarRepository {
                     .doOnNext(contestListWrapper -> {
                         List<Contest> contests = contestListWrapper.getContests();
                         Timber.v("%s contests loaded", contests.size());
+                        contestDao.deleteAll();
                         contestDao.addContests(contests);
                     })
                     .doOnError(Timber::e)

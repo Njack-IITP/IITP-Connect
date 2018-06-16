@@ -33,7 +33,11 @@
         <activity
             android:name=".core.calendar.list.CodingCalendarActivity"
             android:label="@string/coding_calendar"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".HomeActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
         </activity>
 
     </application>
