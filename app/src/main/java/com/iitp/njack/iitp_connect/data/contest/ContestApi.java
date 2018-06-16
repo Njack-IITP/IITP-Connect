@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface ContestApi {
     @GET("/calendar/feed.json")
-    Observable<Contest> getContests();
+    Observable<ContestListWrapper> getContests();
 }

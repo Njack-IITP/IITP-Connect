@@ -3,13 +3,12 @@ package com.iitp.njack.iitp_connect.data.contest;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.jasminb.jsonapi.LongIdHandler;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Type;
-
-import org.threeten.bp.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,6 +34,6 @@ public class Contest {
     String title;
     String description;
     String url;
-    LocalDateTime startDate;
-    LocalDateTime endDate;
+    String startDate;
+    String endDate;
 }

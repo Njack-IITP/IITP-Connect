@@ -20,6 +20,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
 
 public class CodingCalendarActivity extends AppCompatActivity implements CodingCalendarView {

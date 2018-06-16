@@ -10,7 +10,7 @@ import com.iitp.njack.iitp_connect.data.user.User;
 import com.iitp.njack.iitp_connect.data.user.UserDao;
 import com.iitp.njack.iitp_connect.utils.type_converters.DateTypeConverter;
 
-@Database(entities = {Contest.class, User.class}, version = 1)
+@Database(entities = {Contest.class, User.class}, version = 2)
 @TypeConverters(DateTypeConverter.class)
 public abstract class IITPConnectDatabase extends RoomDatabase {
     public abstract ContestDao contestDao();

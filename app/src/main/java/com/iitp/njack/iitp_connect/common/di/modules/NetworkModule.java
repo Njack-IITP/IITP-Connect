@@ -1,7 +1,6 @@
 package com.iitp.njack.iitp_connect.common.di.modules;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -9,7 +8,7 @@ import com.github.jasminb.jsonapi.retrofit.JSONAPIConverterFactory;
 import com.iitp.njack.iitp_connect.IITPConnectProvider;
 import com.iitp.njack.iitp_connect.common.Constants;
 import com.iitp.njack.iitp_connect.data.auth.AuthHolder;
-import com.iitp.njack.iitp_connect.data.contest.Contest;
+import com.iitp.njack.iitp_connect.data.contest.ContestListWrapper;
 import com.iitp.njack.iitp_connect.data.network.HostSelectionInterceptor;
 
 import javax.inject.Named;
@@ -38,15 +37,12 @@ public class NetworkModule {
     ObjectMapper providesObjectMapper() {
         return new ObjectMapper()
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-            .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-            // Handle constant breaking changes in API by not including null fields
-            // TODO: Remove when API stabilizes and/or need to include null values is there
-            .setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
+            .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
 
     @Provides
     Class[] providesMappedClasses() {
-        return new Class[]{Contest.class};
+        return new Class[]{ContestListWrapper.class};
     }
 
     @Provides
@@ -135,11 +131,9 @@ public class NetworkModule {
     @Provides
     @Singleton
     Retrofit providesRetrofitBuilder(CallAdapter.Factory callAdapterFactory,
-                                     @Named("jsonapi") Converter.Factory jsonApiConverter,
                                      @Named("jackson") Converter.Factory factory, OkHttpClient client) {
         return new Retrofit.Builder()
             .addCallAdapterFactory(callAdapterFactory)
-            .addConverterFactory(jsonApiConverter)
             .addConverterFactory(factory)
             .client(client)
             .baseUrl(Constants.HACKERRANK_API)
