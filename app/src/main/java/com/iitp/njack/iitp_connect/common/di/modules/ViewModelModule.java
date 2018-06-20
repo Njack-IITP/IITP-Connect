@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.iitp.njack.iitp_connect.common.di.IITPConnectViewModelFactory;
+import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailViewModel;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
 
 import dagger.Binds;
@@ -17,6 +18,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CodingCalendarViewModel.class)
     public abstract ViewModel bindCodingCalendarViewModel(CodingCalendarViewModel codingCalendarViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ContestDetailViewModel.class)
+    public abstract ViewModel bindContestDetailViewModel(ContestDetailViewModel contestDetailViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);

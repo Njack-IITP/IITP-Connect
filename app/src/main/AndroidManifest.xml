@@ -40,6 +40,12 @@
                 android:value=".HomeActivity" />
         </activity>
 
+        <activity android:name=".core.calendar.detail.ContestDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".core.calendar.list.CodingCalendarActivity" />
+        </activity>
+
     </application>
 
 </manifest>

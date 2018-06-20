@@ -7,7 +7,7 @@
             name="contest"
             type="com.iitp.njack.iitp_connect.data.contest.Contest" />
 
-        <import type="com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarUtil"/>
+        <import type="com.iitp.njack.iitp_connect.core.calendar.CodingCalendarUtil"/>
 
         <import type="android.view.View"/>
     </data>

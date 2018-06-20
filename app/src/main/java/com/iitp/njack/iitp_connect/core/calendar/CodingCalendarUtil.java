@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.calendar.list;
+package com.iitp.njack.iitp_connect.core.calendar;
 
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
