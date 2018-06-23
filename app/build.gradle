@@ -19,7 +19,6 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             minifyEnabled true
@@ -52,9 +51,22 @@ android {
     }
 }
 
+configurations.all { config ->
+    resolutionStrategy {
+        force 'com.android.support:multidex:1.0.3'
+    }
+    if (config.name.contains('UnitTest')) {
+        config.resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.squareup.leakcanary' && details.requested.name == 'leakcanary-android') {
+                details.useTarget(group: details.requested.group, name: 'leakcanary-android-no-op', version: details.requested.version)
+            }
+        }
+    }
+}
+
 check {
     apply plugin: 'checkstyle'
-    apply plugin: 'findbugs'
+    apply plugin: 'pmd'
 }
 
 dependencies {
@@ -138,6 +150,9 @@ dependencies {
     def leak_canary = '1.5.4'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
+
+    //Misc
+    compileOnly 'com.google.code.findbugs:findbugs-annotations:3.0.1'
 
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
