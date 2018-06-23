@@ -7,4 +7,5 @@ import com.iitp.njack.iitp_connect.common.view.Refreshable;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 
 public interface CodingCalendarView extends Progressive, Erroneous, Refreshable, Emptiable<Contest> {
+    void openContestDetails(Long id);
 }

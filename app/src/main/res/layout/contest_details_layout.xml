@@ -22,6 +22,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                tools:text="Contest description"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="@dimen/spacing_small"
+                android:text="@{ contest.description }"
+                android:drawableLeft="@drawable/ic_info" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </layout>

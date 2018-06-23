@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.iitp.njack.iitp_connect.common.livedata.SingleEventLiveData;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class CodingCalendarViewModel extends ViewModel {
     private LiveData<List<Contest>> contests;
     private MutableLiveData<Boolean> progress = new MutableLiveData<>();
     private MutableLiveData<String> error = new MutableLiveData<>();
+    private SingleEventLiveData<Long> clickAction = new SingleEventLiveData<>();
 
     @Inject
     public CodingCalendarViewModel(CodingCalendarRepository codingCalendarRepository) {
@@ -38,5 +40,13 @@ public class CodingCalendarViewModel extends ViewModel {
 
     protected LiveData<String> getError() {
         return error;
+    }
+
+    public void openContestDetails(Long id) {
+        clickAction.setValue(id);
+    }
+
+    protected LiveData<Long> getSelectedContest() {
+        return clickAction;
     }
 }

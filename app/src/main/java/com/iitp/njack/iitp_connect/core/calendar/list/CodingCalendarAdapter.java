@@ -15,13 +15,21 @@ import java.util.List;
 
 public class CodingCalendarAdapter extends RecyclerView.Adapter<CodingCalendarViewHolder> {
     private List<Contest> contests;
+    private final CodingCalendarViewModel codingCalendarViewModel;
+
+    public CodingCalendarAdapter(CodingCalendarViewModel codingCalendarViewModel) {
+        this.codingCalendarViewModel = codingCalendarViewModel;
+    }
 
     @NonNull
     @Override
     public CodingCalendarViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        return new CodingCalendarViewHolder(
-                DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
+        CodingCalendarViewHolder codingCalendarViewHolder =
+            new CodingCalendarViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
                         R.layout.coding_calendar_item, viewGroup, false));
+
+        codingCalendarViewHolder.setClickAction(codingCalendarViewModel::openContestDetails);
+        return codingCalendarViewHolder;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 import com.iitp.njack.iitp_connect.databinding.ActivityCodingCalendarBinding;
 import com.iitp.njack.iitp_connect.ui.ViewUtils;
@@ -24,6 +26,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
+import static com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity.CONTEST_ID;
 import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
 
 public class CodingCalendarActivity extends AppCompatActivity implements CodingCalendarView {
@@ -49,6 +52,7 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
 
         codingCalendarViewModel.getProgress().observe(this, this::showProgress);
         codingCalendarViewModel.getError().observe(this, this::showError);
+        codingCalendarViewModel.getSelectedContest().observe(this, this::openContestDetails);
         loadContests(false);
 
         setupRecyclerView();
@@ -62,7 +66,7 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
     }
 
     private void setupRecyclerView() {
-        codingCalendarAdapter = new CodingCalendarAdapter();
+        codingCalendarAdapter = new CodingCalendarAdapter(codingCalendarViewModel);
 
         RecyclerView recyclerView = binding.contestsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -107,5 +111,12 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
     public void onRefreshComplete(boolean success) {
         if (success)
             ViewUtils.showSnackbar(binding.contestsRecyclerView, R.string.refresh_complete);
+    }
+
+    @Override
+    public void openContestDetails(Long id) {
+        Intent intent = new Intent(this, ContestDetailActivity.class);
+        intent.putExtra(CONTEST_ID, id);
+        startActivity(intent);
     }
 }
