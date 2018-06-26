@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.iitp.njack.iitp_connect.R;
@@ -32,6 +33,14 @@ public class ContestDetailActivity extends AppCompatActivity implements ContestD
         binding = DataBindingUtil.setContentView(this, R.layout.activity_contest_detail);
         contestDetailViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(ContestDetailViewModel.class);
+
+        setSupportActionBar(binding.toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

@@ -40,7 +40,8 @@
                 android:value=".HomeActivity" />
         </activity>
 
-        <activity android:name=".core.calendar.detail.ContestDetailActivity">
+        <activity android:name=".core.calendar.detail.ContestDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".core.calendar.list.CodingCalendarActivity" />

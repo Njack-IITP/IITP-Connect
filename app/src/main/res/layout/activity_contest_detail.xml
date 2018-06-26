@@ -45,7 +45,7 @@
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    android:src="@{CodingCalendarUtil.getContestLogo(contest)}"/>
+                    android:src="@{CodingCalendarUtil.getContestCover(contest)}"/>
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
