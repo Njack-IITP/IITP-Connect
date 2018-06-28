@@ -1,60 +1,73 @@
 package com.iitp.njack.iitp_connect.core.calendar.list;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
+import com.iitp.njack.iitp_connect.AppExecutors;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
 import com.iitp.njack.iitp_connect.data.contest.ContestApi;
 import com.iitp.njack.iitp_connect.data.contest.ContestDao;
-import com.iitp.njack.iitp_connect.data.network.ConnectionStatusImpl;
+import com.iitp.njack.iitp_connect.data.contest.ContestListWrapper;
+import com.iitp.njack.iitp_connect.data.network.ApiResponse;
+import com.iitp.njack.iitp_connect.data.network.NetworkBoundResource;
+import com.iitp.njack.iitp_connect.data.network.Resource;
+import com.iitp.njack.iitp_connect.utils.RateLimiter;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import timber.log.Timber;
-
 public class CodingCalendarRepository {
+    private static final String CONTESTS = "contests";
+
     private final ContestDao contestDao;
     private final ContestApi contestApi;
-    private final ConnectionStatusImpl connectionStatus;
-    private Disposable contestDisposable;
+    private final AppExecutors appExecutors;
+
+    private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
 
     @Inject
     public CodingCalendarRepository(ContestDao contestDao, ContestApi contestApi,
-                                    ConnectionStatusImpl connectionStatus) {
+                                    AppExecutors appExecutors) {
         this.contestDao = contestDao;
         this.contestApi = contestApi;
-        this.connectionStatus = connectionStatus;
+        this.appExecutors = appExecutors;
     }
 
-    protected LiveData<List<Contest>> fetchContests(MutableLiveData<Boolean> progress, boolean reload) {
-        if (connectionStatus.isConnected() && reload) {
-            if (contestDisposable != null) {
-                contestDisposable.dispose();
+    protected LiveData<Resource<List<Contest>>> fetchContests(boolean reload) {
+        return new NetworkBoundResource<List<Contest>, ContestListWrapper>(appExecutors) {
+            @Override
+            protected void saveCallResult(@NonNull ContestListWrapper item) {
+                contestDao.deleteAll();
+                List<Contest> contests = item.getContests();
+                Collections.reverse(contests);
+                contestDao.addContests(contests);
             }
-            contestDisposable = contestApi.getContests()
-                    .doOnSubscribe(contest -> progress.postValue(true))
-                    .doOnNext(contestListWrapper -> {
-                        List<Contest> contests = contestListWrapper.getContests();
-                        Timber.v("%s contests loaded", contests.size());
-                        contestDao.deleteAll();
-                        contestDao.addContests(contests);
-                    })
-                    .doOnError(Timber::e)
-                    .doOnComplete(() -> Timber.v("Fetch contest complete"))
-                    .doFinally(() -> {
-                        contestDisposable.dispose();
-                        progress.postValue(false);
-                    })
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe();
-        }
-        return contestDao.getContests();
+
+            @Override
+            protected boolean shouldFetch(@Nullable List<Contest> data) {
+                return data == null || data.isEmpty() || reload || repoListRateLimit.shouldFetch(CONTESTS);
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<List<Contest>> loadFromDb() {
+                return contestDao.getContests();
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<ContestListWrapper>> createCall() {
+                return contestApi.getContests();
+            }
+
+            @Override
+            protected void onFetchFailed() {
+                repoListRateLimit.reset(CONTESTS);
+            }
+        }.asLiveData();
     }
 }

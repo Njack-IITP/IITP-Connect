@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.jasminb.jsonapi.retrofit.JSONAPIConverterFactory;
 import com.iitp.njack.iitp_connect.IITPConnectProvider;
 import com.iitp.njack.iitp_connect.common.Constants;
+import com.iitp.njack.iitp_connect.common.livedata.LiveDataCallAdapterFactory;
 import com.iitp.njack.iitp_connect.data.auth.AuthHolder;
 import com.iitp.njack.iitp_connect.data.contest.ContestListWrapper;
 import com.iitp.njack.iitp_connect.data.network.HostSelectionInterceptor;
@@ -61,8 +62,16 @@ public class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("RxCallAdapterFactory")
     CallAdapter.Factory providesCallAdapterFactory() {
         return RxJava2CallAdapterFactory.create();
+    }
+
+    @Provides
+    @Singleton
+    @Named("LiveDataCallAdapterFactory")
+    CallAdapter.Factory providesLiveDataCallAdapterFactory() {
+        return new LiveDataCallAdapterFactory();
     }
 
     @Provides
@@ -130,10 +139,12 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Retrofit providesRetrofitBuilder(CallAdapter.Factory callAdapterFactory,
+    Retrofit providesRetrofitBuilder(@Named("RxCallAdapterFactory") CallAdapter.Factory callAdapterFactory,
+                                     @Named("LiveDataCallAdapterFactory") CallAdapter.Factory liveDataCallAdapterFactory,
                                      @Named("jackson") Converter.Factory factory, OkHttpClient client) {
         return new Retrofit.Builder()
             .addCallAdapterFactory(callAdapterFactory)
+            .addCallAdapterFactory(liveDataCallAdapterFactory)
             .addConverterFactory(factory)
             .client(client)
             .baseUrl(Constants.HACKERRANK_API)

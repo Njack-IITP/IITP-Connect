@@ -15,16 +15,13 @@ import android.support.v7.widget.RecyclerView;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.data.contest.Contest;
+import com.iitp.njack.iitp_connect.data.network.Status;
 import com.iitp.njack.iitp_connect.databinding.ActivityCodingCalendarBinding;
 import com.iitp.njack.iitp_connect.ui.ViewUtils;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 import static com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity.CONTEST_ID;
 import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
@@ -50,8 +47,6 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
     public void onStart() {
         super.onStart();
 
-        codingCalendarViewModel.getProgress().observe(this, this::showProgress);
-        codingCalendarViewModel.getError().observe(this, this::showError);
         codingCalendarViewModel.getSelectedContest().observe(this, this::openContestDetails);
         loadContests(false);
 
@@ -75,7 +70,21 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
     }
 
     private void loadContests(boolean reload) {
-        codingCalendarViewModel.loadContests(reload).observe(this, this::showResults);
+        codingCalendarViewModel.loadContests(reload).observe(this, contestResource -> {
+            if (contestResource != null) {
+                if (contestResource.status == Status.SUCCESS) {
+                    showResults(contestResource.data);
+                    showProgress(false);
+                } else if (contestResource.status == Status.ERROR) {
+                    showError(contestResource.message);
+                    showProgress(false);
+                } else {
+                    showProgress(true);
+                }
+            } else {
+                showProgress(true);
+            }
+        });
     }
 
     private void setupRefreshListener() {
@@ -88,7 +97,6 @@ public class CodingCalendarActivity extends AppCompatActivity implements CodingC
 
     @Override
     public void showResults(List<Contest> items) {
-        Collections.reverse(items);
         codingCalendarAdapter.setContests(items);
     }
 
