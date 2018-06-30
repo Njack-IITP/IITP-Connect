@@ -5,8 +5,34 @@
 
     <group android:id="@+id/subMenu" android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/dashboard" />
+
+        <item
             android:id="@+id/nav_coding_calendar"
             android:icon="@drawable/ic_schedule"
             android:title="@string/coding_calendar" />
+
+    </group>
+
+    <group android:id="@+id/mainMenu">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/device_settings"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav_suggestion"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/suggestions"/>
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/log_out" />
+
     </group>
 </menu>

@@ -71,7 +71,7 @@ check {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.firebase:firebase-auth:11.6.0'
+
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -152,8 +152,9 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
 
-    //Misc
-    compileOnly 'com.google.code.findbugs:findbugs-annotations:3.0.1'
+    // Firebase
+    implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
 
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {

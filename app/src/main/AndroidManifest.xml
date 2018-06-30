@@ -19,7 +19,7 @@
             android:authorities="com.iitp.njack.iitp_connect" />
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".core.home.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -33,11 +33,11 @@
         <activity
             android:name=".core.calendar.list.CodingCalendarActivity"
             android:label="@string/coding_calendar"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".core.home.HomeActivity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
+                android:value=".core.home.HomeActivity" />
         </activity>
 
         <activity android:name=".core.calendar.detail.ContestDetailActivity"

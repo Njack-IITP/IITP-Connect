@@ -1,6 +1,6 @@
 package com.iitp.njack.iitp_connect.common.di.modules.android;
 
-import com.iitp.njack.iitp_connect.HomeActivity;
+import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 

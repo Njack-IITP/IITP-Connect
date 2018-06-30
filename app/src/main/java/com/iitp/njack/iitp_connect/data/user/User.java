@@ -22,7 +22,10 @@ import lombok.Data;
 @SuppressWarnings("PMD.TooManyFields")
 public class User {
     @Id(LongIdHandler.class)
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     Long id;
     String userName;
+    String email;
+    String firstName;
+    String lastName;
 }
