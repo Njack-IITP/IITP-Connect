@@ -3,6 +3,8 @@ package com.iitp.njack.iitp_connect.common.di.modules;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.iitp.njack.iitp_connect.data.contest.ContestDao;
 import com.iitp.njack.iitp_connect.data.database.IITPConnectDatabase;
 import com.iitp.njack.iitp_connect.data.user.UserDao;
@@ -20,6 +22,12 @@ public class DaoModule {
         return Room.databaseBuilder(context, IITPConnectDatabase.class, "iitpConnectDatabase")
                 .fallbackToDestructiveMigration()
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    DatabaseReference providesFirebaseDatabaseReference() {
+        return FirebaseDatabase.getInstance().getReference();
     }
 
     @Singleton @Provides

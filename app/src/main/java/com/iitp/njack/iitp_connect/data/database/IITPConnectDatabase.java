@@ -8,7 +8,7 @@ import com.iitp.njack.iitp_connect.data.contest.ContestDao;
 import com.iitp.njack.iitp_connect.data.user.User;
 import com.iitp.njack.iitp_connect.data.user.UserDao;
 
-@Database(entities = {Contest.class, User.class}, version = 3)
+@Database(entities = {Contest.class, User.class}, version = 4)
 public abstract class IITPConnectDatabase extends RoomDatabase {
     public abstract ContestDao contestDao();
 

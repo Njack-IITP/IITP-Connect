@@ -12,15 +12,20 @@ import com.github.jasminb.jsonapi.annotations.Type;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import static com.iitp.njack.iitp_connect.data.user.User.TABLE_NAME;
 
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Type("user")
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
-@Entity(tableName = "users")
+@Entity(tableName = TABLE_NAME)
 @SuppressWarnings("PMD.TooManyFields")
 public class User {
+    public static final String TABLE_NAME = "users";
     @Id(LongIdHandler.class)
     @PrimaryKey(autoGenerate = true)
     Long id;

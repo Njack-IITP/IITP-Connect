@@ -3,6 +3,7 @@ package com.iitp.njack.iitp_connect;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.iitp.njack.iitp_connect.common.di.AppInjector;
 import com.jakewharton.threetenabp.AndroidThreeTen;
@@ -18,7 +19,7 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import timber.log.Timber;
 
-public class IITPConnectApplication extends Application implements HasActivityInjector {
+public class IITPConnectApplication extends MultiDexApplication implements HasActivityInjector {
 
     private static final AtomicBoolean CREATED = new AtomicBoolean();
 

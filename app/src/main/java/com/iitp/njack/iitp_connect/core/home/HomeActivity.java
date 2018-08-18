@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -52,8 +51,6 @@ public class HomeActivity extends AppCompatActivity
 
         binding.navView.setNavigationItemSelectedListener(this);
 
-        //TODO - set it to false by default and visible only if user is authenticated.
-        binding.navView.getMenu().setGroupVisible(R.id.subMenu, true);
         drawerNavigator = new DrawerNavigator(this, authViewModel);
     }
 
