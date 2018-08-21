@@ -53,10 +53,11 @@
 
 # General
 -keepattributes SourceFile,LineNumberTable,*Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
--keep class android.support.v7.widget.SearchView { *; }
 
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
 -keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
+
+-keep, includedescriptorclasses
 
 -keepattributes Signature
 -keepattributes *Annotation*
