@@ -35,15 +35,28 @@
 
 -dontwarn com.google.errorprone.**
 
--keep class com.iitp.njack.iitp_connect.data.** {
-  *;
-}
-
--keep class com.iitp.njack.iitp_connect.data.json.** {
+-keep class com.iitp.njack.iitp_connect.** {
   *;
 }
 
 -keep class * extends com.raizlabs.android.dbflow.config.DatabaseHolder { *; }
+
+# Jackson
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-keepnames class com.fasterxml.jackson.** { *; }
+-dontwarn com.fasterxml.jackson.databind.**
+-keep class org.codehaus.** { *; }
+-keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
+    public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
+}
+-keep class com.github.jasminb.** { *; }
+
+# General
+-keepattributes SourceFile,LineNumberTable,*Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
+-keep class android.support.v7.widget.SearchView { *; }
+
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 
 -keepattributes Signature
 -keepattributes *Annotation*
