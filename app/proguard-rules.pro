@@ -58,7 +58,3 @@
 -keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 
 -keep, includedescriptorclasses
-
--keepattributes Signature
--keepattributes *Annotation*
-
