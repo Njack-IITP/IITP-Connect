@@ -39,7 +39,7 @@
   *;
 }
 
--keep com.iitp.njack.iitp_connect.data.json.** {
+-keep class com.iitp.njack.iitp_connect.data.json.** {
   *;
 }
 
