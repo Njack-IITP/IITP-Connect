@@ -127,7 +127,7 @@ dependencies {
     // Rx Java
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
-    implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
+    implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0'
 
     // Jackson
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
