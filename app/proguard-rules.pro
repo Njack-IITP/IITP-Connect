@@ -49,7 +49,6 @@
 -keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
     public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
 }
--keep class com.github.jasminb.** { *; }
 
 # General
 -keepattributes SourceFile,LineNumberTable,*Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
@@ -57,4 +56,4 @@
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
 -keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 
--keep, includedescriptorclasses
+-keep includedescriptorclasses
