@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in /Users/rishabhkhanna/Library/Android/sdk/tools/proguard/proguard-android.txt
+# in /media/srv_twry/work/Android-Sdk/Sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -16,52 +16,10 @@
 #   public *;
 #}
 
-# Platform calls Class.forName on types which do not exist on Android to determine platform.
--dontnote retrofit2.Platform
-# Platform used when running on Java 8 VMs. Will not be used at runtime.
--dontwarn retrofit2.Platform$Java8
-# Retain generic type information for use by reflection by converters and adapters.
--keepattributes Signature
-# Retain declared checked exceptions for use by a Proxy instance.
--keepattributes Exceptions
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
 
--dontwarn okio.**
-
--dontwarn com.squareup.okhttp.**
-
--dontwarn javax.annotation**
-
--dontwarn org.conscrypt.**
-
--dontwarn com.google.errorprone.**
-
--keep class com.iitp.njack.iitp_connect.data.** {
-  *;
-}
-
--keep com.iitp.njack.iitp_connect.data.json.** {
-  *;
-}
-
--keep class * extends com.raizlabs.android.dbflow.config.DatabaseHolder { *; }
-
-# Jackson
--keepattributes *Annotation*,EnclosingMethod,Signature
--keepnames class com.fasterxml.jackson.** { *; }
--dontwarn com.fasterxml.jackson.databind.**
--keep class org.codehaus.** { *; }
--keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
-    public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
-}
--keep class com.github.jasminb.** { *; }
-
-# General
--keepattributes SourceFile,LineNumberTable,*Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
--keep class android.support.v7.widget.SearchView { *; }
-
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
-
--keepattributes Signature
--keepattributes *Annotation*
-
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
