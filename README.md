@@ -1,6 +1,7 @@
 # IITP-Connect
 
 [![Build Status](https://travis-ci.org/Njack-IITP/IITP-Connect.svg?branch=development)](https://travis-ci.org/Njack-IITP/IITP-Connect)
+[![CircleCI](https://circleci.com/gh/Njack-IITP/IITP-Connect/tree/development.svg?style=svg)](https://circleci.com/gh/Njack-IITP/IITP-Connect/tree/development)
 
 This is the Android app developed by the Student community of **Indian Institute of Technology Patna**.  
 The application provides various useful modules which enables the students to stay updated about all the college news & events, their attendance, status and much more.
