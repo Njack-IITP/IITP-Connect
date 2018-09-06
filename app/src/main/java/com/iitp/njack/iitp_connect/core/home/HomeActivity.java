@@ -65,7 +65,6 @@ public class HomeActivity extends AppCompatActivity
 
         drawerNavigator = new DrawerNavigator(this, authViewModel);
 
-
         firebaseUserLiveData = AuthViewModel.getFirebaseAuthLiveData();
 
         firebaseUserLiveData.observe(HomeActivity.this, new Observer<FirebaseUser>()
@@ -79,7 +78,6 @@ public class HomeActivity extends AppCompatActivity
                 } else {
                    // TODO Create UI for logged in user
                 }
-
             }
         });
     }

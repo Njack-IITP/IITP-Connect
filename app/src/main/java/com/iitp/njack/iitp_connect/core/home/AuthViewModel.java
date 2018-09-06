@@ -12,16 +12,16 @@ import javax.inject.Inject;
  */
 public class AuthViewModel extends ViewModel {
 
+    private static final FirebaseAuthLiveData firebaseAuthLiveData = new FirebaseAuthLiveData();
+
     @Inject
     public AuthViewModel() {
 
     }
 
-    private static final FirebaseAuthLiveData firebaseAuthLiveData = new
-            FirebaseAuthLiveData();
-
     public static LiveData<FirebaseUser> getFirebaseAuthLiveData() {
-        return firebaseAuthLiveData; }
+        return firebaseAuthLiveData;
+    }
 
     public void logout() {
         // TODO log the user out

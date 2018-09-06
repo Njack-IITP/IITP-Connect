@@ -13,7 +13,8 @@ public class FirebaseAuthLiveData extends LiveData<FirebaseUser> {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                    setValue(firebaseUser);   }
+                    setValue(firebaseUser);
+                }
             };
 
     @Override
