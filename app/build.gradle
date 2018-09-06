@@ -160,6 +160,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
     implementation 'com.google.firebase:firebase-database:16.0.1'
 
+    // Facebook
+    implementation 'com.facebook.android:facebook-android-sdk:4.35.0'
+
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -168,6 +171,17 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:2.21.0'
     testImplementation 'org.json:json:20180130'
     testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion rootProject.supportLibraryVersion
+            }
+        }
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
