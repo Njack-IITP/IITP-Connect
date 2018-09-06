@@ -10,6 +10,8 @@ public final class Constants {
 
     public static final String SHARED_PREFS_SAVED_EMAIL = "Saved Email";
 
+    //IIT Patna Facebook pages.
+
     private Constants() {
         // Never Called
     }
