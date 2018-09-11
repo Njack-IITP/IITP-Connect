@@ -1,5 +1,8 @@
 package com.iitp.njack.iitp_connect.common.di.modules.android;
 
+import com.firebase.ui.auth.KickoffActivity;
+import com.firebase.ui.auth.ui.credentials.CredentialSaveActivity;
+import com.firebase.ui.auth.ui.email.EmailActivity;
 import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
@@ -17,4 +20,13 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract HomeActivity contributeHomeActivity();
+
+    @ContributesAndroidInjector
+    abstract KickoffActivity contributeKickoffActivity();
+
+    @ContributesAndroidInjector
+    abstract EmailActivity contributeEmailActivity();
+
+    @ContributesAndroidInjector
+    abstract CredentialSaveActivity contributeCredentialSaveActivity();
 }

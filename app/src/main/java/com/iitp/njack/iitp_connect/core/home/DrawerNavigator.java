@@ -7,6 +7,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 
+import com.firebase.ui.auth.AuthUI;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 
@@ -39,6 +40,8 @@ public class DrawerNavigator {
             context.startActivity(googleFormIntent);
         } else if (id == R.id.nav_dashboard) {
             // navigate to dashboard.
+        } else if (id == R.id.nav_logout) {
+            showLogoutDialog();
         }
     }
 
@@ -47,7 +50,7 @@ public class DrawerNavigator {
             logoutDialog = new AlertDialog.Builder(context)
                     .setTitle(R.string.logout_confirmation)
                     .setMessage(R.string.logout_confirmation_message)
-                    .setPositiveButton(R.string.ok, (dialog, which) -> authViewModel.logout())
+                    .setPositiveButton(R.string.ok, (dialog, which) -> authViewModel.logout(context))
                     .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
                     .create();
 
