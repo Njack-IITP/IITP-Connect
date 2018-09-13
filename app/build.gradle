@@ -151,7 +151,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
 
     // Leak Canary
-    def leak_canary = '1.5.4'
+    def leak_canary = '1.6.1'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
 
