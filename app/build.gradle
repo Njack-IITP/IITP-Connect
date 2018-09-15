@@ -169,7 +169,7 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-inline:2.21.0'
-    testImplementation 'org.json:json:20180130'
+    testImplementation 'org.json:json:20180813'
     testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
 }
 
