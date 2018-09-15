@@ -161,7 +161,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.2'
 
     // Facebook
-    implementation 'com.facebook.android:facebook-android-sdk:4.35.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.36.0'
 
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
