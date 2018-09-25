@@ -47,7 +47,7 @@ ext {
     okhttpVersion = '3.11.0'
 
     // butterknife
-    butterknifeVersion = '8.6.0'
+    butterknifeVersion = '8.8.1'
 
     // threetenbp
     threetenbpVersion = '1.1.0'
