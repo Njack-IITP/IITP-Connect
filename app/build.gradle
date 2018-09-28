@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.noveogroup.android.check'
 apply from: './jacoco.gradle'
 
 android {
+
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
@@ -34,6 +36,7 @@ android {
 
     lintOptions {
         abortOnError false
+        warning 'InvalidPackage'
     }
 
     dataBinding {
@@ -67,8 +70,8 @@ configurations.all { config ->
 }
 
 check {
-    apply plugin: 'checkstyle'
-    apply plugin: 'pmd'
+    abortOnError false
+    findbugs { skip true }
 }
 
 dependencies {
