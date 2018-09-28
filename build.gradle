@@ -41,7 +41,7 @@ ext {
     lombokVersion = '1.16.20'
 
     //retrofit and ok-http
-    retrofitVersion = '2.3.0'
+    retrofitVersion = '2.4.0'
     okhttpVersion = '3.11.0'
 
     // butterknife
