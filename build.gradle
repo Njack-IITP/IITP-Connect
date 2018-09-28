@@ -54,7 +54,7 @@ ext {
     daggerVersion = '2.17'
 
     // jackson
-    jacksonVersion = '2.9.5'
+    jacksonVersion = '2.9.7'
 
     // rx java
     rxjavaVersion = '2.1.10'
