@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.firebase.ui.auth.AuthUI;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
+import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
 
 public class DrawerNavigator {
     private final Context context;
@@ -42,6 +43,9 @@ public class DrawerNavigator {
             // navigate to dashboard.
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
+        } else if (id == R.id.nav_profie) {
+            Intent intent = new Intent(context, ProfileActivity.class);
+            context.startActivity(intent);
         }
     }
 
