@@ -17,8 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.data.user.User;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
 import com.iitp.njack.iitp_connect.databinding.MainNavHeaderBinding;
 
@@ -75,9 +79,13 @@ public class HomeActivity extends AppCompatActivity
                     final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                             .build();
                     startActivityForResult(intent, RC_SIGN_IN);
+
+
                 } else {
+
                    // TODO Create UI for logged in user
                 }
+
             }
         });
     }

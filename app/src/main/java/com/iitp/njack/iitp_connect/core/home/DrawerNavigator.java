@@ -43,7 +43,7 @@ public class DrawerNavigator {
             // navigate to dashboard.
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
-        } else if (id == R.id.nav_profie) {
+        } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(context, ProfileActivity.class);
             context.startActivity(intent);
         }
