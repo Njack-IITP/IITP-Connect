@@ -41,4 +41,23 @@
     <string name="logout_confirmation_message">Are you sure you want to log out?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="caption">Caption of institution</string>
+
+
+    <string-array name="year">
+        <item>I Year</item>
+        <item>II Year</item>
+        <item>III Year</item>
+        <item>IV Year</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="dept">
+        <item>CSE</item>
+        <item>CHE</item>
+        <item>IT</item>
+        <item>ECE</item>
+        <item>EEE</item>
+        <item>MEC</item>
+        <item>CIV</item>
+    </string-array>
 </resources>

@@ -3,7 +3,7 @@ apply from: './jacoco.gradle'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "com.iitp.njack.iitp_connect"
