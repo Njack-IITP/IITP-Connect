@@ -79,13 +79,9 @@ public class HomeActivity extends AppCompatActivity
                     final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                             .build();
                     startActivityForResult(intent, RC_SIGN_IN);
-
-
                 } else {
-
                    // TODO Create UI for logged in user
                 }
-
             }
         });
     }
