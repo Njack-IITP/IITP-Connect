@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+FindBugs exclude filter
+Severity: HARD
+-->
+<FindBugsFilter>
+    <Match>
+        <Class name="~.*\.BuildConfig" />
+    </Match>
+    <Match>
+        <Class name="~.*\.R" />
+    </Match>
+    <Match>
+        <Class name="~.*\.R\$.*" />
+    </Match>
+
+    <!-- Ignore generated database class -->
+    <Match>
+        <Class name="~.*_Table" />
+    </Match>
+
+    <!-- Ignore static write for Context -->
+    <Match>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD " />
+    </Match>
+    <!-- No need to force hashCode for simple models -->
+    <Match>
+        <Bug pattern="HE_EQUALS_USE_HASHCODE " />
+    </Match>
+    <Match>
+        <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
+    </Match>
+
+    <!-- Don't complain about rules in tests. -->
+    <Match>
+        <Field name="~.*mockitoRule"/>
+        <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+    </Match>
+    <Match>
+        <Field name="~.*rule"/>
+        <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+    </Match>
+
+    <!-- This is a buggy pattern -->
+    <Match>
+        <Bug pattern="MS_MUTABLE_COLLECTION_PKGPROTECT" />
+    </Match>
+</FindBugsFilter>
+

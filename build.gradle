@@ -6,10 +6,15 @@ buildscript {
         google()
     }
     dependencies {
+
         classpath 'com.android.tools.build:gradle:3.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.noveogroup.android:check:1.2.5'
+
         classpath 'com.google.gms:google-services:4.1.0'
     }
 }
@@ -43,24 +48,24 @@ ext {
     lombokVersion = '1.16.20'
 
     //retrofit and ok-http
-    retrofitVersion = '2.3.0'
-    okhttpVersion = '3.8.0'
+    retrofitVersion = '2.4.0'
+    okhttpVersion = '3.11.0'
 
     // butterknife
-    butterknifeVersion = '8.6.0'
+    butterknifeVersion = '8.8.1'
 
     // threetenbp
     threetenbpVersion = '1.1.0'
 
     // dagger
-    daggerVersion = '2.14.1'
+    daggerVersion = '2.17'
 
     // jackson
-    jacksonVersion = '2.9.5'
+    jacksonVersion = '2.9.7'
 
     // rx java
     rxjavaVersion = '2.1.10'
-    rxAndroidVersion = '2.0.2'
+    rxAndroidVersion = '2.1.0'
 
     //stetho
     stetho = '1.5.0'
@@ -69,5 +74,5 @@ ext {
     roboelectric = '3.8'
 
     //glide
-    glide = '4.4.0'
+    glide = '4.8.0'
 }
