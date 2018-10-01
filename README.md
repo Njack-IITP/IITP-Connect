@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/Njack-IITP/IITP-Connect.svg?branch=development)](https://travis-ci.org/Njack-IITP/IITP-Connect)
 [![CircleCI](https://circleci.com/gh/Njack-IITP/IITP-Connect/tree/development.svg?style=svg)](https://circleci.com/gh/Njack-IITP/IITP-Connect/tree/development)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![HitCount](http://hits.dwyl.io/Njack-IITP/IITP-Connect.svg)](http://hits.dwyl.io/Njack-IITP/IITP-Connect)
 
 This is the Android app developed by the Student community of **Indian Institute of Technology Patna**.  
 The application provides various useful modules which enables the students to stay updated about all the college news & events, their attendance, status and much more.
@@ -10,8 +12,11 @@ This project is meant to encourage the emerging developers of IIT Patna to take 
 
 ## Features and Future Plans
 
-- [ ] **Coding Calendar** - Work in Progress
-- [ ] **Attendance Manager** 
+- [x] **Coding Calendar**
+- [ ] **User Accounts**
+- [ ] **Youtube Feed**
+- [ ] **Facebook Feed**
+- [ ] **Timetable**
 
 ## Branch Policy
 1. **master** - This branch contains the most stable version of the application.  
