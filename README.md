@@ -31,6 +31,9 @@ The project is actively maintained by
 
 + Saurav tiwary([@srv-twry](https://github.com/srv-twry))
 
+## Idea Credits
+[NSIT-Connect](https://github.com/Swati4star/NSIT-Connect)
+
 ## License
 
 This project is currently licensed under The MIT License (MIT). A copy of [LICENSE.md](LICENSE.md) should be present along with the source code.
