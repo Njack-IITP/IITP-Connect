@@ -24,4 +24,9 @@ public class ProfileViewModel extends ViewModel {
         }
         return user;
     }
+
+    public void setField(int fieldType, String profileField) {
+        profileRepository.setField(fieldType, profileField);
+    }
+
 }

@@ -2,16 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="profile"
             type="com.iitp.njack.iitp_connect.data.user.User" />
-
-        <import type="android.view.View" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue_200"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -43,6 +43,11 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/grey_800" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,14 +55,14 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="UserName" />
+                            android:text="User Name" />
 
                         <TextView
                             android:id="@+id/profile_name"
@@ -65,13 +70,12 @@
                             android:layout_height="wrap_content"
                             android:text="@{ profile.userName }" />
                     </LinearLayout>
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Edit" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_800" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,37 +84,7 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Roll" />
-
-                        <TextView
-                            android:id="@+id/profile_roll"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@{ profile.roll }" />
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="edit" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -126,12 +100,12 @@
                             android:text="@{ profile.email }" />
                     </LinearLayout>
 
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="edit" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_800" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,7 +114,7 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -154,14 +128,33 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{ profile.firstName }" />
+
+                        <EditText
+                            android:id="@+id/profile_firstName_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{ profile.firstName }"
+                            android:visibility="gone" />
                     </LinearLayout>
 
-                    <Button
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/grey_800" />
+
+                    <ImageView
+                        android:id="@+id/profile_firstName_image"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="edit" />
+                        android:src="@drawable/ic_edit" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_800" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,7 +163,7 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -184,14 +177,84 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{ profile.lastName }" />
+
+                        <EditText
+                            android:id="@+id/profile_lastName_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{ profile.lastName }"
+                            android:visibility="gone" />
                     </LinearLayout>
 
-                    <Button
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/grey_800" />
+
+                    <ImageView
+                        android:id="@+id/profile_lastName_image"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="edit" />
+                        android:src="@drawable/ic_edit" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_800" />
+
+                <LinearLayout
+                    android:id="@+id/roll_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Roll" />
+
+                        <TextView
+                            android:id="@+id/profile_roll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{ profile.roll }" />
+
+                        <EditText
+                            android:id="@+id/profile_roll_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{ profile.roll }"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/grey_800" />
+
+                    <ImageView
+                        android:id="@+id/profile_roll_image"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_edit" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_800" />
+
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
