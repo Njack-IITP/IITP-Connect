@@ -34,6 +34,7 @@
     <string name="refresh_complete">Refresh Complete</string>
     <string name="description">Description</string>
     <string name="device_settings">Device Settings</string>
+    <string name="profile">Profile</string>
     <string name="log_out">Log Out</string>
     <string name="suggestions">Suggestions</string>
     <string name="dashboard">Dashboard</string>

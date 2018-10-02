@@ -22,33 +22,31 @@
             android:name=".core.home.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".core.calendar.list.CodingCalendarActivity"
             android:label="@string/coding_calendar"
             android:parentActivityName=".core.home.HomeActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".core.home.HomeActivity" />
         </activity>
-
-        <activity android:name=".core.calendar.detail.ContestDetailActivity"
+        <activity
+            android:name=".core.calendar.detail.ContestDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".core.calendar.list.CodingCalendarActivity" />
         </activity>
 
-        <!--<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>-->
+        <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/> -->
 
+        <activity android:name=".core.profile.ProfileActivity"></activity>
     </application>
 
 </manifest>
