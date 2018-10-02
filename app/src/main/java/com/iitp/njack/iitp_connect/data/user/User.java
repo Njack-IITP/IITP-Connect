@@ -34,17 +34,4 @@ public class User {
     String firstName;
     String lastName;
     String roll;
-
-    public User(
-        String userName,
-        String email,
-        String firstName,
-        String lastName,
-        String roll){
-        this.email=email;
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.userName=userName;
-        this.roll=roll;
-    }
 }

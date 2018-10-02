@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,6 +24,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
+    @Inject
+    User user;
+    @Inject
+    FirebaseAuth firebaseAuth;
 
     private ActivityProfileBinding binding;
     private ProfileViewModel profileViewModel;
@@ -39,7 +44,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         final Observer<DataSnapshot> userObserver = new Observer<DataSnapshot>() {
             @Override
             public void onChanged(@Nullable final DataSnapshot currentUser) {
-                binding.setProfile(currentUser.getValue(User.class));
+                if (currentUser.getValue(User.class) == null) {
+                    user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
+                    user.setEmail(firebaseAuth.getCurrentUser().getEmail());
+                    profileViewModel.setUser( user);
+                } else {
+                    binding.setProfile(currentUser.getValue(User.class));
+                }
             }
         };
         profileViewModel.getUser().observe(this, userObserver);
@@ -61,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileFirstNameImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileFirstNameEdit.getText().toString();
-                profileViewModel.setField(1, profileField);
+                profileViewModel.setField(3, profileField);
                 binding.profileFirstName.setVisibility(View.VISIBLE);
                 binding.profileFirstNameEdit.setVisibility(View.GONE);
                 binding.profileFirstNameImage.setImageResource(R.drawable.ic_edit);
@@ -73,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileLastNameImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileLastNameEdit.getText().toString();
-                profileViewModel.setField(2, profileField);
+                profileViewModel.setField(4, profileField);
                 binding.profileLastName.setVisibility(View.VISIBLE);
                 binding.profileLastNameEdit.setVisibility(View.GONE);
                 binding.profileLastNameImage.setImageResource(R.drawable.ic_edit);
@@ -85,7 +96,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileRollImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileRollEdit.getText().toString();
-                profileViewModel.setField(3, profileField);
+                profileViewModel.setField(5, profileField);
                 binding.profileRoll.setVisibility(View.VISIBLE);
                 binding.profileRollEdit.setVisibility(View.GONE);
                 binding.profileRollImage.setImageResource(R.drawable.ic_edit);
