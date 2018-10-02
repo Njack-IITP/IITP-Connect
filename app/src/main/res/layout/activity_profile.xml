@@ -24,7 +24,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <ImageView
@@ -38,9 +38,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
-                    android:text="Personal Profile"
+                    android:text="@string/personal_profile"
                     android:textAllCaps="true"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <View
@@ -62,7 +62,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="User Name" />
+                            android:text="@string/user_name" />
 
                         <TextView
                             android:id="@+id/profile_name"
@@ -91,7 +91,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Email" />
+                            android:text="@string/email" />
 
                         <TextView
                             android:id="@+id/profile_email"
@@ -121,7 +121,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="First Name" />
+                            android:text="@string/first_name" />
 
                         <TextView
                             android:id="@+id/profile_firstName"
@@ -171,7 +171,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Last Name" />
+                            android:text="@string/last_name" />
 
                         <TextView
                             android:id="@+id/profile_lastName"
@@ -222,7 +222,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Roll" />
+                            android:text="@string/roll" />
 
                         <TextView
                             android:id="@+id/profile_roll"
