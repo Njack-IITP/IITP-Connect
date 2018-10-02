@@ -133,6 +133,7 @@
                             android:id="@+id/profile_firstName_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="text"
                             android:text="@{ profile.firstName }"
                             android:visibility="gone" />
                     </LinearLayout>
@@ -182,6 +183,7 @@
                             android:id="@+id/profile_lastName_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="text"
                             android:text="@{ profile.lastName }"
                             android:visibility="gone" />
                     </LinearLayout>
@@ -232,6 +234,8 @@
                             android:id="@+id/profile_roll_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                            android:inputType="textCapCharacters"
                             android:text="@{ profile.roll }"
                             android:visibility="gone" />
                     </LinearLayout>
