@@ -3,7 +3,6 @@ package com.iitp.njack.iitp_connect.data.contest;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.jasminb.jsonapi.LongIdHandler;
