@@ -42,4 +42,10 @@
     <string name="logout_confirmation_message">Are you sure you want to log out?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="personal_profile">Personal Profile</string>
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="roll">Roll</string>
 </resources>

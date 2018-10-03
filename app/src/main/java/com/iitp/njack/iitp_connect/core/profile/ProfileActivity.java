@@ -41,16 +41,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profileViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ProfileViewModel.class);
 
-        final Observer<DataSnapshot> userObserver = new Observer<DataSnapshot>() {
-            @Override
-            public void onChanged(@Nullable final DataSnapshot currentUser) {
-                if (currentUser.getValue(User.class) == null) {
-                    user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
-                    user.setEmail(firebaseAuth.getCurrentUser().getEmail());
-                    profileViewModel.setUser( user);
-                } else {
-                    binding.setProfile(currentUser.getValue(User.class));
-                }
+        final Observer<DataSnapshot> userObserver = currentUser -> {
+            if (currentUser.getValue(User.class) == null) {
+                user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
+                user.setEmail(firebaseAuth.getCurrentUser().getEmail());
+                profileViewModel.setUser( user);
+            } else {
+                binding.setProfile(currentUser.getValue(User.class));
             }
         };
         profileViewModel.getUser().observe(this, userObserver);
