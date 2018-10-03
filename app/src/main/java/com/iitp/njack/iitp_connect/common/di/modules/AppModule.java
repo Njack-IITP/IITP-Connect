@@ -8,7 +8,8 @@ import dagger.Module;
         NetworkModule.class,
         ViewModelModule.class,
         DaoModule.class,
-        AuthModule.class
+        AuthModule.class,
+        DataBaseModule.class
 })
 public class AppModule {
     // Add misc dependencies

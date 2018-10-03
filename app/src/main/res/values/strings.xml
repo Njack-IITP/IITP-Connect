@@ -34,6 +34,7 @@
     <string name="refresh_complete">Refresh Complete</string>
     <string name="description">Description</string>
     <string name="device_settings">Device Settings</string>
+    <string name="profile">Profile</string>
     <string name="log_out">Log Out</string>
     <string name="suggestions">Suggestions</string>
     <string name="dashboard">Dashboard</string>
@@ -41,4 +42,10 @@
     <string name="logout_confirmation_message">Are you sure you want to log out?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="personal_profile">Personal Profile</string>
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="roll">Roll</string>
 </resources>

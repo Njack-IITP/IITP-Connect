@@ -19,6 +19,12 @@
     <group android:id="@+id/mainMenu">
 
         <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_circle"
+            android:title="@string/profile"
+            android:checkable="true"/>
+
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/device_settings"

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "9c51cce57bb026c36ecec7301b6cf597",
+    "identityHash": "3084ccbea4020623b161466ede54655d",
     "entities": [
       {
         "tableName": "contests",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userName` TEXT, `email` TEXT, `firstName` TEXT, `lastName` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userName` TEXT, `email` TEXT, `firstName` TEXT, `lastName` TEXT, `roll` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -87,6 +87,12 @@
             "columnName": "lastName",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "roll",
+            "columnName": "roll",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -101,7 +107,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9c51cce57bb026c36ecec7301b6cf597\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3084ccbea4020623b161466ede54655d\")"
     ]
   }
 }

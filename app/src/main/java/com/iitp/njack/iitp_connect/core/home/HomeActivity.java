@@ -1,13 +1,11 @@
 package com.iitp.njack.iitp_connect.core.home;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,8 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
 import com.iitp.njack.iitp_connect.databinding.MainNavHeaderBinding;
-
-import java.util.Collections;
 
 import javax.inject.Inject;
 
@@ -67,17 +63,13 @@ public class HomeActivity extends AppCompatActivity
 
         firebaseUserLiveData = AuthViewModel.getFirebaseAuthLiveData();
 
-        firebaseUserLiveData.observe(HomeActivity.this, new Observer<FirebaseUser>()
-        {
-            @Override
-            public void onChanged(@Nullable FirebaseUser firebaseUser) {
-                if (firebaseUser == null) {
-                    final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
-                            .build();
-                    startActivityForResult(intent, RC_SIGN_IN);
-                } else {
-                   // TODO Create UI for logged in user
-                }
+        firebaseUserLiveData.observe(HomeActivity.this, firebaseUser -> {
+            if (firebaseUser == null) {
+                final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
+                        .build();
+                startActivityForResult(intent, RC_SIGN_IN);
+            } else {
+               // TODO Create UI for logged in user
             }
         });
     }
