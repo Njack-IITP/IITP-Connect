@@ -43,7 +43,6 @@ public class CodingCalendarRepository {
             protected void saveCallResult(@NonNull ContestListWrapper item) {
                 contestDao.deleteAll();
                 List<Contest> contests = item.getContests();
-                Collections.reverse(contests);
                 contestDao.addContests(contests);
             }
 
