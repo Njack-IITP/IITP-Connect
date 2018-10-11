@@ -1,5 +1,6 @@
 package com.iitp.njack.iitp_connect.core.home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -42,7 +43,14 @@ public class DrawerNavigator {
         } else if (id == R.id.nav_dashboard) {
             // navigate to dashboard.
         } else if (id == R.id.nav_logout) {
-            showLogoutDialog();
+            if(item.getTitle().toString()=="Login") {
+                final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
+                    .build();
+                ((Activity) context).startActivityForResult(intent, 123);
+            }
+            else {
+                showLogoutDialog();
+            }
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(context, ProfileActivity.class);
             context.startActivity(intent);

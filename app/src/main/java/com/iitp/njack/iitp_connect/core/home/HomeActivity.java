@@ -11,10 +11,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.ErrorCodes;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
@@ -65,11 +69,9 @@ public class HomeActivity extends AppCompatActivity
 
         firebaseUserLiveData.observe(HomeActivity.this, firebaseUser -> {
             if (firebaseUser == null) {
-                final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
-                        .build();
-                startActivityForResult(intent, RC_SIGN_IN);
+                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle("Login");
             } else {
-               // TODO Create UI for logged in user
+                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle("Logout");
             }
         });
     }
@@ -97,5 +99,27 @@ public class HomeActivity extends AppCompatActivity
         });
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+            if (resultCode != RESULT_OK) {
+                if (response == null) {
+                    Toast.makeText(this,R.string.sign_in_cancelled,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
+                    Toast.makeText(this,R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(this,R.string.unknown_error,Toast.LENGTH_SHORT).show();
+                Log.e( "Sign-in error: ", response.getError().toString());
+            }
+            else {
+                Toast.makeText(this,"Signed in successfully",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
