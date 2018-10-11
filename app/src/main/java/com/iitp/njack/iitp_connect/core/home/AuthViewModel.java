@@ -14,18 +14,23 @@ import javax.inject.Inject;
  */
 public class AuthViewModel extends ViewModel {
 
-    private static final FirebaseAuthLiveData firebaseAuthLiveData = new FirebaseAuthLiveData();
+    private AuthRepository loginRepository;
+    private FirebaseAuthLiveData firebaseAuthLiveData;
 
     @Inject
-    public AuthViewModel() {
-
+    public AuthViewModel(AuthRepository loginRepository) {
+        this.loginRepository=loginRepository;
     }
 
-    public static LiveData<FirebaseUser> getFirebaseAuthLiveData() {
+    public LiveData<FirebaseUser> getFirebaseAuthLiveData() {
+        if(firebaseAuthLiveData==null) {
+            firebaseAuthLiveData=loginRepository.getFirebaseAuthLiveData();
+        }
         return firebaseAuthLiveData;
     }
 
     public void logout(Context context) {
         AuthUI.getInstance().signOut(context);
     }
+
 }
