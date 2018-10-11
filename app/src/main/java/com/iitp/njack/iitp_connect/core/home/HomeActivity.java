@@ -1,11 +1,13 @@
 package com.iitp.njack.iitp_connect.core.home;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -43,7 +45,6 @@ public class HomeActivity extends AppCompatActivity
     private DrawerNavigator drawerNavigator;
     private AuthViewModel authViewModel;
 
-    private LiveData<FirebaseUser> firebaseUserLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +66,18 @@ public class HomeActivity extends AppCompatActivity
 
         drawerNavigator = new DrawerNavigator(this, authViewModel);
 
-        firebaseUserLiveData = AuthViewModel.getFirebaseAuthLiveData();
-
-        firebaseUserLiveData.observe(HomeActivity.this, firebaseUser -> {
-            if (firebaseUser == null) {
-                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle("Login");
-            } else {
-                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle("Logout");
+        final Observer<FirebaseUser> authObserver = new Observer<FirebaseUser>() {
+            @Override
+            public void onChanged(@Nullable FirebaseUser firebaseUser) {
+                if (firebaseUser == null) {
+                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_in);
+                } else {
+                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_out);
+                }
             }
-        });
+        };
+
+        authViewModel.getFirebaseAuthLiveData().observe(this,authObserver);
     }
 
     @Override
@@ -107,7 +111,6 @@ public class HomeActivity extends AppCompatActivity
             IdpResponse response = IdpResponse.fromResultIntent(data);
             if (resultCode != RESULT_OK) {
                 if (response == null) {
-                    Toast.makeText(this,R.string.sign_in_cancelled,Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
@@ -118,7 +121,7 @@ public class HomeActivity extends AppCompatActivity
                 Log.e( "Sign-in error: ", response.getError().toString());
             }
             else {
-                Toast.makeText(this,"Signed in successfully",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,R.string.log_in_success,Toast.LENGTH_SHORT).show();
             }
         }
     }
