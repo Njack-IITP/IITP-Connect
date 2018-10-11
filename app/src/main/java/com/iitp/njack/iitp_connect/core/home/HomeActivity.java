@@ -1,6 +1,5 @@
 package com.iitp.njack.iitp_connect.core.home;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -18,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +30,7 @@ import javax.inject.Inject;
  * The HomeActivity which acts as the entry point to all the other Activities and Fragments
  */
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int RC_SIGN_IN = 123;
 
@@ -58,7 +56,7 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(binding.main.toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, binding.drawerLayout, binding.main.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            this, binding.drawerLayout, binding.main.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -77,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
             }
         };
 
-        authViewModel.getFirebaseAuthLiveData().observe(this,authObserver);
+        authViewModel.getFirebaseAuthLiveData().observe(this, authObserver);
     }
 
     @Override
@@ -104,6 +102,7 @@ public class HomeActivity extends AppCompatActivity
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -114,14 +113,13 @@ public class HomeActivity extends AppCompatActivity
                     return;
                 }
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    Toast.makeText(this,R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(this,R.string.unknown_error,Toast.LENGTH_SHORT).show();
-                Log.e( "Sign-in error: ", response.getError().toString());
-            }
-            else {
-                Toast.makeText(this,R.string.log_in_success,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.unknown_error, Toast.LENGTH_SHORT).show();
+                Log.e("Sign-in error: ", response.getError().toString());
+            } else {
+                Toast.makeText(this, R.string.log_in_success, Toast.LENGTH_SHORT).show();
             }
         }
     }

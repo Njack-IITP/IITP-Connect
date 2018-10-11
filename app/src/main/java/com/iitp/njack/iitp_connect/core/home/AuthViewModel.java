@@ -21,19 +21,19 @@ public class AuthViewModel extends ViewModel {
 
     @Inject
     public AuthViewModel(AuthRepository loginRepository) {
-        this.loginRepository=loginRepository;
+        this.loginRepository = loginRepository;
     }
 
     public LiveData<FirebaseUser> getFirebaseAuthLiveData() {
-        if(firebaseAuthLiveData==null) {
-            firebaseAuthLiveData=loginRepository.getFirebaseAuthLiveData();
+        if (firebaseAuthLiveData == null) {
+            firebaseAuthLiveData = loginRepository.getFirebaseAuthLiveData();
         }
         return firebaseAuthLiveData;
     }
 
     public void logout(Context context) {
         AuthUI.getInstance().signOut(context);
-        Toast.makeText(context, R.string.log_out_success,Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.log_out_success, Toast.LENGTH_SHORT).show();
     }
 
 }

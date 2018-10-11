@@ -46,7 +46,7 @@ public class DrawerNavigator {
         } else if (id == R.id.nav_dashboard) {
             // navigate to dashboard.
         } else if (id == R.id.nav_logout) {
-            if(item.getTitle().toString()==context.getResources().getString(R.string.log_in)) {
+            if (item.getTitle().toString() == context.getResources().getString(R.string.log_in)) {
                 final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                     .setTheme(R.style.FirebaseUITheme)
                     .setLogo(R.drawable.firebase_logo)
@@ -55,15 +55,13 @@ public class DrawerNavigator {
                         new AuthUI.IdpConfig.EmailBuilder().build()))
                     .build();
                 ((Activity) context).startActivityForResult(intent, 123);
-            }
-            else {
+            } else {
                 showLogoutDialog();
             }
         } else if (id == R.id.nav_profile) {
-            if (authViewModel.getFirebaseAuthLiveData().getValue()==null) {
-                Toast.makeText(context,R.string.login_prompt, Toast.LENGTH_SHORT).show();
-            }
-            else {
+            if (authViewModel.getFirebaseAuthLiveData().getValue() == null) {
+                Toast.makeText(context, R.string.login_prompt, Toast.LENGTH_SHORT).show();
+            } else {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
@@ -73,11 +71,11 @@ public class DrawerNavigator {
     private void showLogoutDialog() {
         if (logoutDialog == null)
             logoutDialog = new AlertDialog.Builder(context)
-                    .setTitle(R.string.logout_confirmation)
-                    .setMessage(R.string.logout_confirmation_message)
-                    .setPositiveButton(R.string.ok, (dialog, which) -> authViewModel.logout(context))
-                    .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
-                    .create();
+                .setTitle(R.string.logout_confirmation)
+                .setMessage(R.string.logout_confirmation_message)
+                .setPositiveButton(R.string.ok, (dialog, which) -> authViewModel.logout(context))
+                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
+                .create();
 
         logoutDialog.show();
     }
