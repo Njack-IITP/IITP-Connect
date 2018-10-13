@@ -1,20 +1,24 @@
 package com.iitp.njack.iitp_connect.core.home;
 
-import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.ErrorCodes;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
@@ -26,7 +30,7 @@ import javax.inject.Inject;
  * The HomeActivity which acts as the entry point to all the other Activities and Fragments
  */
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int RC_SIGN_IN = 123;
 
@@ -39,7 +43,6 @@ public class HomeActivity extends AppCompatActivity
     private DrawerNavigator drawerNavigator;
     private AuthViewModel authViewModel;
 
-    private LiveData<FirebaseUser> firebaseUserLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(binding.main.toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, binding.drawerLayout, binding.main.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            this, binding.drawerLayout, binding.main.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -61,17 +64,18 @@ public class HomeActivity extends AppCompatActivity
 
         drawerNavigator = new DrawerNavigator(this, authViewModel);
 
-        firebaseUserLiveData = AuthViewModel.getFirebaseAuthLiveData();
-
-        firebaseUserLiveData.observe(HomeActivity.this, firebaseUser -> {
-            if (firebaseUser == null) {
-                final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
-                        .build();
-                startActivityForResult(intent, RC_SIGN_IN);
-            } else {
-               // TODO Create UI for logged in user
+        final Observer<FirebaseUser> authObserver = new Observer<FirebaseUser>() {
+            @Override
+            public void onChanged(@Nullable FirebaseUser firebaseUser) {
+                if (firebaseUser == null) {
+                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_in);
+                } else {
+                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_out);
+                }
             }
-        });
+        };
+
+        authViewModel.getFirebaseAuthLiveData().observe(this, authObserver);
     }
 
     @Override
@@ -97,5 +101,26 @@ public class HomeActivity extends AppCompatActivity
         });
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+            if (resultCode != RESULT_OK) {
+                if (response == null) {
+                    return;
+                }
+                if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
+                    Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(this, R.string.unknown_error, Toast.LENGTH_SHORT).show();
+                Log.e("Sign-in error: ", response.getError().toString());
+            } else {
+                Toast.makeText(this, R.string.log_in_success, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

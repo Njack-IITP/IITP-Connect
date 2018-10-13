@@ -4,6 +4,8 @@ import com.firebase.ui.auth.KickoffActivity;
 import com.firebase.ui.auth.ui.credentials.CredentialSaveActivity;
 import com.firebase.ui.auth.ui.email.EmailActivity;
 import com.firebase.ui.auth.ui.email.WelcomeBackPasswordPrompt;
+import com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity;
+import com.firebase.ui.auth.ui.idp.SingleSignInActivity;
 import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
@@ -37,4 +39,10 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract ProfileActivity contributeProfileActivity();
+
+    @ContributesAndroidInjector
+    abstract SingleSignInActivity contributeSingleSignInActivity();
+
+    @ContributesAndroidInjector
+    abstract AuthMethodPickerActivity contributeAuthMethodPickerActivity();
 }

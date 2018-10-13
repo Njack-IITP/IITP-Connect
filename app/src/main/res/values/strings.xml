@@ -36,6 +36,7 @@
     <string name="device_settings">Device Settings</string>
     <string name="profile">Profile</string>
     <string name="log_out">Log Out</string>
+    <string name="log_in">Log In</string>
     <string name="suggestions">Suggestions</string>
     <string name="dashboard">Dashboard</string>
     <string name="logout_confirmation">Log Out</string>
@@ -48,4 +49,9 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="roll">Roll</string>
+    <string name="login_prompt">You need to login first</string>
+    <string name="no_internet_connection">Please check your internet connection</string>
+    <string name="unknown_error">Some error occured</string>
+    <string name="log_in_success">Logged in successfully</string>
+    <string name="log_out_success">Logged out successfully</string>
 </resources>
