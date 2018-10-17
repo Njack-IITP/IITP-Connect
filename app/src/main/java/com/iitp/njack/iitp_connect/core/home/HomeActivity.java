@@ -6,13 +6,11 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -64,14 +62,11 @@ public class HomeActivity extends AppCompatActivity
 
         drawerNavigator = new DrawerNavigator(this, authViewModel);
 
-        final Observer<FirebaseUser> authObserver = new Observer<FirebaseUser>() {
-            @Override
-            public void onChanged(@Nullable FirebaseUser firebaseUser) {
-                if (firebaseUser == null) {
-                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_in);
-                } else {
-                    binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_out);
-                }
+        final Observer<FirebaseUser> authObserver = firebaseUser -> {
+            if (firebaseUser == null) {
+                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_in);
+            } else {
+                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_out);
             }
         };
 
@@ -117,7 +112,6 @@ public class HomeActivity extends AppCompatActivity
                     return;
                 }
                 Toast.makeText(this, R.string.unknown_error, Toast.LENGTH_SHORT).show();
-                Log.e("Sign-in error: ", response.getError().toString());
             } else {
                 Toast.makeText(this, R.string.log_in_success, Toast.LENGTH_SHORT).show();
             }
