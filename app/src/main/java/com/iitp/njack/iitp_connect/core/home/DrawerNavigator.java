@@ -46,7 +46,7 @@ public class DrawerNavigator {
         } else if (id == R.id.nav_dashboard) {
             // navigate to dashboard.
         } else if (id == R.id.nav_logout) {
-            if (item.getTitle().toString() == context.getResources().getString(R.string.log_in)) {
+            if (item.getTitle().toString().equals(context.getResources().getString(R.string.log_in))) {
                 final Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                     .setTheme(R.style.FirebaseUITheme)
                     .setLogo(R.drawable.firebase_logo)

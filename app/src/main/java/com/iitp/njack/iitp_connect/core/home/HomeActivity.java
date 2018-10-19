@@ -63,11 +63,9 @@ public class HomeActivity extends AppCompatActivity
         drawerNavigator = new DrawerNavigator(this, authViewModel);
 
         final Observer<FirebaseUser> authObserver = firebaseUser -> {
-            if (firebaseUser == null) {
-                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_in);
-            } else {
-                binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(R.string.log_out);
-            }
+            boolean userLoggedIn = firebaseUser != null;
+            binding.navView.getMenu().findItem(R.id.nav_logout).setTitle(userLoggedIn ? R.string.log_out : R.string.log_in);
+            binding.navView.getMenu().findItem(R.id.nav_profile).setVisible(userLoggedIn);
         };
 
         authViewModel.getFirebaseAuthLiveData().observe(this, authObserver);
