@@ -16,13 +16,11 @@ public class AuthRepositoryTest {
     @InjectMocks
     private AuthRepository authRepository;
 
-
     @Mock
     private FirebaseAuthLiveData firebaseAuthLiveData;
 
-
     @Test
-    public void it_should_return_fireBase_live_data() {
+    public void shouldReturnFireBaseLiveData() {
         //Act
         FirebaseAuthLiveData expectedData = authRepository.getFirebaseAuthLiveData();
 
