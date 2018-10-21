@@ -65,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileFirstNameImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileFirstNameEdit.getText().toString();
-                profileViewModel.setField(3, profileField);
+                profileViewModel.setField(UserFieldType.FIRST_NAME, profileField);
                 binding.profileFirstName.setVisibility(View.VISIBLE);
                 binding.profileFirstNameEdit.setVisibility(View.GONE);
                 binding.profileFirstNameImage.setImageResource(R.drawable.ic_edit);
@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileLastNameImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileLastNameEdit.getText().toString();
-                profileViewModel.setField(4, profileField);
+                profileViewModel.setField(UserFieldType.LAST_NAME, profileField);
                 binding.profileLastName.setVisibility(View.VISIBLE);
                 binding.profileLastNameEdit.setVisibility(View.GONE);
                 binding.profileLastNameImage.setImageResource(R.drawable.ic_edit);
@@ -89,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileRollImage.setImageResource(R.drawable.ic_done);
             } else {
                 profileField = binding.profileRollEdit.getText().toString();
-                profileViewModel.setField(5, profileField);
+                profileViewModel.setField(UserFieldType.ROLL, profileField);
                 binding.profileRoll.setVisibility(View.VISIBLE);
                 binding.profileRollEdit.setVisibility(View.GONE);
                 binding.profileRollImage.setImageResource(R.drawable.ic_edit);
