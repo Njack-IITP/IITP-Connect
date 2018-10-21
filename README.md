@@ -13,7 +13,7 @@ This project is meant to encourage the emerging developers of IIT Patna to take 
 ## Features and Future Plans
 
 - [x] **Coding Calendar**
-- [ ] **User Accounts**
+- [x] **User Accounts**
 - [ ] **Youtube Feed**
 - [ ] **Facebook Feed**
 - [ ] **Timetable**
