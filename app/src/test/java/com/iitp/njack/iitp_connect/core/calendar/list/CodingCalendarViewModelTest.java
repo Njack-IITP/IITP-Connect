@@ -83,5 +83,4 @@ public class CodingCalendarViewModelTest {
         // then
         Mockito.verify(observerLong).onChanged(MOCK_CONTEST_ID);
     }
-
 }

@@ -173,7 +173,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-inline:2.23.0'
     testImplementation 'org.json:json:20180813'
-    testImplementation 'org.json:json:20180813'
     testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
     testImplementation "android.arch.core:core-testing:$rootProject.architectureComponentsVersion"
 }
