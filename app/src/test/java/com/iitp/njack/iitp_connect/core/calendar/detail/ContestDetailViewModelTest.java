@@ -30,7 +30,7 @@ public class ContestDetailViewModelTest {
     private ContestDetailRepository contestDetailRepository;
 
     @Test
-    public void shouldLoadContest_whenCurrentContestIsNull() {
+    public void shouldLoadContestWhenCurrentContestIsNull() {
         // when
         contestDetailViewModel.getContest(MOCK_CONTEST_ID);
 
@@ -39,14 +39,12 @@ public class ContestDetailViewModelTest {
     }
 
     @Test
-    public void shouldLoadContest_whenCurrentContestIsNotNull() {
+    public void shouldLoadContestWhenCurrentContestIsNotNull() {
         // given
         MutableLiveData<Contest> contestLiveData = new MutableLiveData<>();
         contestLiveData.setValue(MOCK_CONTEST);
-
         Mockito.when(contestDetailRepository.getContest(MOCK_CONTEST_ID))
             .thenReturn(contestLiveData);
-
 
         // when
         contestDetailViewModel.getContest(MOCK_CONTEST_ID);
