@@ -21,8 +21,8 @@ public class DaoModule {
     @Singleton
     IITPConnectDatabase providesIITPConnectDatabase(Context context) {
         return Room.databaseBuilder(context, IITPConnectDatabase.class, "iitpConnectDatabase")
-                .fallbackToDestructiveMigration()
-                .build();
+            .fallbackToDestructiveMigration()
+            .build();
     }
 
     @Provides
@@ -31,14 +31,12 @@ public class DaoModule {
         return FirebaseDatabase.getInstance().getReference();
     }
 
-    @Singleton
-    @Provides
+    @Singleton @Provides
     public UserDao providesUserDao(IITPConnectDatabase iitpConnectDatabase){
         return iitpConnectDatabase.userDao();
     }
 
-    @Singleton
-    @Provides
+    @Singleton @Provides
     public ContestDao providesContestDao(IITPConnectDatabase iitpConnectDatabase){
         return iitpConnectDatabase.contestDao();
     }

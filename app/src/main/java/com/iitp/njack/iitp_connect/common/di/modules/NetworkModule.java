@@ -115,6 +115,7 @@ public class NetworkModule {
     @Singleton
     Cache providesCache() {
         int cacheSize = 10 * 1024 * 1024; // 10 MB
+
         return new Cache(IITPConnectProvider.context.getCacheDir(), cacheSize);
     }
 
