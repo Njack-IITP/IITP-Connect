@@ -9,6 +9,8 @@ import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailViewModel;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
 import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
+import com.iitp.njack.iitp_connect.core.youtube.PlaylistViewModel;
+import com.iitp.njack.iitp_connect.core.youtube.VideoViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -36,6 +38,16 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProfileViewModel.class)
     public abstract ViewModel bindProfileViewModel(ProfileViewModel profileViewModel);
+
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(PlaylistViewModel.class)
+//    public abstract ViewModel bindPlaylistViewModel(PlaylistViewModel playlistViewModel);
+//
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(VideoViewModel.class)
+//    public abstract ViewModel bindVideoViewModel(VideoViewModel videoViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);
