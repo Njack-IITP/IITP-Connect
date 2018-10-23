@@ -13,6 +13,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
 
 import java.util.Arrays;
 
@@ -65,6 +66,10 @@ public class DrawerNavigator {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
+        }
+        else if(id == R.id.nav_youtube){
+            context.startActivity(new Intent(context,YoutubeActivity.class));
+
         }
     }
 
