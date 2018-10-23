@@ -28,5 +28,4 @@ public class ContestDetailRepositoryTest {
         // then
         Mockito.verify(contestDao).getContestById(Mockito.eq(MOCK_CONTEST_ID));
     }
-
 }
