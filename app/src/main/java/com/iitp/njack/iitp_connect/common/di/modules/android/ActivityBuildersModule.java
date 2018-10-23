@@ -10,6 +10,9 @@ import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.VideoActivity;
+import com.iitp.njack.iitp_connect.core.youtube.VideoPlayActivity;
+import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -45,4 +48,13 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract AuthMethodPickerActivity contributeAuthMethodPickerActivity();
+
+    @ContributesAndroidInjector
+    abstract YoutubeActivity contributeYoutubeActvity();
+
+    @ContributesAndroidInjector
+    abstract VideoActivity contributeVideoActivity();
+
+    @ContributesAndroidInjector
+    abstract VideoPlayActivity contributeVideoPlayActivity();
 }
