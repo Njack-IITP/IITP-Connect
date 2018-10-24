@@ -16,12 +16,13 @@ import dagger.Provides;
 
 @Module
 public class DaoModule {
+
     @Provides
     @Singleton
     IITPConnectDatabase providesIITPConnectDatabase(Context context) {
         return Room.databaseBuilder(context, IITPConnectDatabase.class, "iitpConnectDatabase")
-                .fallbackToDestructiveMigration()
-                .build();
+            .fallbackToDestructiveMigration()
+            .build();
     }
 
     @Provides
