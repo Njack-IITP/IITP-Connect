@@ -1,10 +1,13 @@
 package com.iitp.njack.iitp_connect.core.youtube;
 
+import android.app.Activity;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
 import android.os.AsyncTask;
-
+import android.util.Log;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -13,15 +16,14 @@ import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistListResponse;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.inject.Singleton;
 
 public class PlaylistRepository {
+    Context context;
     private List<YoutubePlaylist> youtubePlaylists = new ArrayList<>();
     private GoogleAccountCredential googleAccountCredential;
     private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
@@ -29,20 +31,20 @@ public class PlaylistRepository {
 
     PlaylistRepository(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;
-        getDataFromAPI();
+        getDataFromAPI(context);
     }
 
     MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
         return this.playlists;
     }
 
-    void getDataFromAPI() {
+    void getDataFromAPI(Context context) {
+        this.context = context;
         new MakeRequestTask(googleAccountCredential).execute();
         this.youtubePlaylists.add(new YoutubePlaylist("abcd"));
 
         playlists.setValue(youtubePlaylists);
     }
-
 
     @Singleton
     private class MakeRequestTask extends AsyncTask<Void, Void, List<YoutubePlaylist>> {
@@ -52,53 +54,53 @@ public class PlaylistRepository {
             HttpTransport transport = AndroidHttp.newCompatibleTransport();
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.youtube.YouTube.Builder(
-                    transport, jsonFactory, credential)
-                    .setApplicationName("YouTube Data API Android Quickstart")
-                    .build();
-
+                transport, jsonFactory, credential)
+                .setApplicationName("IITP-Connect")
+                .build();
             youtubePlaylists.add(new YoutubePlaylist("http1"));
-
         }
-
 
         @Override
         protected List<YoutubePlaylist> doInBackground(Void... params) {
             try {
                 return getDataFromApi();
+            } catch (UserRecoverableAuthIOException e) {
+                ((Activity) context).startActivityForResult(e.getIntent(), 1);
+                return null;
             } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("error", "error occured connect");
                 youtubePlaylists.add(new YoutubePlaylist("error occured"));
                 cancel(true);
                 return null;
             }
         }
 
-
         private List<YoutubePlaylist> getDataFromApi() throws IOException {
             List<YoutubePlaylist> channelInfo = new ArrayList<>();
-
             ChannelListResponse result = mService.channels().list("snippet,contentDetails,statistics")
-                    .setForUsername("GoogleDevelopers")
-                    .execute();
+                .setForUsername("GoogleDevelopers")
+                .execute();
             youtubePlaylists.add(new YoutubePlaylist("http2"));
+
             List<Channel> channels = result.getItems();
-
             if (channels != null) {
-
                 Channel channel = channels.get(0);
+
                 HashMap<String, String> parameters = new HashMap<>();
                 parameters.put("part", "snippet,contentDetails");
                 parameters.put("channelId", channel.getId());
                 parameters.put("maxResults", "25");
                 YouTube.Playlists.List playlistsListByChannelIdRequest = mService.playlists().list(parameters.get("part"));
+
                 if (parameters.containsKey("channelId") && !parameters.get("channelId").equals("")) {
                     playlistsListByChannelIdRequest.setChannelId(parameters.get("channelId"));
                 }
-
                 if (parameters.containsKey("maxResults")) {
                     playlistsListByChannelIdRequest.setMaxResults(Long.parseLong(parameters.get("maxResults")));
                 }
-                PlaylistListResponse playlistListResponse = playlistsListByChannelIdRequest.execute();
 
+                PlaylistListResponse playlistListResponse = playlistsListByChannelIdRequest.execute();
                 List<Playlist> playlist_list = new ArrayList<>();
                 playlist_list = playlistListResponse.getItems();
 
@@ -113,16 +115,16 @@ public class PlaylistRepository {
             return channelInfo;
         }
 
-
         @Override
         protected void onPreExecute() {
+
         }
 
         @Override
         protected void onPostExecute(List<YoutubePlaylist> output) {
             youtubePlaylists.add(new YoutubePlaylist("http"));
             if (output == null || output.size() == 0) {
-                youtubePlaylists.add(new YoutubePlaylist("hkhk"));
+                youtubePlaylists.add(new YoutubePlaylist("HTTP"));
             } else {
                 youtubePlaylists = output;
             }

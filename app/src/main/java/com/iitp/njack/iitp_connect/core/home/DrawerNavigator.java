@@ -18,11 +18,10 @@ import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
 import java.util.Arrays;
 
 public class DrawerNavigator {
+    private static final String GOOGLE_FORM_LINK = "";
     private final Context context;
     private final AuthViewModel authViewModel;
-
     private AlertDialog logoutDialog;
-    private static final String GOOGLE_FORM_LINK = "";
 
     DrawerNavigator(Context context, AuthViewModel authViewModel) {
         this.context = context;
@@ -66,10 +65,8 @@ public class DrawerNavigator {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
-        }
-        else if(id == R.id.nav_youtube){
-            context.startActivity(new Intent(context,YoutubeActivity.class));
-
+        } else if (id == R.id.nav_youtube) {
+            context.startActivity(new Intent(context, YoutubeActivity.class));
         }
     }
 
