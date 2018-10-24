@@ -14,7 +14,7 @@ public class VideoPlayActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         ActivityVideoPlayBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_video_play);
         final String id = getIntent().getStringExtra("video_id");
-        binding.player.initialize("AIzaSyDt35WYuKJD9QKaKWrx6sPNazu92nT4M9w",
+        binding.player.initialize("API_KEY",
             new YouTubePlayer.OnInitializedListener() {
                 @Override
                 public void onInitializationSuccess(YouTubePlayer.Provider provider,
