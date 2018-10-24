@@ -10,6 +10,4 @@ public class YoutubePlaylist {
     public String getPlaylist_id() {
         return playlist_id;
     }
-    public YoutubePlaylist() {
-    }
 }

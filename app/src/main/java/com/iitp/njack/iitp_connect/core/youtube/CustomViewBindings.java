@@ -1,4 +1,4 @@
-package com.example.android.youtubeapp;
+package com.iitp.njack.iitp_connect.core.youtube;
 
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.LinearLayoutManager;

@@ -3,9 +3,7 @@ package com.iitp.njack.iitp_connect.common.di.modules;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitp.njack.iitp_connect.core.home.FirebaseAuthLiveData;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

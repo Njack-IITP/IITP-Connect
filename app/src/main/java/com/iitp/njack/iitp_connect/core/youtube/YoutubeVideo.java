@@ -1,6 +1,5 @@
 package com.iitp.njack.iitp_connect.core.youtube;
 
-
 public class YoutubeVideo {
     private String video_id;
 
