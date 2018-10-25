@@ -57,7 +57,7 @@ ext {
     jacksonVersion = '2.9.7'
 
     // rx java
-    rxjavaVersion = '2.1.10'
+    rxjavaVersion = '2.2.3'
     rxAndroidVersion = '2.1.0'
 
     //stetho
