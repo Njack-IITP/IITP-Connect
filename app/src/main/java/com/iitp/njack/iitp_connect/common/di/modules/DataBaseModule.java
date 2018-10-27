@@ -4,10 +4,12 @@ import android.content.Context;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.iitp.njack.iitp_connect.core.profile.FirebaseDatabaseLiveData;
+import com.iitp.njack.iitp_connect.data.timetabledata.TimeTableInformation;
 import com.iitp.njack.iitp_connect.data.user.User;
 
 import javax.inject.Singleton;
@@ -23,7 +25,7 @@ public class DataBaseModule {
 
     @Provides
     @Singleton
-    User providesDatabaseUser(FirebaseUser firebaseUser) {
+    User providesDatabaseUser() {
         return new User();
     }
 
@@ -42,5 +44,11 @@ public class DataBaseModule {
     FirebaseApp providesFirebaseApp(FirebaseOptions firebaseOptions,Context context) {
         FirebaseApp.initializeApp(context, firebaseOptions, "timeTableGenerator");
         return FirebaseApp.getInstance("timeTableGenerator");
+    }
+
+    @Provides
+    @Singleton
+    TimeTableInformation providesTimeTableInformation() {
+        return new TimeTableInformation("Btech","CS","First");
     }
 }

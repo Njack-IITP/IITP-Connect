@@ -57,4 +57,5 @@
     <string name="unknown_error">Some error occured</string>
     <string name="log_in_success">Logged in successfully</string>
     <string name="log_out_success">Logged out successfully</string>
+    <string name="time_table_dialog_title">Select Timetable</string>
 </resources>
