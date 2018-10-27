@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewParent;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +54,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         binding.profileFirstNameImage.setOnClickListener(this::onClick);
         binding.profileLastNameImage.setOnClickListener(this::onClick);
         binding.profileRollImage.setOnClickListener(this::onClick);
+        binding.profileCourseImage.setOnClickListener(this::onClick);
+        binding.profileBranchImage.setOnClickListener(this::onClick);
+        binding.profileYearImage.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -82,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileLastNameEdit.setVisibility(View.GONE);
                 binding.profileLastNameImage.setImageResource(R.drawable.ic_edit);
             }
-        } else {
+        } else if (v == binding.profileRollImage) {
             if (binding.profileRoll.getVisibility() == View.VISIBLE) {
                 binding.profileRoll.setVisibility(View.GONE);
                 binding.profileRollEdit.setVisibility(View.VISIBLE);
@@ -93,6 +97,42 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileRoll.setVisibility(View.VISIBLE);
                 binding.profileRollEdit.setVisibility(View.GONE);
                 binding.profileRollImage.setImageResource(R.drawable.ic_edit);
+            }
+        } else if (v == binding.profileCourseImage) {
+            if (binding.profileCourse.getVisibility() == View.VISIBLE) {
+                binding.profileCourse.setVisibility(View.GONE);
+                binding.profileCourseEdit.setVisibility(View.VISIBLE);
+                binding.profileCourseImage.setImageResource(R.drawable.ic_done);
+            } else {
+                profileField = binding.profileCourseEdit.getText().toString();
+                profileViewModel.setField(UserFieldType.COURSE, profileField);
+                binding.profileCourse.setVisibility(View.VISIBLE);
+                binding.profileCourseEdit.setVisibility(View.GONE);
+                binding.profileCourseImage.setImageResource(R.drawable.ic_edit);
+            }
+        } else if (v == binding.profileBranchImage) {
+            if (binding.profileBranch.getVisibility() == View.VISIBLE) {
+                binding.profileBranch.setVisibility(View.GONE);
+                binding.profileBranchEdit.setVisibility(View.VISIBLE);
+                binding.profileBranchImage.setImageResource(R.drawable.ic_done);
+            } else {
+                profileField = binding.profileBranchEdit.getText().toString();
+                profileViewModel.setField(UserFieldType.BRANCH, profileField);
+                binding.profileBranch.setVisibility(View.VISIBLE);
+                binding.profileBranchEdit.setVisibility(View.GONE);
+                binding.profileBranchImage.setImageResource(R.drawable.ic_edit);
+            }
+        } else {
+            if (binding.profileYear.getVisibility() == View.VISIBLE) {
+                binding.profileYear.setVisibility(View.GONE);
+                binding.profileYearEdit.setVisibility(View.VISIBLE);
+                binding.profileYearImage.setImageResource(R.drawable.ic_done);
+            } else {
+                profileField = binding.profileYearEdit.getText().toString();
+                profileViewModel.setField(UserFieldType.YEAR, profileField);
+                binding.profileYear.setVisibility(View.VISIBLE);
+                binding.profileYearEdit.setVisibility(View.GONE);
+                binding.profileYearImage.setImageResource(R.drawable.ic_edit);
             }
         }
     }

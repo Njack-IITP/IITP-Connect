@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="timeTable"
+            type="com.iitp.njack.iitp_connect.data.timetabledata.TimeTableDatabase" />
+    </data>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".core.timetable.TimeTableActivity">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="11"
+        android:columnCount="6"
+        android:id="@+id/time_table_grid">
+        <TextView
+        android:text=""
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"/>
+        <TextView
+            android:text="Mon"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text="Tue"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text="Wed"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text="Thurs"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text="Fri"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text="9-10"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.monday["8"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.tuesday["8"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.wednesday["8"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+        <TextView
+            android:text='@{ timeTable.thursday["8"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+        <TextView
+            android:text='@{ timeTable.friday["8"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+        <TextView
+            android:text="10-11"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.monday["9"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.tuesday["9"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+        <TextView
+            android:text='@{ timeTable.wednesday["9"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+        <TextView
+            android:text='@{ timeTable.thursday["9"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+        <TextView
+            android:text='@{ timeTable.friday["9"] }'
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+
+    </GridLayout>
+
+</LinearLayout>
+</layout>

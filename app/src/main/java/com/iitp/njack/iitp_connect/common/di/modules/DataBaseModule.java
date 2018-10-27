@@ -1,5 +1,9 @@
 package com.iitp.njack.iitp_connect.common.di.modules;
 
+import android.content.Context;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,5 +25,22 @@ public class DataBaseModule {
     @Singleton
     User providesDatabaseUser(FirebaseUser firebaseUser) {
         return new User();
+    }
+
+    @Provides
+    @Singleton
+    FirebaseOptions providesFirebaseOptions() {
+        return new FirebaseOptions.Builder()
+            .setApplicationId("1:915375757584:android:71d541a7bb607bdb") // Required for Analytics.
+            .setApiKey("AIzaSyDTWaBiVYkYy56Okb-CpRb1sHtY2g3wZxo") // Required for Auth.
+            .setDatabaseUrl("https://timetable-generator-40b48.firebaseio.com") // Required for RTDB.
+            .build();
+    }
+
+    @Provides
+    @Singleton
+    FirebaseApp providesFirebaseApp(FirebaseOptions firebaseOptions,Context context) {
+        FirebaseApp.initializeApp(context, firebaseOptions, "timeTableGenerator");
+        return FirebaseApp.getInstance("timeTableGenerator");
     }
 }
