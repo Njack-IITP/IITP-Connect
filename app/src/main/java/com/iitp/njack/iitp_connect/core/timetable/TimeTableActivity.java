@@ -4,33 +4,23 @@ import android.app.Dialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.timetabledata.TimeTableDatabase;
 import com.iitp.njack.iitp_connect.data.timetabledata.TimeTableInformation;
 import com.iitp.njack.iitp_connect.data.user.User;
 import com.iitp.njack.iitp_connect.databinding.ActivityTimeTableBinding;
 import com.iitp.njack.iitp_connect.databinding.TimetableDialogBinding;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
