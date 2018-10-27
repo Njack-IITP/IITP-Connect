@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.jasminb.jsonapi.annotations.Type;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

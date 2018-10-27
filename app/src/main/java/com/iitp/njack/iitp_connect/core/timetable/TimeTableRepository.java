@@ -1,12 +1,8 @@
 package com.iitp.njack.iitp_connect.core.timetable;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Context;
-import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;

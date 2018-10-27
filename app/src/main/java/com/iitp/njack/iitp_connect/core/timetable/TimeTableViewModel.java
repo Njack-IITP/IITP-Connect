@@ -2,10 +2,8 @@ package com.iitp.njack.iitp_connect.core.timetable;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
-import com.iitp.njack.iitp_connect.data.user.User;
 
 import javax.inject.Inject;
 
