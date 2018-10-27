@@ -29,7 +29,7 @@ public class TimeTableRepository {
         timeTableDatabase = FirebaseDatabase.getInstance(timeTableGenerator);
         timeTableReference = timeTableDatabase.getReference();
         timeTableDatabaseLiveData = new FirebaseDatabaseLiveData(this.timeTableReference);
-        if(firebaseAuth.getCurrentUser()==null) {
+        if (firebaseAuth.getCurrentUser() == null) {
             firebaseDatabaseLiveData = null;
         } else {
             this.databaseReference = databaseReference.child("users").child(firebaseAuth.getCurrentUser().getUid());
@@ -37,9 +37,11 @@ public class TimeTableRepository {
         }
     }
 
-    LiveData<DataSnapshot> getData(){
+    LiveData<DataSnapshot> getData() {
         return timeTableDatabaseLiveData;
     }
 
-    LiveData<DataSnapshot> getUser() { return firebaseDatabaseLiveData; }
+    LiveData<DataSnapshot> getUser() {
+        return firebaseDatabaseLiveData;
+    }
 }

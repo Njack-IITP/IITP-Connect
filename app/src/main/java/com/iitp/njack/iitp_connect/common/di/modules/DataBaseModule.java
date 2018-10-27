@@ -21,7 +21,9 @@ import dagger.Provides;
 public class DataBaseModule {
     @Provides
     @Singleton
-    FirebaseDatabase providesFirebaseDatabase() { return FirebaseDatabase.getInstance(); }
+    FirebaseDatabase providesFirebaseDatabase() {
+        return FirebaseDatabase.getInstance();
+    }
 
     @Provides
     @Singleton
@@ -41,7 +43,7 @@ public class DataBaseModule {
 
     @Provides
     @Singleton
-    FirebaseApp providesFirebaseApp(FirebaseOptions firebaseOptions,Context context) {
+    FirebaseApp providesFirebaseApp(FirebaseOptions firebaseOptions, Context context) {
         FirebaseApp.initializeApp(context, firebaseOptions, "timeTableGenerator");
         return FirebaseApp.getInstance("timeTableGenerator");
     }
@@ -49,6 +51,6 @@ public class DataBaseModule {
     @Provides
     @Singleton
     TimeTableInformation providesTimeTableInformation() {
-        return new TimeTableInformation("Btech","CS","First");
+        return new TimeTableInformation("Btech", "CS", "First");
     }
 }

@@ -26,13 +26,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     User user;
     @Inject
     FirebaseAuth firebaseAuth;
-
-    private ActivityProfileBinding binding;
-    private ProfileViewModel profileViewModel;
-
     ArrayAdapter<CharSequence> courseAdapter;
     ArrayAdapter<CharSequence> branchAdapter;
     ArrayAdapter<CharSequence> yearAdapter;
+    private ActivityProfileBinding binding;
+    private ProfileViewModel profileViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             if (currentUser.getValue(User.class) == null) {
                 user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
                 user.setEmail(firebaseAuth.getCurrentUser().getEmail());
-                profileViewModel.setUser( user);
+                profileViewModel.setUser(user);
             } else {
                 binding.setProfile(currentUser.getValue(User.class));
             }

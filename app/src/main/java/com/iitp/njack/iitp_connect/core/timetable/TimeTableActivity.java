@@ -60,7 +60,7 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
             .get(TimeTableViewModel.class);
 
         final Observer<DataSnapshot> userObserver = currentUser -> {
-            if(currentUser != null) {
+            if (currentUser != null) {
                 user = currentUser.getValue(User.class);
                 timeTableInformation.setCourse((user.getCourse() == null) ? "Btech" : user.getCourse());
                 timeTableInformation.setBranch((user.getBranch() == null) ? "CS" : user.getBranch());
@@ -70,8 +70,8 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
                 //Do Nothing
             }
         };
-        if(timeTableViewModel.getUser() != null)
-        timeTableViewModel.getUser().observe(this,userObserver);
+        if (timeTableViewModel.getUser() != null)
+            timeTableViewModel.getUser().observe(this, userObserver);
 
         final Observer<DataSnapshot> timeTableObserver = currentTimeTable -> {
             timeTableData = currentTimeTable;
@@ -81,9 +81,8 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    private void setValues()
-    {
-        if(timeTableData == null)
+    private void setValues() {
+        if (timeTableData == null)
             return;
         binding.timeTableCourse.setText(timeTableInformation.getCourse());
         binding.timeTableBranch.setText(timeTableInformation.getBranch());
@@ -98,21 +97,17 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_time_table_menu,menu);
+        inflater.inflate(R.menu.activity_time_table_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.change_table) {
-           // LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-           // View layout = inflater.inflate(R.layout.timetable_dialog, null);
-           // layout.setMinimumWidth((int)( * 0.9f));
-           // layout.setMinimumHeight((int)(displayRectangle.height() * 0.9f));
+        if (id == R.id.change_table) {
             dialog = new Dialog(this);
             dialog.setTitle(R.string.time_table_dialog_title);
-            timetableDialogBinding = (TimetableDialogBinding)DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.timetable_dialog, null, false);
+            timetableDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.timetable_dialog, null, false);
             dialog.setContentView(timetableDialogBinding.getRoot());
             timetableDialogBinding.timeTableChangeButton.setOnClickListener(this::onClick);
             courseAdapter = ArrayAdapter.createFromResource(this,

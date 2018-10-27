@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,9 +20,9 @@ import lombok.NoArgsConstructor;
 @Type("timeTableDatabase")
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
 public class TimeTableDatabase {
-    HashMap<String,String> monday;
-    HashMap<String,String> tuesday;
-    HashMap<String,String> wednesday;
-    HashMap<String,String> thursday;
-    HashMap<String,String> friday;
+    HashMap<String, String> monday;
+    HashMap<String, String> tuesday;
+    HashMap<String, String> wednesday;
+    HashMap<String, String> thursday;
+    HashMap<String, String> friday;
 }
