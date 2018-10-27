@@ -284,13 +284,10 @@
                         android:layout_height="wrap_content"
                         android:text="@{ profile.course }" />
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/profile_course_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                        android:inputType="textCapCharacters"
-                        android:text="@{ profile.course }"
                         android:visibility="gone" />
                 </LinearLayout>
 
@@ -335,13 +332,10 @@
                         android:layout_height="wrap_content"
                         android:text="@{ profile.branch }" />
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/profile_branch_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                        android:inputType="textCapCharacters"
-                        android:text="@{ profile.branch }"
                         android:visibility="gone" />
                 </LinearLayout>
 
@@ -386,13 +380,10 @@
                         android:layout_height="wrap_content"
                         android:text="@{ profile.year }" />
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/profile_year_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                        android:inputType="textCapCharacters"
-                        android:text="@{ profile.year }"
                         android:visibility="gone" />
                 </LinearLayout>
 

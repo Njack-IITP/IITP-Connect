@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 public class TimeTableViewModel extends ViewModel {
     private TimeTableRepository timeTableRepository;
+    private LiveData<DataSnapshot> timeTableDatabaseLiveData;
     private LiveData<DataSnapshot> user;
 
     @Inject
@@ -19,7 +20,10 @@ public class TimeTableViewModel extends ViewModel {
         this.timeTableRepository = timeTableRepository;
     }
     LiveData<DataSnapshot> getData() {
-        return timeTableRepository.getData();
+        if(timeTableDatabaseLiveData == null) {
+            timeTableDatabaseLiveData = timeTableRepository.getData();
+        }
+        return timeTableDatabaseLiveData;
     }
 
     protected LiveData<DataSnapshot> getUser() {

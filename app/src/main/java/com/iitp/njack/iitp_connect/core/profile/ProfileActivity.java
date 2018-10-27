@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.ArrayAdapter;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +30,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private ActivityProfileBinding binding;
     private ProfileViewModel profileViewModel;
 
+    ArrayAdapter<CharSequence> courseAdapter;
+    ArrayAdapter<CharSequence> branchAdapter;
+    ArrayAdapter<CharSequence> yearAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setClickListeners();
         profileViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ProfileViewModel.class);
+
+        courseAdapter = ArrayAdapter.createFromResource(this,
+            R.array.course_array, android.R.layout.simple_spinner_item);
+        branchAdapter = ArrayAdapter.createFromResource(this,
+            R.array.branch_array, android.R.layout.simple_spinner_item);
+        yearAdapter = ArrayAdapter.createFromResource(this,
+            R.array.year_array, android.R.layout.simple_spinner_item);
+
+        binding.profileCourseEdit.setAdapter(courseAdapter);
+        binding.profileBranchEdit.setAdapter(branchAdapter);
+        binding.profileYearEdit.setAdapter(yearAdapter);
 
         final Observer<DataSnapshot> userObserver = currentUser -> {
             if (currentUser.getValue(User.class) == null) {
@@ -104,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileCourseEdit.setVisibility(View.VISIBLE);
                 binding.profileCourseImage.setImageResource(R.drawable.ic_done);
             } else {
-                profileField = binding.profileCourseEdit.getText().toString();
+                profileField = binding.profileCourseEdit.getSelectedItem().toString();
                 profileViewModel.setField(UserFieldType.COURSE, profileField);
                 binding.profileCourse.setVisibility(View.VISIBLE);
                 binding.profileCourseEdit.setVisibility(View.GONE);
@@ -116,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileBranchEdit.setVisibility(View.VISIBLE);
                 binding.profileBranchImage.setImageResource(R.drawable.ic_done);
             } else {
-                profileField = binding.profileBranchEdit.getText().toString();
+                profileField = binding.profileBranchEdit.getSelectedItem().toString();
                 profileViewModel.setField(UserFieldType.BRANCH, profileField);
                 binding.profileBranch.setVisibility(View.VISIBLE);
                 binding.profileBranchEdit.setVisibility(View.GONE);
@@ -128,7 +144,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 binding.profileYearEdit.setVisibility(View.VISIBLE);
                 binding.profileYearImage.setImageResource(R.drawable.ic_done);
             } else {
-                profileField = binding.profileYearEdit.getText().toString();
+                profileField = binding.profileYearEdit.getSelectedItem().toString();
                 profileViewModel.setField(UserFieldType.YEAR, profileField);
                 binding.profileYear.setVisibility(View.VISIBLE);
                 binding.profileYearEdit.setVisibility(View.GONE);

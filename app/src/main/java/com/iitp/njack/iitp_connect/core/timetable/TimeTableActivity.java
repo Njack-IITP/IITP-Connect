@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,11 +28,12 @@ import javax.inject.Inject;
 public class TimeTableActivity extends AppCompatActivity {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
+    @Inject
+    User user;
 
     private TimeTableViewModel timeTableViewModel;
     ActivityTimeTableBinding binding;
-    @Inject
-    User user;
+
     String course = "Btech";
     String year = "First";
     String branch = "CS";
@@ -49,6 +51,8 @@ public class TimeTableActivity extends AppCompatActivity {
                 course = (user.getCourse() == null) ? "Btech" : user.getCourse();
                 branch = (user.getBranch() == null) ? "CS" : user.getBranch();
                 year = (user.getYear() == null) ? "First" : user.getYear();
+            } else {
+                //Do Nothing
             }
         };
         timeTableViewModel.getUser().observe(this,userObserver);
