@@ -5,9 +5,10 @@ apply from: './jacoco.gradle'
 android {
 
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion '28.0.3'
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
+	buildConfigField 'String',"ApiKey",youtube_api_key_iitp_connect
         applicationId "com.iitp.njack.iitp_connect"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
@@ -54,7 +55,7 @@ android {
             unitTests.returnDefaultValues = true
         }
     }
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
 }
@@ -175,7 +176,7 @@ dependencies {
     testImplementation 'org.json:json:20180813'
     testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
 
-      //youtube
+    //youtube
     implementation 'com.google.android.gms:play-services-auth:16.0.0'
     implementation 'pub.devrel:easypermissions:0.3.0'
     implementation('com.google.api-client:google-api-client-android:1.25.0') {
