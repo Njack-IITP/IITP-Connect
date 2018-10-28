@@ -2,24 +2,25 @@ package com.iitp.njack.iitp_connect.core.youtube;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.content.Context;
 import android.databinding.ObservableInt;
 import android.view.View;
+
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.iitp.njack.iitp_connect.R;
+
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class VideoViewModel extends ViewModel {
     public ObservableInt loading;
     public ObservableInt showEmpty;
-    Context context;
     private MutableLiveData<YoutubeVideo> selected;
     private VideoRepository videorepository;
     private VideoAdapter videoAdapter;
     private GoogleAccountCredential googleAccountCredential;
-
-    void init(Context context) {
-        this.context = context;
+    @Inject
+    public VideoViewModel(){
         videorepository = new VideoRepository(googleAccountCredential);
         selected = new MutableLiveData<>();
         videoAdapter = new VideoAdapter(R.layout.view_video, this);
@@ -28,7 +29,7 @@ public class VideoViewModel extends ViewModel {
     }
 
     void fetchList() {
-        videorepository.getDataFromAPI(context);
+        videorepository.getDataFromAPI();
     }
 
     public void onItemClick(Integer index) {
@@ -40,7 +41,7 @@ public class VideoViewModel extends ViewModel {
     }
 
     void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
-        this.googleAccountCredential = googleAccountCredential;
+        videorepository.setGoogleAccountCredential(googleAccountCredential);
     }
 
     public YoutubeVideo getYoutubeVideoAt(Integer index) {

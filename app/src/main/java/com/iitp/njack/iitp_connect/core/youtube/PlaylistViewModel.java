@@ -2,24 +2,26 @@ package com.iitp.njack.iitp_connect.core.youtube;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.content.Context;
+import android.arch.lifecycle.ViewModelProvider;
 import android.databinding.ObservableInt;
 import android.view.View;
+
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.iitp.njack.iitp_connect.R;
+
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class PlaylistViewModel extends ViewModel {
     public ObservableInt loading;
     public ObservableInt showEmpty;
-    private Context context;
     private MutableLiveData<YoutubePlaylist> selected;
     private PlaylistRepository playlistRepository;
     private PlaylistAdapter playlistAdapter;
     private GoogleAccountCredential googleAccountCredential;
-
-    void init(Context context) {
-        this.context = context;
+    @Inject
+    public PlaylistViewModel(){
         playlistRepository = new PlaylistRepository(googleAccountCredential);
         selected = new MutableLiveData<>();
         playlistAdapter = new PlaylistAdapter(R.layout.view_playlist, this);
@@ -28,7 +30,7 @@ public class PlaylistViewModel extends ViewModel {
     }
 
     void fetchList() {
-        playlistRepository.getDataFromAPI(context);
+        playlistRepository.getDataFromAPI();
     }
 
     public void onItemClick(Integer index) {
@@ -40,7 +42,7 @@ public class PlaylistViewModel extends ViewModel {
     }
 
     void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
-        this.googleAccountCredential = googleAccountCredential;
+        playlistRepository.setGoogleAccountCredential(googleAccountCredential);
     }
 
     public YoutubePlaylist getYoutubePlaylistAt(Integer index) {

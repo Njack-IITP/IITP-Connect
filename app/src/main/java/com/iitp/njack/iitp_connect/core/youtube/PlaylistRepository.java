@@ -25,10 +25,14 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PlaylistRepository {
     private String channelName = "GoogleDevelopers";
+
+    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
+        this.googleAccountCredential = googleAccountCredential;
+    }
+
     private GoogleAccountCredential googleAccountCredential;
     private com.google.api.services.youtube.YouTube mService;
     private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
-
 
     PlaylistRepository(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;

@@ -26,6 +26,10 @@ public class VideoRepository {
     private String playlist_id = "";
     private YouTube mService;
 
+    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
+        this.googleAccountCredential = googleAccountCredential;
+    }
+
     VideoRepository(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;
     }
@@ -97,5 +101,4 @@ public class VideoRepository {
         }
         return channelInfo;
     }
-
 }
