@@ -4,6 +4,7 @@ import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,9 @@ import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityVideoBinding;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.inject.Inject;
+
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -39,6 +43,8 @@ public class VideoActivity extends AppCompatActivity {
     private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
     GoogleAccountCredential googleAccountCredential = null;
     String playlist_id = "";
+    @Inject
+    ViewModelProvider.Factory viewModelFactory;
     private VideoViewModel videoViewModel;
 
     @Override
@@ -50,7 +56,7 @@ public class VideoActivity extends AppCompatActivity {
 
     private void setupbindings(Bundle savedInstanceState) {
         ActivityVideoBinding activityVideoBinding = DataBindingUtil.setContentView(this, R.layout.activity_video);
-        videoViewModel = ViewModelProviders.of(this).get(VideoViewModel.class);
+        videoViewModel = ViewModelProviders.of(this,viewModelFactory).get(VideoViewModel.class);
         googleAccountCredential = GoogleAccountCredential.usingOAuth2(
             getApplicationContext(), Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
@@ -59,7 +65,6 @@ public class VideoActivity extends AppCompatActivity {
             playlist_id = "PLOU2XLYxmsILACK8NF7UHElmmZzudR7c7";
         }
         videoViewModel.setGoogleAccountCredential(googleAccountCredential);
-        videoViewModel.init(this);
         videoViewModel.setPlaylist_id(playlist_id);
         activityVideoBinding.setModel(videoViewModel);
         setUpListUpdate();

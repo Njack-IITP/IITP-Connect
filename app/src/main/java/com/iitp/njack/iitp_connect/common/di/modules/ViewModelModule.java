@@ -40,5 +40,15 @@ public abstract class ViewModelModule {
     public abstract ViewModel bindProfileViewModel(ProfileViewModel profileViewModel);
 
     @Binds
+    @IntoMap
+    @ViewModelKey(PlaylistViewModel.class)
+    public abstract ViewModel bindPlaylistViewModel(PlaylistViewModel playlistViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(VideoViewModel.class)
+    public abstract ViewModel bindVideoViewModel(VideoViewModel videoViewModel);
+
+    @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);
 }

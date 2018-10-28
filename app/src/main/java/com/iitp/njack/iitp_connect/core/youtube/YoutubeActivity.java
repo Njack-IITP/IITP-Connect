@@ -3,6 +3,7 @@ package com.iitp.njack.iitp_connect.core.youtube;
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Dialog;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,9 @@ import com.google.api.services.youtube.YouTubeScopes;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityYoutubeBinding;
 import java.util.Arrays;
+
+import javax.inject.Inject;
+
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -35,6 +39,8 @@ public class YoutubeActivity extends AppCompatActivity {
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
     GoogleAccountCredential googleAccountCredential = null;
+    @Inject
+    ViewModelProvider.Factory viewModelFactory;
     private PlaylistViewModel playlistViewModel;
 
     @Override
@@ -45,13 +51,12 @@ public class YoutubeActivity extends AppCompatActivity {
 
     private void setupbindings(Bundle savedInstanceState) {
         ActivityYoutubeBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_youtube);
-        playlistViewModel = ViewModelProviders.of(this).get(PlaylistViewModel.class);
+        playlistViewModel = ViewModelProviders.of(this,viewModelFactory).get(PlaylistViewModel.class);
         googleAccountCredential = GoogleAccountCredential.usingOAuth2(
             getApplicationContext(), Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
         getResultsFromApi();
         playlistViewModel.setGoogleAccountCredential(googleAccountCredential);
-        playlistViewModel.init(this);
         activityMainBinding.setModel(playlistViewModel);
         setUpListUpdate();
     }
