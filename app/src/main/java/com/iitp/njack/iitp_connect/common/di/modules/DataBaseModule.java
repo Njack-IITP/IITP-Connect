@@ -11,6 +11,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.iitp.njack.iitp_connect.core.profile.FirebaseDatabaseLiveData;
 import com.iitp.njack.iitp_connect.data.timetabledata.TimeTableInformation;
 import com.iitp.njack.iitp_connect.data.user.User;
+import com.iitp.njack.iitp_connect.utils.RateLimiter;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
@@ -29,6 +32,11 @@ public class DataBaseModule {
     @Singleton
     User providesDatabaseUser() {
         return new User();
+    }
+
+     @Provides
+    RateLimiter<String> providesRateByTagLimiter() {
+        return new RateLimiter<>(10, TimeUnit.MINUTES);
     }
 
     @Provides
