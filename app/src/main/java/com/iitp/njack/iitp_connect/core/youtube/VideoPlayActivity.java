@@ -5,16 +5,18 @@ import android.os.Bundle;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.iitp.njack.iitp_connect.BuildConfig;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityVideoPlayBinding;
 
 public class VideoPlayActivity extends YouTubeBaseActivity {
+    String API_KEY = BuildConfig.ApiKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityVideoPlayBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_video_play);
         final String id = getIntent().getStringExtra("video_id");
-        binding.player.initialize("AIzaSyDt35WYuKJD9QKaKWrx6sPNazu92nT4M9w",
+        binding.player.initialize(API_KEY,
             new YouTubePlayer.OnInitializedListener() {
                 @Override
                 public void onInitializationSuccess(YouTubePlayer.Provider provider,
