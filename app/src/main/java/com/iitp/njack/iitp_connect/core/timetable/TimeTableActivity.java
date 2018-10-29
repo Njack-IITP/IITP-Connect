@@ -50,8 +50,6 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
                 timeTableInformation.setBranch((user.getBranch() == null) ? "CS" : user.getBranch());
                 timeTableInformation.setYear((user.getYear() == null) ? "First" : user.getYear());
                 setValues();
-            } else {
-                //Do Nothing
             }
         };
         if (timeTableViewModel.getUser() != null)
