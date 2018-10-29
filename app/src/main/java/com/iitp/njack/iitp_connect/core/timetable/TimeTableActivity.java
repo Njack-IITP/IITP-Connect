@@ -28,9 +28,9 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     @Inject
     ViewModelProvider.Factory viewModelFactory;
     @Inject
-    User user;
+    private User user;
     @Inject
-    TimeTableInformation timeTableInformation;
+    private TimeTableInformation timeTableInformation;
 
     private TimeTableViewModel timeTableViewModel;
     private ActivityTimeTableBinding binding;
