@@ -26,9 +26,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     User user;
     @Inject
     FirebaseAuth firebaseAuth;
-    ArrayAdapter<CharSequence> courseAdapter;
-    ArrayAdapter<CharSequence> branchAdapter;
-    ArrayAdapter<CharSequence> yearAdapter;
+    private ArrayAdapter<CharSequence> courseAdapter;
+    private ArrayAdapter<CharSequence> branchAdapter;
+    private ArrayAdapter<CharSequence> yearAdapter;
     private ActivityProfileBinding binding;
     private ProfileViewModel profileViewModel;
 

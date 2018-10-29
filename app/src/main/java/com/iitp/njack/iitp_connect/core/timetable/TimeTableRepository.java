@@ -12,12 +12,12 @@ import com.iitp.njack.iitp_connect.core.profile.FirebaseDatabaseLiveData;
 import javax.inject.Inject;
 
 public class TimeTableRepository {
-    FirebaseApp timeTableGenerator;
-    FirebaseDatabase timeTableDatabase;
-    DatabaseReference timeTableReference;
-    DatabaseReference databaseReference;
-    FirebaseDatabaseLiveData timeTableDatabaseLiveData;
-    FirebaseDatabaseLiveData firebaseDatabaseLiveData;
+    private FirebaseApp timeTableGenerator;
+    private FirebaseDatabase timeTableDatabase;
+    private DatabaseReference timeTableReference;
+    private DatabaseReference databaseReference;
+    private FirebaseDatabaseLiveData timeTableDatabaseLiveData;
+    private FirebaseDatabaseLiveData firebaseDatabaseLiveData;
 
     @Inject
     public TimeTableRepository(FirebaseApp firebaseApp, DatabaseReference databaseReference, FirebaseAuth firebaseAuth) {
@@ -33,11 +33,11 @@ public class TimeTableRepository {
         }
     }
 
-    LiveData<DataSnapshot> getData() {
+    public LiveData<DataSnapshot> getData() {
         return timeTableDatabaseLiveData;
     }
 
-    LiveData<DataSnapshot> getUser() {
+    public LiveData<DataSnapshot> getUser() {
         return firebaseDatabaseLiveData;
     }
 }

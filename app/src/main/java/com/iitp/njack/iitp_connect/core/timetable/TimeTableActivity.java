@@ -32,15 +32,9 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     @Inject
     TimeTableInformation timeTableInformation;
 
-    ArrayAdapter<CharSequence> courseAdapter;
-    ArrayAdapter<CharSequence> branchAdapter;
-    ArrayAdapter<CharSequence> yearAdapter;
-
     private TimeTableViewModel timeTableViewModel;
     private ActivityTimeTableBinding binding;
     private DataSnapshot timeTableData;
-    private Dialog dialog;
-    private TimetableDialogBinding timetableDialogBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +87,13 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        TimetableDialogBinding timetableDialogBinding;
+        ArrayAdapter<CharSequence> courseAdapter;
+        ArrayAdapter<CharSequence> branchAdapter;
+        ArrayAdapter<CharSequence> yearAdapter;
+        Dialog dialog;
         int id = item.getItemId();
+
         if (id == R.id.change_table) {
             dialog = new Dialog(this);
             dialog.setTitle(R.string.time_table_dialog_title);
