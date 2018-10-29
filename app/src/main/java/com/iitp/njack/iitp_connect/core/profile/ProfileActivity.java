@@ -22,9 +22,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Inject
     ViewModelProvider.Factory viewModelFactory;
     @Inject
-    private User user;
+    public User user;
     @Inject
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth firebaseAuth;
     private ArrayAdapter<CharSequence> courseAdapter;
     private ArrayAdapter<CharSequence> branchAdapter;
     private ArrayAdapter<CharSequence> yearAdapter;
