@@ -32,7 +32,6 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     @Inject
     public TimeTableInformation timeTableInformation;
 
-    private TimeTableViewModel timeTableViewModel;
     private ActivityTimeTableBinding binding;
     private DataSnapshot timeTableData;
     private Dialog dialog;
@@ -42,17 +41,15 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_time_table);
-        timeTableViewModel = ViewModelProviders.of(this, viewModelFactory)
+        TimeTableViewModel timeTableViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(TimeTableViewModel.class);
 
         final Observer<DataSnapshot> userObserver = currentUser -> {
-            if (currentUser != null) {
                 user = currentUser.getValue(User.class);
                 timeTableInformation.setCourse((user.getCourse() == null) ? "Btech" : user.getCourse());
                 timeTableInformation.setBranch((user.getBranch() == null) ? "CS" : user.getBranch());
                 timeTableInformation.setYear((user.getYear() == null) ? "First" : user.getYear());
                 setValues();
-            }
         };
         if (timeTableViewModel.getUser() != null)
             timeTableViewModel.getUser().observe(this, userObserver);
