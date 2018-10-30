@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Type("timeTableInformation")
 @JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
 public class TimeTableInformation {
-    String course;
-    String branch;
-    String year;
+    public String course;
+    public String branch;
+    public String year;
 }

@@ -26,7 +26,7 @@ import javax.inject.Inject;
 
 public class TimeTableActivity extends AppCompatActivity implements View.OnClickListener {
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
     @Inject
     public User user;
     @Inject

@@ -18,7 +18,7 @@ public class TimeTableViewModel extends ViewModel {
         this.timeTableRepository = timeTableRepository;
     }
 
-    LiveData<DataSnapshot> getData() {
+    protected LiveData<DataSnapshot> getData() {
         if (timeTableDatabaseLiveData == null) {
             timeTableDatabaseLiveData = timeTableRepository.getData();
         }

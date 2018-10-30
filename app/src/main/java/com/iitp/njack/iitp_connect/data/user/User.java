@@ -34,7 +34,7 @@ public class User {
     String firstName;
     String lastName;
     String roll;
-    String course;
-    String year;
-    String branch;
+    public String course;
+    public String year;
+    public String branch;
 }
