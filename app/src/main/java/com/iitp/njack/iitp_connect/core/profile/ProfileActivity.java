@@ -25,16 +25,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public User user;
     @Inject
     public FirebaseAuth firebaseAuth;
+    private ArrayAdapter<CharSequence> courseAdapter;
+    private ArrayAdapter<CharSequence> branchAdapter;
+    private ArrayAdapter<CharSequence> yearAdapter;
     private ActivityProfileBinding binding;
     private ProfileViewModel profileViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ArrayAdapter<CharSequence> courseAdapter;
-        ArrayAdapter<CharSequence> branchAdapter;
-        ArrayAdapter<CharSequence> yearAdapter;
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
         setClickListeners();

@@ -16,8 +16,9 @@
         <GridLayout
             android:id="@+id/time_table_grid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/blue_200"
+            android:padding="@dimen/cardview_default_elevation"
             android:columnCount="6"
             android:rowCount="13">
 
