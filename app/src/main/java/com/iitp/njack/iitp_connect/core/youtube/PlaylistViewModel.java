@@ -2,7 +2,6 @@ package com.iitp.njack.iitp_connect.core.youtube;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
 import android.databinding.ObservableInt;
 import android.view.View;
 
@@ -19,10 +18,9 @@ public class PlaylistViewModel extends ViewModel {
     private MutableLiveData<YoutubePlaylist> selected;
     private PlaylistRepository playlistRepository;
     private PlaylistAdapter playlistAdapter;
-    private GoogleAccountCredential googleAccountCredential;
     @Inject
-    public PlaylistViewModel(){
-        playlistRepository = new PlaylistRepository(googleAccountCredential);
+    public PlaylistViewModel(PlaylistRepository playlistRepository){
+        this.playlistRepository = playlistRepository;
         selected = new MutableLiveData<>();
         playlistAdapter = new PlaylistAdapter(R.layout.view_playlist, this);
         loading = new ObservableInt(View.GONE);

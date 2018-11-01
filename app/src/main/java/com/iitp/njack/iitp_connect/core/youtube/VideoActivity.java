@@ -19,14 +19,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.util.ExponentialBackOff;
-import com.google.api.services.youtube.YouTubeScopes;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityVideoBinding;
-import java.util.Arrays;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,8 +39,8 @@ public class VideoActivity extends AppCompatActivity {
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
-    GoogleAccountCredential googleAccountCredential = null;
+    @Inject
+    GoogleAccountCredential googleAccountCredential;
     String playlist_id = "";
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -57,9 +56,6 @@ public class VideoActivity extends AppCompatActivity {
     private void setupbindings(Bundle savedInstanceState) {
         ActivityVideoBinding activityVideoBinding = DataBindingUtil.setContentView(this, R.layout.activity_video);
         videoViewModel = ViewModelProviders.of(this,viewModelFactory).get(VideoViewModel.class);
-        googleAccountCredential = GoogleAccountCredential.usingOAuth2(
-            getApplicationContext(), Arrays.asList(SCOPES))
-            .setBackOff(new ExponentialBackOff());
         getResultsFromApi();
         if (playlist_id == null) {
             playlist_id = "PLOU2XLYxmsILACK8NF7UHElmmZzudR7c7";

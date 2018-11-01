@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -25,15 +27,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PlaylistRepository {
     private String channelName = "GoogleDevelopers";
-    private GoogleAccountCredential googleAccountCredential;
+    public GoogleAccountCredential googleAccountCredential;
     private com.google.api.services.youtube.YouTube mService;
     private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
 
     public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;
     }
-
-    PlaylistRepository(GoogleAccountCredential googleAccountCredential) {
+    @Inject
+    public PlaylistRepository(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;
         getDataFromAPI();
     }

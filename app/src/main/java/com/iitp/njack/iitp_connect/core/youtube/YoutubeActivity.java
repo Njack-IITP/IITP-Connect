@@ -38,7 +38,8 @@ public class YoutubeActivity extends AppCompatActivity {
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
-    GoogleAccountCredential googleAccountCredential = null;
+    @Inject
+    GoogleAccountCredential googleAccountCredential;
     @Inject
     ViewModelProvider.Factory viewModelFactory;
     private PlaylistViewModel playlistViewModel;
@@ -52,9 +53,6 @@ public class YoutubeActivity extends AppCompatActivity {
     private void setupbindings(Bundle savedInstanceState) {
         ActivityYoutubeBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_youtube);
         playlistViewModel = ViewModelProviders.of(this,viewModelFactory).get(PlaylistViewModel.class);
-        googleAccountCredential = GoogleAccountCredential.usingOAuth2(
-            getApplicationContext(), Arrays.asList(SCOPES))
-            .setBackOff(new ExponentialBackOff());
         getResultsFromApi();
         playlistViewModel.setGoogleAccountCredential(googleAccountCredential);
         activityMainBinding.setModel(playlistViewModel);
