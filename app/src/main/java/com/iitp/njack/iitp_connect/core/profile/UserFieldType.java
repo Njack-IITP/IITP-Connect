@@ -5,7 +5,10 @@ public enum UserFieldType {
     EMAIL("email"),
     FIRST_NAME("firstName"),
     LAST_NAME("lastName"),
-    ROLL( "roll");
+    ROLL( "roll"),
+    COURSE( "course" ),
+    BRANCH( "branch" ),
+    YEAR( "year" );
 
     public final String key;
     UserFieldType(String key) {

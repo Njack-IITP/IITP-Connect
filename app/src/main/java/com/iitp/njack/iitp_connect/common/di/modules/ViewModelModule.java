@@ -9,6 +9,7 @@ import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailViewModel;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
 import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
+import com.iitp.njack.iitp_connect.core.timetable.TimeTableViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -36,6 +37,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProfileViewModel.class)
     public abstract ViewModel bindProfileViewModel(ProfileViewModel profileViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TimeTableViewModel.class)
+    public abstract ViewModel bindTimeTableViewModel(TimeTableViewModel timeTableViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);

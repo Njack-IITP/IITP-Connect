@@ -46,7 +46,8 @@
 
         <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/> -->
 
-        <activity android:name=".core.profile.ProfileActivity"></activity>
+        <activity android:name=".core.profile.ProfileActivity" />
+        <activity android:name=".core.timetable.TimeTableActivity"></activity>
     </application>
 
 </manifest>

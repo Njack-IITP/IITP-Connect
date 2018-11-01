@@ -14,6 +14,11 @@
             android:icon="@drawable/ic_schedule"
             android:title="@string/coding_calendar" />
 
+        <item
+            android:id="@+id/nav_time_table"
+            android:icon="@drawable/ic_schedule"
+            android:title="Time Table" />
+
     </group>
 
     <group android:id="@+id/mainMenu">
