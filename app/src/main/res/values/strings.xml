@@ -49,9 +49,13 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="roll">Roll</string>
+    <string name="course">Course</string>
+    <string name="branch">Branch</string>
+    <string name="year">Year</string>
     <string name="login_prompt">You need to login first</string>
     <string name="no_internet_connection">Please check your internet connection</string>
     <string name="unknown_error">Some error occured</string>
     <string name="log_in_success">Logged in successfully</string>
     <string name="log_out_success">Logged out successfully</string>
+    <string name="time_table_dialog_title">Select Timetable</string>
 </resources>
