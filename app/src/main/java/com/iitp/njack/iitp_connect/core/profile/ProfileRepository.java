@@ -13,8 +13,8 @@ import javax.inject.Inject;
 
 public class ProfileRepository {
     @VisibleForTesting
-    private FirebaseDatabaseLiveData firebaseDatabaseLiveData;
-    private DatabaseReference databaseReference;
+    public FirebaseDatabaseLiveData firebaseDatabaseLiveData;
+    public DatabaseReference databaseReference;
 
     @Inject
     public ProfileRepository(DatabaseReference databaseReference, FirebaseAuth firebaseAuth) {
