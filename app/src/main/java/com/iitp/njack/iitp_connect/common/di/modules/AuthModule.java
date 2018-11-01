@@ -17,9 +17,13 @@ public class AuthModule {
 
     @Provides
     @Singleton
-    FirebaseUser providesFirebaseUser(FirebaseAuth firebaseAuth) { return firebaseAuth.getCurrentUser(); }
+    FirebaseUser providesFirebaseUser(FirebaseAuth firebaseAuth) {
+        return firebaseAuth.getCurrentUser();
+    }
 
     @Provides
     @Singleton
-    FirebaseAuthLiveData providesFirebaseAuthLiveData() { return new FirebaseAuthLiveData(); }
+    FirebaseAuthLiveData providesFirebaseAuthLiveData() {
+        return new FirebaseAuthLiveData();
+    }
 }

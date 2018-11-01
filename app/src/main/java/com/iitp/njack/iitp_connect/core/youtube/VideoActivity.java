@@ -55,7 +55,7 @@ public class VideoActivity extends AppCompatActivity {
 
     private void setupbindings(Bundle savedInstanceState) {
         ActivityVideoBinding activityVideoBinding = DataBindingUtil.setContentView(this, R.layout.activity_video);
-        videoViewModel = ViewModelProviders.of(this,viewModelFactory).get(VideoViewModel.class);
+        videoViewModel = ViewModelProviders.of(this, viewModelFactory).get(VideoViewModel.class);
         getResultsFromApi();
         if (playlist_id == null) {
             playlist_id = "PLOU2XLYxmsILACK8NF7UHElmmZzudR7c7";

@@ -18,8 +18,9 @@ public class PlaylistViewModel extends ViewModel {
     private MutableLiveData<YoutubePlaylist> selected;
     private PlaylistRepository playlistRepository;
     private PlaylistAdapter playlistAdapter;
+
     @Inject
-    public PlaylistViewModel(PlaylistRepository playlistRepository){
+    public PlaylistViewModel(PlaylistRepository playlistRepository) {
         this.playlistRepository = playlistRepository;
         selected = new MutableLiveData<>();
         playlistAdapter = new PlaylistAdapter(R.layout.view_playlist, this);

@@ -19,13 +19,15 @@ import dagger.Provides;
 public class YoutubeModule {
     @Provides
     @Singleton
-    PlaylistRepository providesPlaylistRepository(GoogleAccountCredential googleAccountCredential){return new PlaylistRepository(googleAccountCredential);}
+    PlaylistRepository providesPlaylistRepository(GoogleAccountCredential googleAccountCredential) {
+        return new PlaylistRepository(googleAccountCredential);
+    }
 
     @Provides
     @Singleton
-    GoogleAccountCredential providesGoogleAccountCredential(Context context){
-       String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
-        GoogleAccountCredential  googleAccountCredential = GoogleAccountCredential.usingOAuth2(
+    GoogleAccountCredential providesGoogleAccountCredential(Context context) {
+        String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
+        GoogleAccountCredential googleAccountCredential = GoogleAccountCredential.usingOAuth2(
             context, Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
         return googleAccountCredential;
@@ -33,5 +35,7 @@ public class YoutubeModule {
 
     @Provides
     @Singleton
-    VideoRepository providesVideoRepository(GoogleAccountCredential googleAccountCredential){ return new VideoRepository(googleAccountCredential);}
+    VideoRepository providesVideoRepository(GoogleAccountCredential googleAccountCredential) {
+        return new VideoRepository(googleAccountCredential);
+    }
 }

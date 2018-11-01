@@ -17,14 +17,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.youtube.YouTubeScopes;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityYoutubeBinding;
-import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -52,7 +51,7 @@ public class YoutubeActivity extends AppCompatActivity {
 
     private void setupbindings(Bundle savedInstanceState) {
         ActivityYoutubeBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_youtube);
-        playlistViewModel = ViewModelProviders.of(this,viewModelFactory).get(PlaylistViewModel.class);
+        playlistViewModel = ViewModelProviders.of(this, viewModelFactory).get(PlaylistViewModel.class);
         getResultsFromApi();
         playlistViewModel.setGoogleAccountCredential(googleAccountCredential);
         activityMainBinding.setModel(playlistViewModel);

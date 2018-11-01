@@ -28,11 +28,12 @@ public class VideoRepository {
     private String playlist_id = "";
     private YouTube mService;
 
-    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
-        this.googleAccountCredential = googleAccountCredential;
-    }
     @Inject
     public VideoRepository(GoogleAccountCredential googleAccountCredential) {
+        this.googleAccountCredential = googleAccountCredential;
+    }
+
+    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
         this.googleAccountCredential = googleAccountCredential;
     }
 

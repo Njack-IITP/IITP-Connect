@@ -18,8 +18,9 @@ public class VideoViewModel extends ViewModel {
     private MutableLiveData<YoutubeVideo> selected;
     private VideoRepository videorepository;
     private VideoAdapter videoAdapter;
+
     @Inject
-    public VideoViewModel(VideoRepository videorepository){
+    public VideoViewModel(VideoRepository videorepository) {
         this.videorepository = videorepository;
         selected = new MutableLiveData<>();
         videoAdapter = new VideoAdapter(R.layout.view_video, this);
