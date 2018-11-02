@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="channels_array" >
+        <item>Pixxel IITP</item>
+        <item>Google Developers</item>
+    </string-array>
+</resources>

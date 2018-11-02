@@ -10,6 +10,7 @@ import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.ChannelSelectActivity;
 import com.iitp.njack.iitp_connect.core.youtube.VideoActivity;
 import com.iitp.njack.iitp_connect.core.youtube.VideoPlayActivity;
 import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
@@ -57,4 +58,7 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract VideoPlayActivity contributeVideoPlayActivity();
+
+    @ContributesAndroidInjector
+    abstract ChannelSelectActivity contributeChannelSelectActivity();
 }

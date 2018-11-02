@@ -13,6 +13,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.ChannelSelectActivity;
 import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
 
 import java.util.Arrays;
