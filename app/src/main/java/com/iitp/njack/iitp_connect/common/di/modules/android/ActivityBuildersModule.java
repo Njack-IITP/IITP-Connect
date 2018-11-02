@@ -13,6 +13,7 @@ import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
 import com.iitp.njack.iitp_connect.core.youtube.VideoActivity;
 import com.iitp.njack.iitp_connect.core.youtube.VideoPlayActivity;
 import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
+import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -57,4 +58,7 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract VideoPlayActivity contributeVideoPlayActivity();
+    
+    @ContributesAndroidInjector
+    abstract TimeTableActivity contributeTimeTableActivity();
 }

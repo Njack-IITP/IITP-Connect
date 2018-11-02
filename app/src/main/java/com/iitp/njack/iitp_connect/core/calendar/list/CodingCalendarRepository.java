@@ -14,9 +14,7 @@ import com.iitp.njack.iitp_connect.data.network.NetworkBoundResource;
 import com.iitp.njack.iitp_connect.data.network.Resource;
 import com.iitp.njack.iitp_connect.utils.RateLimiter;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -26,18 +24,20 @@ public class CodingCalendarRepository {
     private final ContestDao contestDao;
     private final ContestApi contestApi;
     private final AppExecutors appExecutors;
-
-    private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
+    private final RateLimiter<String> repoListRateLimit;
 
     @Inject
-    public CodingCalendarRepository(ContestDao contestDao, ContestApi contestApi,
-                                    AppExecutors appExecutors) {
+    public CodingCalendarRepository(ContestDao contestDao,
+                                    ContestApi contestApi,
+                                    AppExecutors appExecutors,
+                                    RateLimiter<String> repoListRateLimit) {
         this.contestDao = contestDao;
         this.contestApi = contestApi;
         this.appExecutors = appExecutors;
+        this.repoListRateLimit = repoListRateLimit;
     }
 
-    protected LiveData<Resource<List<Contest>>> fetchContests(boolean reload) {
+    public LiveData<Resource<List<Contest>>> fetchContests(boolean reload) {
         return new NetworkBoundResource<List<Contest>, ContestListWrapper>(appExecutors) {
             @Override
             protected void saveCallResult(@NonNull ContestListWrapper item) {
@@ -48,7 +48,7 @@ public class CodingCalendarRepository {
 
             @Override
             protected boolean shouldFetch(@Nullable List<Contest> data) {
-                return data == null || data.isEmpty() || reload || repoListRateLimit.shouldFetch(CONTESTS);
+                return data == null || data.isEmpty() || reload || repoListRateLimit.shouldFetchAndRefresh(CONTESTS);
             }
 
             @NonNull

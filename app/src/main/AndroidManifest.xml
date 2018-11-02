@@ -51,6 +51,8 @@
         <activity android:name=".core.youtube.VideoActivity" />
         <activity android:name=".core.youtube.VideoPlayActivity" />
         <activity android:name=".core.youtube.YoutubeActivity" />
+        <activity android:name=".core.profile.ProfileActivity" />
+        <activity android:name=".core.timetable.TimeTableActivity"></activity>
     </application>
 
 </manifest>

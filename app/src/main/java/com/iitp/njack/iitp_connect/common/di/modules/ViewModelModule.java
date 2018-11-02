@@ -11,6 +11,7 @@ import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
 import com.iitp.njack.iitp_connect.core.youtube.PlaylistViewModel;
 import com.iitp.njack.iitp_connect.core.youtube.VideoViewModel;
+import com.iitp.njack.iitp_connect.core.timetable.TimeTableViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -48,6 +49,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(VideoViewModel.class)
     public abstract ViewModel bindVideoViewModel(VideoViewModel videoViewModel);
+    
+    @Binds
+    @IntoMap
+    @ViewModelKey(TimeTableViewModel.class)
+    public abstract ViewModel bindTimeTableViewModel(TimeTableViewModel timeTableViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);

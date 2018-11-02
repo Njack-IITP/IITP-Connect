@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.noveogroup.android:check:1.2.5'
-        classpath 'com.google.gms:google-services:4.1.0'
+        classpath 'com.google.gms:google-services:4.2.0'
     }
 }
 
@@ -19,6 +19,7 @@ allprojects {
         maven { url 'https://maven.google.com' }
         maven { url "https://jitpack.io" }
         mavenCentral()
+        jcenter()
     }
 }
 
@@ -51,20 +52,20 @@ ext {
     threetenbpVersion = '1.1.1'
 
     // dagger
-    daggerVersion = '2.17'
+    daggerVersion = '2.19'
 
     // jackson
     jacksonVersion = '2.9.7'
 
     // rx java
-    rxjavaVersion = '2.1.10'
+    rxjavaVersion = '2.2.3'
     rxAndroidVersion = '2.1.0'
 
     //stetho
     stetho = '1.5.0'
 
     // roboelectric
-    roboelectric = '3.8'
+    roboelectric = '4.0.1'
 
     //glide
     glide = '4.8.0'

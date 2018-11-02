@@ -16,7 +16,8 @@ public class RateLimiter<KEY> {
         this.timeout = timeUnit.toMillis(timeout);
     }
 
-    public synchronized boolean shouldFetch(KEY key) {
+    @Deprecated
+    public synchronized boolean shouldFetchAndRefresh(KEY key) {
         Long lastFetched = timestamps.get(key);
         long now = now();
         if (lastFetched == null) {
@@ -29,6 +30,26 @@ public class RateLimiter<KEY> {
         }
         return false;
     }
+
+    public synchronized boolean shouldFetch(KEY key) {
+        Long lastFetched = timestamps.get(key);
+        long now = now();
+        if (lastFetched == null) {
+            return true;
+        }else return now - lastFetched > timeout;
+    }
+
+    public synchronized void refreshRateLimiter(KEY key) {
+        Long lastFetched = timestamps.get(key);
+        long now = now();
+        if (lastFetched == null) {
+            timestamps.put(key, now);
+
+        }else if (now - lastFetched > timeout) {
+            timestamps.put(key, now);
+        }
+    }
+
 
     private long now() {
         return SystemClock.uptimeMillis();
