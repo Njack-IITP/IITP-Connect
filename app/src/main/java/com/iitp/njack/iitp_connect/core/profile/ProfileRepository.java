@@ -12,10 +12,9 @@ import com.iitp.njack.iitp_connect.data.user.User;
 import javax.inject.Inject;
 
 public class ProfileRepository {
-    private DatabaseReference databaseReference;
-
     @VisibleForTesting
-    FirebaseDatabaseLiveData firebaseDatabaseLiveData;
+    public FirebaseDatabaseLiveData firebaseDatabaseLiveData;
+    public DatabaseReference databaseReference;
 
     @Inject
     public ProfileRepository(DatabaseReference databaseReference, FirebaseAuth firebaseAuth) {

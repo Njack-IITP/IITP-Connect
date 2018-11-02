@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "3084ccbea4020623b161466ede54655d",
+    "identityHash": "d20146bece285132ee0e2830b948d2fb",
     "entities": [
       {
         "tableName": "contests",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userName` TEXT, `email` TEXT, `firstName` TEXT, `lastName` TEXT, `roll` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userName` TEXT, `email` TEXT, `firstName` TEXT, `lastName` TEXT, `roll` TEXT, `course` TEXT, `year` TEXT, `branch` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -93,6 +93,24 @@
             "columnName": "roll",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "course",
+            "columnName": "course",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "branch",
+            "columnName": "branch",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -107,7 +125,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3084ccbea4020623b161466ede54655d\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d20146bece285132ee0e2830b948d2fb\")"
     ]
   }
 }

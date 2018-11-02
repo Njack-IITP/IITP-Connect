@@ -3,5 +3,22 @@
     <string-array name="channels_array" >
         <item>Pixxel IITP</item>
         <item>Google Developers</item>
+    <string-array name="course_array">
+        <item>Btech</item>
+        <item>Mtech</item>
+        <item>MSc</item>
+        <item>PHD</item>
+    </string-array>
+
+    <string-array name="branch_array">
+        <item>CS</item>
+    </string-array>
+
+    <string-array name="year_array">
+        <item>First</item>
+        <item>Second</item>
+        <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
     </string-array>
 </resources>
