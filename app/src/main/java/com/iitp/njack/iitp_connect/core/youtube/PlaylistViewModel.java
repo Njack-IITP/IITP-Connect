@@ -28,7 +28,7 @@ public class PlaylistViewModel extends ViewModel {
         showEmpty = new ObservableInt(View.GONE);
     }
 
-    void fetchList() {
+    public void fetchList() {
         playlistRepository.getDataFromAPI();
     }
 
@@ -36,11 +36,11 @@ public class PlaylistViewModel extends ViewModel {
         selected.setValue(getYoutubePlaylistAt(index));
     }
 
-    MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
+    public MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
         return playlistRepository.getPlaylists();
     }
 
-    void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
+    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
         playlistRepository.setGoogleAccountCredential(googleAccountCredential);
     }
 
@@ -57,12 +57,12 @@ public class PlaylistViewModel extends ViewModel {
         return playlistAdapter;
     }
 
-    void setPlaylistsInAdapter(List<YoutubePlaylist> playlists) {
+    public void setPlaylistsInAdapter(List<YoutubePlaylist> playlists) {
         this.playlistAdapter.setPlaylists(playlists);
         this.playlistAdapter.notifyDataSetChanged();
     }
 
-    MutableLiveData<YoutubePlaylist> getSelected() {
+    public MutableLiveData<YoutubePlaylist> getSelected() {
         return this.selected;
     }
 }

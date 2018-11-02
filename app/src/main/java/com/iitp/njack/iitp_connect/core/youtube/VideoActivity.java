@@ -34,14 +34,14 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class VideoActivity extends AppCompatActivity {
-    static final int REQUEST_ACCOUNT_PICKER = 1000;
-    static final int REQUEST_AUTHORIZATION = 1001;
-    static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
-    static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
+    private static final int REQUEST_ACCOUNT_PICKER = 1000;
+    private static final int REQUEST_AUTHORIZATION = 1001;
+    private static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
+    private static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
     @Inject
     GoogleAccountCredential googleAccountCredential;
-    String playlist_id = "";
+    private String playlist_id = "";
     @Inject
     ViewModelProvider.Factory viewModelFactory;
     private VideoViewModel videoViewModel;
@@ -61,7 +61,7 @@ public class VideoActivity extends AppCompatActivity {
             playlist_id = "PLOU2XLYxmsILACK8NF7UHElmmZzudR7c7";
         }
         videoViewModel.setGoogleAccountCredential(googleAccountCredential);
-        videoViewModel.setPlaylist_id(playlist_id);
+        videoViewModel.setPlaylistId(playlist_id);
         activityVideoBinding.setModel(videoViewModel);
         setUpListUpdate();
     }
@@ -89,9 +89,9 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable YoutubeVideo youtubeVideo) {
                 if (youtubeVideo != null) {
-                    Toast.makeText(VideoActivity.this, "you selected a " + youtubeVideo.getVideo_id(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VideoActivity.this, "you selected a " + youtubeVideo.getVideoId(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(VideoActivity.this, VideoPlayActivity.class);
-                    intent.putExtra("video_id", youtubeVideo.getVideo_id());
+                    intent.putExtra("video_id", youtubeVideo.getVideoId());
                     startActivity(intent);
                 }
             }
@@ -204,7 +204,7 @@ public class VideoActivity extends AppCompatActivity {
         }
     }
 
-    void showGooglePlayServicesAvailabilityErrorDialog(
+    private void showGooglePlayServicesAvailabilityErrorDialog(
         final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         Dialog dialog = apiAvailability.getErrorDialog(

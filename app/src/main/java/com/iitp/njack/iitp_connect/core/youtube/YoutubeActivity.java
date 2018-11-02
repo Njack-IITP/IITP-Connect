@@ -31,10 +31,10 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class YoutubeActivity extends AppCompatActivity {
-    static final int REQUEST_ACCOUNT_PICKER = 1000;
-    static final int REQUEST_AUTHORIZATION = 1001;
-    static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
-    static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
+    private static final int REQUEST_ACCOUNT_PICKER = 1000;
+    private static final int REQUEST_AUTHORIZATION = 1001;
+    private static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
+    private static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
     @Inject
@@ -76,9 +76,9 @@ public class YoutubeActivity extends AppCompatActivity {
     private void setUpListClick() {
         playlistViewModel.getSelected().observe(this, youtubePlaylist -> {
             if (youtubePlaylist != null) {
-                Toast.makeText(YoutubeActivity.this, "you selected a " + youtubePlaylist.getPlaylist_id(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(YoutubeActivity.this, "you selected a " + youtubePlaylist.getPlaylistId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(YoutubeActivity.this, VideoActivity.class);
-                intent.putExtra("playlist_id", youtubePlaylist.getPlaylist_id());
+                intent.putExtra("playlist_id", youtubePlaylist.getPlaylistId());
                 startActivity(intent);
             }
         });
@@ -190,7 +190,7 @@ public class YoutubeActivity extends AppCompatActivity {
         }
     }
 
-    void showGooglePlayServicesAvailabilityErrorDialog(
+    private void showGooglePlayServicesAvailabilityErrorDialog(
         final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         Dialog dialog = apiAvailability.getErrorDialog(

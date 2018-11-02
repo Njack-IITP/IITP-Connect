@@ -41,11 +41,11 @@ public class PlaylistRepository {
         this.googleAccountCredential = googleAccountCredential;
     }
 
-    MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
+    public MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
         return this.playlists;
     }
 
-    void getDataFromAPI() {
+    public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
         mService = new com.google.api.services.youtube.YouTube.Builder(

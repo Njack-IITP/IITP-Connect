@@ -38,7 +38,7 @@
             android:orientation="vertical"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:text="@{viewModel.getYoutubePlaylistAt(position).playlist_id}"
+            android:text="@{viewModel.getYoutubePlaylistAt(position).getPlaylistId()}"
             android:textSize="16sp"
             tools:text="Test" />
     </LinearLayout>

@@ -54,7 +54,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
     }
 
     public class PlaylistViewHolder extends RecyclerView.ViewHolder {
-        final ViewDataBinding binding;
+        private final ViewDataBinding binding;
 
         public PlaylistViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());

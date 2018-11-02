@@ -41,11 +41,11 @@ public class VideoRepository {
         return this.videos;
     }
 
-    void setPlaylist_id(String playlist_id) {
+    public void setPlaylistId(String playlist_id) {
         this.playlist_id = playlist_id;
     }
 
-    void getDataFromAPI() {
+    public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
         mService = new com.google.api.services.youtube.YouTube.Builder(

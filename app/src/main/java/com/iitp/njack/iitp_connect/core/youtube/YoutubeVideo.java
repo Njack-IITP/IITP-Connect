@@ -7,7 +7,7 @@ public class YoutubeVideo {
         this.video_id = video_id;
     }
 
-    public String getVideo_id() {
+    public String getVideoId() {
         return video_id;
     }
 }

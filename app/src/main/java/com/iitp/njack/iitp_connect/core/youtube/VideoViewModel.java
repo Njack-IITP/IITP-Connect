@@ -28,7 +28,7 @@ public class VideoViewModel extends ViewModel {
         showEmpty = new ObservableInt(View.GONE);
     }
 
-    void fetchList() {
+    public void fetchList() {
         videorepository.getDataFromAPI();
     }
 
@@ -36,11 +36,11 @@ public class VideoViewModel extends ViewModel {
         selected.setValue(getYoutubeVideoAt(index));
     }
 
-    MutableLiveData<List<YoutubeVideo>> getVideos() {
+    public MutableLiveData<List<YoutubeVideo>> getVideos() {
         return videorepository.getVideos();
     }
 
-    void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
+    public void setGoogleAccountCredential(GoogleAccountCredential googleAccountCredential) {
         videorepository.setGoogleAccountCredential(googleAccountCredential);
     }
 
@@ -57,16 +57,16 @@ public class VideoViewModel extends ViewModel {
         return videoAdapter;
     }
 
-    void setPlaylistsInAdapter(List<YoutubeVideo> playlists) {
+    public void setPlaylistsInAdapter(List<YoutubeVideo> playlists) {
         this.videoAdapter.setPlaylists(playlists);
         this.videoAdapter.notifyDataSetChanged();
     }
 
-    MutableLiveData<YoutubeVideo> getSelected() {
+    public MutableLiveData<YoutubeVideo> getSelected() {
         return this.selected;
     }
 
-    void setPlaylist_id(String playlist_id) {
-        videorepository.setPlaylist_id(playlist_id);
+    public void setPlaylistId(String playlist_id) {
+        videorepository.setPlaylistId(playlist_id);
     }
 }

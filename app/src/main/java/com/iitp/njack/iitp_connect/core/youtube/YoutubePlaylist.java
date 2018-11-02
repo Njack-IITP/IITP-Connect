@@ -7,7 +7,7 @@ public class YoutubePlaylist {
         this.playlist_id = playlist_id;
     }
 
-    public String getPlaylist_id() {
+    public String getPlaylistId() {
         return playlist_id;
     }
 }
