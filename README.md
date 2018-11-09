@@ -22,7 +22,7 @@ This project is meant to encourage the emerging developers of IIT Patna to take 
 ## Branch Policy
 1. **master** - This branch contains the most stable version of the application.  
   
-1. **development** - This branch contains the application at it's current state. All the changes and pull-requests should be made here. It will be merged to the **master** branch from time to time.
+1. **development** - This branch contains the application at its current state. All the changes and pull-requests should be made here. It will be merged to the **master** branch from time to time.
 
 ## Contributing
 Read the [Contributing guidelines](CONTRIBUTING.md) to get started. This project follows the [MVVM architectural Pattern](https://developer.android.com/jetpack/docs/guide).
