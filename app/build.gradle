@@ -159,7 +159,7 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
     implementation 'com.firebaseui:firebase-ui-auth:4.2.0'
     implementation 'com.google.firebase:firebase-database:16.0.2'
 
