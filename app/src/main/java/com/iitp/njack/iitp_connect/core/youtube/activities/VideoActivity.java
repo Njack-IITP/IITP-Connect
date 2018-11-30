@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube;
+package com.iitp.njack.iitp_connect.core.youtube.activities;
 
 import android.Manifest;
 import android.accounts.AccountManager;
