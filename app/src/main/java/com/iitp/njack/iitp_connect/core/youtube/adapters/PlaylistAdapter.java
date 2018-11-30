@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube;
+package com.iitp.njack.iitp_connect.core.youtube.adapters;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
