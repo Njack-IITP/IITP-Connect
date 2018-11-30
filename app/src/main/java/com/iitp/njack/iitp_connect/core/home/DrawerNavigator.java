@@ -13,16 +13,16 @@ import com.firebase.ui.auth.AuthUI;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.activities.YoutubeActivity;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
 
 import java.util.Arrays;
 
 public class DrawerNavigator {
+    private static final String GOOGLE_FORM_LINK = "";
     private final Context context;
     private final AuthViewModel authViewModel;
-
     private AlertDialog logoutDialog;
-    private static final String GOOGLE_FORM_LINK = "";
 
     DrawerNavigator(Context context, AuthViewModel authViewModel) {
         this.context = context;
@@ -66,6 +66,8 @@ public class DrawerNavigator {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
+        } else if (id == R.id.nav_youtube) {
+            context.startActivity(new Intent(context, YoutubeActivity.class));
         } else if (id == R.id.nav_time_table) {
             Intent intent = new Intent(context, TimeTableActivity.class);
             context.startActivity(intent);

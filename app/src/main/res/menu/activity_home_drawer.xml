@@ -13,6 +13,10 @@
             android:id="@+id/nav_coding_calendar"
             android:icon="@drawable/ic_schedule"
             android:title="@string/coding_calendar" />
+        <item
+            android:id="@+id/nav_youtube"
+            android:icon="@drawable/ic_dashboard"
+            android:title="Youtube"/>
 
         <item
             android:id="@+id/nav_time_table"
@@ -44,6 +48,7 @@
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
             android:title="@string/log_out" />
+
 
     </group>
 </menu>
