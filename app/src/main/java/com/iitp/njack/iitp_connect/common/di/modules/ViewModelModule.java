@@ -9,8 +9,8 @@ import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailViewModel;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
 import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
-import com.iitp.njack.iitp_connect.core.youtube.PlaylistViewModel;
-import com.iitp.njack.iitp_connect.core.youtube.VideoViewModel;
+import com.iitp.njack.iitp_connect.core.youtube.viewmodels.PlaylistViewModel;
+import com.iitp.njack.iitp_connect.core.youtube.viewmodels.VideoViewModel;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableViewModel;
 
 import dagger.Binds;

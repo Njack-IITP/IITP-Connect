@@ -10,10 +10,10 @@ import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
-import com.iitp.njack.iitp_connect.core.youtube.ChannelSelectActivity;
-import com.iitp.njack.iitp_connect.core.youtube.VideoActivity;
-import com.iitp.njack.iitp_connect.core.youtube.VideoPlayActivity;
-import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
+import com.iitp.njack.iitp_connect.core.youtube.activities.ChannelSelectActivity;
+import com.iitp.njack.iitp_connect.core.youtube.activities.VideoActivity;
+import com.iitp.njack.iitp_connect.core.youtube.activities.VideoPlayActivity;
+import com.iitp.njack.iitp_connect.core.youtube.activities.YoutubeActivity;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
 
 import dagger.Module;

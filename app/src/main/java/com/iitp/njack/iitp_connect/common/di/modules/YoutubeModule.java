@@ -5,8 +5,8 @@ import android.content.Context;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.youtube.YouTubeScopes;
-import com.iitp.njack.iitp_connect.core.youtube.PlaylistRepository;
-import com.iitp.njack.iitp_connect.core.youtube.VideoRepository;
+import com.iitp.njack.iitp_connect.core.youtube.repositories.PlaylistRepository;
+import com.iitp.njack.iitp_connect.core.youtube.repositories.VideoRepository;
 
 import java.util.Arrays;
 
