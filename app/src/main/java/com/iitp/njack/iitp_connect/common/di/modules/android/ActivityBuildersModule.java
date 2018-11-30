@@ -6,11 +6,14 @@ import com.firebase.ui.auth.ui.email.EmailActivity;
 import com.firebase.ui.auth.ui.email.WelcomeBackPasswordPrompt;
 import com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity;
 import com.firebase.ui.auth.ui.idp.SingleSignInActivity;
-import com.firebase.ui.auth.ui.idp.WelcomeBackIdpPrompt;
 import com.iitp.njack.iitp_connect.core.home.HomeActivity;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
+import com.iitp.njack.iitp_connect.core.youtube.ChannelSelectActivity;
+import com.iitp.njack.iitp_connect.core.youtube.VideoActivity;
+import com.iitp.njack.iitp_connect.core.youtube.VideoPlayActivity;
+import com.iitp.njack.iitp_connect.core.youtube.YoutubeActivity;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
 
 import dagger.Module;
@@ -40,9 +43,6 @@ public abstract class ActivityBuildersModule {
     abstract WelcomeBackPasswordPrompt contributeWelcomeBackPasswordPrompt();
 
     @ContributesAndroidInjector
-    abstract WelcomeBackIdpPrompt contributeWelcomeBackIdpPrompt();
-
-    @ContributesAndroidInjector
     abstract ProfileActivity contributeProfileActivity();
 
     @ContributesAndroidInjector
@@ -51,6 +51,18 @@ public abstract class ActivityBuildersModule {
     @ContributesAndroidInjector
     abstract AuthMethodPickerActivity contributeAuthMethodPickerActivity();
 
+    @ContributesAndroidInjector
+    abstract YoutubeActivity contributeYoutubeActvity();
+
+    @ContributesAndroidInjector
+    abstract VideoActivity contributeVideoActivity();
+
+    @ContributesAndroidInjector
+    abstract VideoPlayActivity contributeVideoPlayActivity();
+
+    @ContributesAndroidInjector
+    abstract ChannelSelectActivity contributeChannelSelectActivity();
+    
     @ContributesAndroidInjector
     abstract TimeTableActivity contributeTimeTableActivity();
 }
