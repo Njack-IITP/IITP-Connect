@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube;
+package com.iitp.njack.iitp_connect.core.youtube.viewmodels;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -7,7 +7,8 @@ import android.view.View;
 
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.iitp.njack.iitp_connect.R;
-
+import com.iitp.njack.iitp_connect.core.youtube.models.YoutubePlaylist;
+import com.iitp.njack.iitp_connect.core.youtube.repositories.PlaylistRepository;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,13 +18,13 @@ public class PlaylistViewModel extends ViewModel {
     public ObservableInt showEmpty;
     private MutableLiveData<YoutubePlaylist> selected;
     private PlaylistRepository playlistRepository;
-    private PlaylistAdapter playlistAdapter;
+    // private PlaylistAdapter playlistAdapter;
 
     @Inject
     public PlaylistViewModel(PlaylistRepository playlistRepository) {
         this.playlistRepository = playlistRepository;
         selected = new MutableLiveData<>();
-        playlistAdapter = new PlaylistAdapter(R.layout.view_playlist, this);
+        // playlistAdapter = new PlaylistAdapter(R.layout.view_playlist, this);
         loading = new ObservableInt(View.GONE);
         showEmpty = new ObservableInt(View.GONE);
     }
@@ -53,14 +54,14 @@ public class PlaylistViewModel extends ViewModel {
         return null;
     }
 
-    public PlaylistAdapter getAdapter() {
-        return playlistAdapter;
-    }
+    // public PlaylistAdapter getAdapter() {
+    //     return playlistAdapter;
+    // }
 
-    public void setPlaylistsInAdapter(List<YoutubePlaylist> playlists) {
-        this.playlistAdapter.setPlaylists(playlists);
-        this.playlistAdapter.notifyDataSetChanged();
-    }
+    // public void setPlaylistsInAdapter(List<YoutubePlaylist> playlists) {
+    //     this.playlistAdapter.setPlaylists(playlists);
+    //     this.playlistAdapter.notifyDataSetChanged();
+    // }
 
     public MutableLiveData<YoutubePlaylist> getSelected() {
         return this.selected;
