@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube;
+package com.iitp.njack.iitp_connect.core.youtube.models;
 
 import com.google.api.client.util.DateTime;
 

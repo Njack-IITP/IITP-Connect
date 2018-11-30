@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube;
+package com.iitp.njack.iitp_connect.core.youtube.repositories;
 
 import android.arch.lifecycle.MutableLiveData;
 
