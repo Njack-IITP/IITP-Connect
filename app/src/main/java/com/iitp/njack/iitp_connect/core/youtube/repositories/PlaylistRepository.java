@@ -29,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
 public class PlaylistRepository {
     public GoogleAccountCredential googleAccountCredential;
     private String channelName = "GoogleDevelopers";
-    private YouTube mService;
+    private YouTube service;
     private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
 
     @Inject
@@ -49,11 +49,11 @@ public class PlaylistRepository {
     public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-        mService = new YouTube.Builder(
+        service = new YouTube.Builder(
             transport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
             .build();
-        io.reactivex.Observable.just(channelName).map(s -> getFromApi(mService))
+        io.reactivex.Observable.just(channelName).map(s -> getFromApi(service))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Observer<List<YoutubePlaylist>>() {
@@ -93,7 +93,7 @@ public class PlaylistRepository {
             parameters.put("channelId", channel.getId());
             parameters.put("maxResults", "50");
 
-            YouTube.Playlists.List playlistsListByChannelIdRequest = mService.playlists().list(parameters.get("part"));
+            YouTube.Playlists.List playlistsListByChannelIdRequest = service.playlists().list(parameters.get("part"));
             if (parameters.containsKey("channelId") && !parameters.get("channelId").equals("")) {
                 playlistsListByChannelIdRequest.setChannelId(parameters.get("channelId"));
             }

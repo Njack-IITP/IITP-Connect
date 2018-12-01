@@ -27,7 +27,7 @@ public class VideoRepository {
     private MutableLiveData<List<YoutubeVideo>> videos = new MutableLiveData<>();
     private GoogleAccountCredential googleAccountCredential;
     private String playlist_id = "";
-    private YouTube mService;
+    private YouTube service;
 
     @Inject
     public VideoRepository(GoogleAccountCredential googleAccountCredential) {
@@ -49,12 +49,12 @@ public class VideoRepository {
     public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-        mService = new YouTube.Builder(
+        service = new YouTube.Builder(
             transport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
             .build();
 
-        io.reactivex.Observable.just(playlist_id).map(s -> getFromApi(mService))
+        io.reactivex.Observable.just(playlist_id).map(s -> getFromApi(service))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Observer<List<YoutubeVideo>>() {
