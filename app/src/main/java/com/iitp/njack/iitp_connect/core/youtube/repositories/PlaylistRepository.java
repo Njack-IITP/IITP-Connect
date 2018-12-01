@@ -12,6 +12,7 @@ import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistListResponse;
+import com.iitp.njack.iitp_connect.core.youtube.models.YoutubePlaylist;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
 public class PlaylistRepository {
     public GoogleAccountCredential googleAccountCredential;
     private String channelName = "GoogleDevelopers";
-    private com.google.api.services.youtube.YouTube mService;
+    private YouTube mService;
     private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
 
     @Inject
@@ -48,7 +49,7 @@ public class PlaylistRepository {
     public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-        mService = new com.google.api.services.youtube.YouTube.Builder(
+        mService = new YouTube.Builder(
             transport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
             .build();

@@ -10,6 +10,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
+import com.iitp.njack.iitp_connect.core.youtube.models.YoutubeVideo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class VideoRepository {
         this.googleAccountCredential = googleAccountCredential;
     }
 
-    MutableLiveData<List<YoutubeVideo>> getVideos() {
+    public MutableLiveData<List<YoutubeVideo>> getVideos() {
         return this.videos;
     }
 
@@ -48,7 +49,7 @@ public class VideoRepository {
     public void getDataFromAPI() {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-        mService = new com.google.api.services.youtube.YouTube.Builder(
+        mService = new YouTube.Builder(
             transport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
             .build();
