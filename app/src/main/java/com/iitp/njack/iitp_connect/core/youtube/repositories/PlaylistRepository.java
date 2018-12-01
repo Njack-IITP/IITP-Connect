@@ -59,7 +59,7 @@ public class PlaylistRepository {
             .subscribe(new Observer<List<YoutubePlaylist>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-
+                    // nothing here
                 }
 
                 @Override
@@ -74,7 +74,7 @@ public class PlaylistRepository {
 
                 @Override
                 public void onComplete() {
-
+                    //nothing here
                 }
             });
     }
