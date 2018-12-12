@@ -8,7 +8,6 @@ android {
     buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
-        buildConfigField 'String', "ApiKey", youtube_api_key_iitp_connect
         applicationId "com.iitp.njack.iitp_connect"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
