@@ -30,14 +30,14 @@ public class FacebookPost {
     public static final String TABLE_NAME = "facebookPosts";
     @Id(LongIdHandler.class)
     @PrimaryKey(autoGenerate = true)
-    Long id;
-    String likes;
-    String comments;
-    String shares;
-    String propic;
-    String postpic;
-    String name;
-    String time;
-    String message;
-    String url;
+    private Long id;
+    private String likes;
+    private String comments;
+    private String shares;
+    private String propic;
+    private String postpic;
+    private String name;
+    private String time;
+    private String message;
+    private String url;
 }
