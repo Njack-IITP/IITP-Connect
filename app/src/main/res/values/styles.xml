@@ -25,4 +25,29 @@
         <item name="android:background">@color/blue_200</item>
     </style>
 
+    <style name="timetable_heading">
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnSpan">2</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:background">#ebe4860b</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="timetable_time_heading">
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#212121</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="time_table_item">
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
