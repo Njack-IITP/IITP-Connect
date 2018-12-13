@@ -1,17 +1,16 @@
 package com.iitp.njack.iitp_connect.core.timetable;
 
-import android.app.Dialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +23,7 @@ import com.iitp.njack.iitp_connect.databinding.TimetableDialogBinding;
 
 import javax.inject.Inject;
 
-public class TimeTableActivity extends AppCompatActivity implements View.OnClickListener {
+public class TimeTableActivity extends AppCompatActivity{
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
     @Inject
@@ -35,7 +34,7 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
     TimeTableViewModel timeTableViewModel;
     private ActivityTimeTableBinding binding;
     private DataSnapshot timeTableData;
-    private Dialog dialog;
+    private AlertDialog dialog;
     private TimetableDialogBinding timetableDialogBinding;
 
     @Override
@@ -46,11 +45,11 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
             .get(TimeTableViewModel.class);
 
         final Observer<DataSnapshot> userObserver = currentUser -> {
-                user = currentUser.getValue(User.class);
-                timeTableInformation.setCourse((user.getCourse() == null) ? "Btech" : user.getCourse());
-                timeTableInformation.setBranch((user.getBranch() == null) ? "CS" : user.getBranch());
-                timeTableInformation.setYear((user.getYear() == null) ? "First" : user.getYear());
-                setValues();
+            user = currentUser.getValue(User.class);
+            timeTableInformation.setCourse((user.getCourse() == null) ? "Btech" : user.getCourse());
+            timeTableInformation.setBranch((user.getBranch() == null) ? "CS" : user.getBranch());
+            timeTableInformation.setYear((user.getYear() == null) ? "First" : user.getYear());
+            setValues();
         };
         if (timeTableViewModel.getUser() != null)
             timeTableViewModel.getUser().observe(this, userObserver);
@@ -91,32 +90,32 @@ public class TimeTableActivity extends AppCompatActivity implements View.OnClick
         int id = item.getItemId();
 
         if (id == R.id.change_table) {
-            dialog = new Dialog(this);
-            dialog.setTitle(R.string.time_table_dialog_title);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(R.string.time_table_dialog_title);
             timetableDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.timetable_dialog, null, false);
-            dialog.setContentView(timetableDialogBinding.getRoot());
-            timetableDialogBinding.timeTableChangeButton.setOnClickListener(this::onClick);
+            builder.setView(timetableDialogBinding.getRoot());
             courseAdapter = ArrayAdapter.createFromResource(this,
                 R.array.course_array, android.R.layout.simple_spinner_item);
+            courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             branchAdapter = ArrayAdapter.createFromResource(this,
                 R.array.branch_array, android.R.layout.simple_spinner_item);
+            branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             yearAdapter = ArrayAdapter.createFromResource(this,
                 R.array.year_array, android.R.layout.simple_spinner_item);
+            yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             timetableDialogBinding.timeTableCourseChange.setAdapter(courseAdapter);
             timetableDialogBinding.timeTableBranchChange.setAdapter(branchAdapter);
             timetableDialogBinding.timeTableYearChange.setAdapter(yearAdapter);
+            builder.setPositiveButton("SUBMIT", (dialog, which) -> {
+                timeTableInformation.setCourse(timetableDialogBinding.timeTableCourseChange.getSelectedItem().toString());
+                timeTableInformation.setBranch(timetableDialogBinding.timeTableBranchChange.getSelectedItem().toString());
+                timeTableInformation.setYear(timetableDialogBinding.timeTableYearChange.getSelectedItem().toString());
+                dialog.dismiss();
+                setValues();
+            });
+            dialog=builder.create();
             dialog.show();
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        timeTableInformation.setCourse(timetableDialogBinding.timeTableCourseChange.getSelectedItem().toString());
-        timeTableInformation.setBranch(timetableDialogBinding.timeTableBranchChange.getSelectedItem().toString());
-        timeTableInformation.setYear(timetableDialogBinding.timeTableYearChange.getSelectedItem().toString());
-        dialog.dismiss();
-        setValues();
     }
 }
