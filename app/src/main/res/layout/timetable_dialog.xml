@@ -21,13 +21,14 @@
             android:id="@+id/time_table_course_change"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_marginStart="5dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
             android:background="@color/grey_800" />
 
@@ -41,13 +42,14 @@
             android:id="@+id/time_table_branch_change"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_marginStart="5dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
             android:background="@color/grey_800" />
 
@@ -61,12 +63,13 @@
             android:id="@+id/time_table_year_change"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_marginStart="5dp" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
             android:background="@color/grey_800" />
 
