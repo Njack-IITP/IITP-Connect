@@ -58,4 +58,7 @@
     <string name="log_in_success">Logged in successfully</string>
     <string name="log_out_success">Logged out successfully</string>
     <string name="time_table_dialog_title">Select Timetable</string>
+    <string name="year_head_timetable">Year</string>
+    <string name="branch_head_timetable">Branch</string>
+    <string name="course_head_timetable">Course</string>
 </resources>
