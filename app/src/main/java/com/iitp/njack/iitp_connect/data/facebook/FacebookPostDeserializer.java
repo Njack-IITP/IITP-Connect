@@ -1,32 +1,27 @@
 package com.iitp.njack.iitp_connect.data.facebook;
 
-import android.util.Log;
-
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.iitp.njack.iitp_connect.data.contest.ContestListWrapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacebookPostDeserializer extends StdDeserializer<FacebookPostsWrapper> {
+public class FacebookPostDeserializer extends StdDeserializer<FacebookPostListWrapper> {
     public FacebookPostDeserializer() {
-        super(FacebookPostsWrapper.class);
+        super(FacebookPostListWrapper.class);
     }
 
     @Override
-    public FacebookPostsWrapper deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
+    public FacebookPostListWrapper deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
 
         List<FacebookPost> facebookPostList = new ArrayList<>();
 
-        FacebookPostsWrapper wrapper = new FacebookPostsWrapper();
+        FacebookPostListWrapper wrapper = new FacebookPostListWrapper();
 
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-
         JsonNode data = node.get("data");
 
         if (data.isArray()) {
@@ -40,7 +35,7 @@ public class FacebookPostDeserializer extends StdDeserializer<FacebookPostsWrapp
                 JsonNode comments = objNode.get("comments");
                 JsonNode commentsSummary = comments.get("summary");
 
-                if(objNode.get("shares") != null) {
+                if (objNode.get("shares") != null) {
                     JsonNode shares = objNode.get("shares");
                     facebookPost.setShares(shares.get("count").asText());
                 } else {
@@ -49,10 +44,10 @@ public class FacebookPostDeserializer extends StdDeserializer<FacebookPostsWrapp
                 facebookPost.setTime(objNode.get("created_time").asText());
                 facebookPost.setName(from.get("name").asText());
                 facebookPost.setUrl(objNode.get("permalink_url").asText());
-                if(objNode.get("full_picture") != null)
+                if (objNode.get("full_picture") != null)
                     facebookPost.setPostpic(objNode.get("full_picture").asText());
                 facebookPost.setPropic(datum.get("url").asText());
-                if(objNode.get("message") != null)
+                if (objNode.get("message") != null)
                     facebookPost.setMessage(objNode.get("message").asText());
                 facebookPost.setLikes(likesSummary.get("total_count").asText());
                 facebookPost.setComments(commentsSummary.get("total_count").asText());
@@ -69,7 +64,7 @@ public class FacebookPostDeserializer extends StdDeserializer<FacebookPostsWrapp
             JsonNode comments = data.get("comments");
             JsonNode commentsSummary = comments.get("summary");
 
-            if(data.get("shares") != null) {
+            if (data.get("shares") != null) {
                 JsonNode shares = data.get("shares");
                 facebookPost.setShares(shares.get("count").asText());
             } else {
@@ -78,10 +73,10 @@ public class FacebookPostDeserializer extends StdDeserializer<FacebookPostsWrapp
             facebookPost.setTime(data.get("created_time").asText());
             facebookPost.setName(from.get("name").asText());
             facebookPost.setUrl(data.get("permalink_url").asText());
-            if(data.get("full_picture") != null)
+            if (data.get("full_picture") != null)
                 facebookPost.setPostpic(data.get("full_picture").asText());
             facebookPost.setPropic(datum.get("url").asText());
-            if(data.get("message") != null)
+            if (data.get("message") != null)
                 facebookPost.setMessage(data.get("message").asText());
             facebookPost.setLikes(likesSummary.get("total_count").asText());
             facebookPost.setComments(commentsSummary.get("total_count").asText());
