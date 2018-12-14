@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.youtube.models;
+package com.iitp.njack.iitp_connect.data.youtube;
 
 import com.google.api.client.util.DateTime;
 
@@ -10,8 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class YoutubePlaylist {
-    String playlist_id;
-    String title;
-    long itemCount;
-    DateTime publishedAt;
+    private String playlist_id;
+    private String title;
+    private long itemCount;
+    private DateTime publishedAt;
 }

@@ -9,8 +9,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.youtube.YouTubeScopes;
-import com.iitp.njack.iitp_connect.core.youtube.repositories.PlaylistRepository;
-import com.iitp.njack.iitp_connect.core.youtube.repositories.VideoRepository;
+import com.iitp.njack.iitp_connect.core.youtube.PlaylistRepository;
+import com.iitp.njack.iitp_connect.core.youtube.VideoRepository;
 import com.google.api.services.youtube.YouTube;
 
 
@@ -25,40 +25,28 @@ import dagger.Provides;
 public class YoutubeModule {
     @Provides
     @Singleton
-    PlaylistRepository providesPlaylistRepository() {
-        return new PlaylistRepository();
-    }
-
-    @Provides
-    @Singleton
-    GoogleAccountCredential providesGoogleAccountCredential(Context context) {
+    public GoogleAccountCredential providesGoogleAccountCredential(Context context) {
         String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
-        GoogleAccountCredential googleAccountCredential = GoogleAccountCredential.usingOAuth2(
+        return GoogleAccountCredential.usingOAuth2(
             context, Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
-        return googleAccountCredential;
     }
 
     @Provides
     @Singleton
-    VideoRepository providesVideoRepository() {
-        return new VideoRepository();
-    }
-
-    @Provides
-    @Singleton
-    HttpTransport providesHttpTransport(){
+    public HttpTransport providesHttpTransport(){
         return AndroidHttp.newCompatibleTransport();
     }
+
     @Singleton
     @Provides
-    JsonFactory providesJsonFactory() {
+    public JsonFactory providesJsonFactory() {
         return  JacksonFactory.getDefaultInstance();
     }
 
     @Provides
     @Singleton
-    YouTube providesYoutubeService(HttpTransport transport, JsonFactory jsonFactory, GoogleAccountCredential googleAccountCredential) {
+    public YouTube providesYoutubeService(HttpTransport transport, JsonFactory jsonFactory, GoogleAccountCredential googleAccountCredential) {
         return new YouTube.Builder(
             transport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
