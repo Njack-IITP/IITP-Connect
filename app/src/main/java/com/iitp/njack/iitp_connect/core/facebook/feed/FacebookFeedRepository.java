@@ -1,4 +1,4 @@
-package com.iitp.njack.iitp_connect.core.fb.feed;
+package com.iitp.njack.iitp_connect.core.facebook.feed;
 
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import com.iitp.njack.iitp_connect.AppExecutors;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookApi;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPostDao;
-import com.iitp.njack.iitp_connect.data.facebook.FacebookPostsWrapper;
+import com.iitp.njack.iitp_connect.data.facebook.FacebookPostListWrapper;
 import com.iitp.njack.iitp_connect.data.network.ApiResponse;
 import com.iitp.njack.iitp_connect.data.network.NetworkBoundResource;
 import com.iitp.njack.iitp_connect.data.network.Resource;
@@ -42,9 +42,9 @@ public class FacebookFeedRepository {
     }
 
     public LiveData<Resource<List<FacebookPost>>> fetchFacebookPosts(boolean reload) {
-        return new NetworkBoundResource<List<FacebookPost>, FacebookPostsWrapper>(appExecutors) {
+        return new NetworkBoundResource<List<FacebookPost>, FacebookPostListWrapper>(appExecutors) {
             @Override
-            protected void saveCallResult(@NonNull FacebookPostsWrapper item) {
+            protected void saveCallResult(@NonNull FacebookPostListWrapper item) {
                 facebookPostDao.deleteAll();
                 List<FacebookPost> contests = item.getFacebookPosts();
                 facebookPostDao.addFacebookPosts(contests);
@@ -63,8 +63,8 @@ public class FacebookFeedRepository {
 
             @NonNull
             @Override
-            protected LiveData<ApiResponse<FacebookPostsWrapper>> createCall() {
-                return facebookApi.getFacebookPosts(FIELDS,ACCESS_TOKEN);
+            protected LiveData<ApiResponse<FacebookPostListWrapper>> createCall() {
+                return facebookApi.getFacebookPosts(FIELDS, ACCESS_TOKEN);
             }
 
             @Override
