@@ -52,10 +52,10 @@ ext {
     threetenbpVersion = '1.1.1'
 
     // dagger
-    daggerVersion = '2.19'
+    daggerVersion = '2.20'
 
     // jackson
-    jacksonVersion = '2.9.7'
+    jacksonVersion = '2.9.8'
 
     // rx java
     rxjavaVersion = '2.2.4'
@@ -65,7 +65,7 @@ ext {
     stetho = '1.5.0'
 
     // roboelectric
-    roboelectric = '4.0.2'
+    roboelectric = '4.1'
 
     //glide
     glide = '4.8.0'
