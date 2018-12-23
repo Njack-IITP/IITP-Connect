@@ -16,7 +16,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
     private Pipe<Long> clickAction;
     private Context context;
 
-    public FacebookFeedViewHolder(FacebookPostItemBinding binding,Context context) {
+    public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context) {
         super(binding.getRoot());
         this.binding = binding;
         this.context = context;
@@ -31,7 +31,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
     public void bind(FacebookPost facebookPost) {
         this.facebookPost = facebookPost;
         binding.setFacebookPost(facebookPost);
-        if(facebookPost.getPostpic() != null) {
+        if (facebookPost.getPostpic() != null) {
             binding.imgViewPostPic.setVisibility(View.VISIBLE);
             Glide.with(context)
                 .load(facebookPost.getPostpic())
