@@ -25,7 +25,7 @@
         <item name="android:background">@color/blue_200</item>
     </style>
 
-    <style name="timetable_heading">
+    <style name="timetable_heading" parent="Base.TextAppearance.AppCompat">
         <item name="android:layout_rowWeight">1</item>
         <item name="android:layout_columnSpan">2</item>
         <item name="android:layout_columnWeight">1</item>
