@@ -15,7 +15,7 @@ import javax.inject.Inject;
 public class FacebookFeedViewModel extends ViewModel {
 
 
-    static final String FACEBOOK_POST_VIEW_MODEL = "facebookPostViewModel";
+    private static final String FACEBOOK_POST_VIEW_MODEL = "facebookPostViewModel";
 
     private final FacebookFeedRepository facebookFeedRepository;
     private final RateLimiter<String> repoListRateLimit;
