@@ -14,14 +14,12 @@ import javax.inject.Inject;
 
 public class FacebookFeedViewModel extends ViewModel {
 
-
     private static final String FACEBOOK_POST_VIEW_MODEL = "facebookPostViewModel";
 
     private final FacebookFeedRepository facebookFeedRepository;
     private final RateLimiter<String> repoListRateLimit;
     private LiveData<Resource<List<FacebookPost>>> facebookPosts;
     private SingleEventLiveData<Long> clickAction = new SingleEventLiveData<>();
-
 
     @Inject
     public FacebookFeedViewModel(FacebookFeedRepository facebookFeedRepository,
@@ -46,5 +44,4 @@ public class FacebookFeedViewModel extends ViewModel {
     protected LiveData<Long> getSelectedFacebookPost() {
         return clickAction;
     }
-
 }
