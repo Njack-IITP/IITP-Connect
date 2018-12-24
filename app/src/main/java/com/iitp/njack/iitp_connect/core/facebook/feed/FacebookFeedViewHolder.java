@@ -15,11 +15,13 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
     private FacebookPost facebookPost;
     private Pipe<Long> clickAction;
     private Context context;
+    private Glide glide;
 
-    public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context) {
+    public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context, Glide glide) {
         super(binding.getRoot());
         this.binding = binding;
         this.context = context;
+        this.glide = glide;
 
         binding.getRoot().setOnClickListener(view -> {
             if (clickAction != null) {
@@ -33,7 +35,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
         binding.setFacebookPost(facebookPost);
         if (facebookPost.getPostpic() != null) {
             binding.imgViewPostPic.setVisibility(View.VISIBLE);
-            Glide.with(context)
+            glide.with(context)
                 .load(facebookPost.getPostpic())
                 .apply(new RequestOptions()
                     .dontAnimate())
@@ -41,7 +43,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
         } else {
             binding.imgViewPostPic.setVisibility(View.GONE);
         }
-        Glide.with(context)
+        glide.with(context)
             .load(facebookPost.getPropic())
             .apply(new RequestOptions()
                 .dontAnimate())
