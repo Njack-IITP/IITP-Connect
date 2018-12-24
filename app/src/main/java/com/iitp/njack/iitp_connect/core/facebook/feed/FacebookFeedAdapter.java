@@ -76,4 +76,3 @@ public class FacebookFeedAdapter extends RecyclerView.Adapter<FacebookFeedViewHo
         }
     }
 }
-
