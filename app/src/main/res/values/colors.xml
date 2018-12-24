@@ -27,4 +27,10 @@
     <color name="tint_drawer_item_icon">#8C000000</color>
     <color name="color_drawer_item_text">#D9000000</color>
     <color name="event_state_draft">#FFF9C4</color>
+
+    <color name="black">#000000</color>
+    <color name="light_grey">#e4e4e4</color>
+    <color name="grey">#8b8b8b</color>
+    <color name="dark_grey">#696969</color>
+    <color name="white">#FFFFFF</color>
 </resources>
