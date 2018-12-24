@@ -249,11 +249,7 @@
                         android:textSize="13sp" />
 
                 </LinearLayout>
-
             </RelativeLayout>
-
         </LinearLayout>
-
     </RelativeLayout>
-
 </layout>
