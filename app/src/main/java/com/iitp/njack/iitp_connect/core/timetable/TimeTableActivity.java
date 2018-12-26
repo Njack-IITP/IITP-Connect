@@ -23,7 +23,7 @@ import com.iitp.njack.iitp_connect.databinding.TimetableDialogBinding;
 
 import javax.inject.Inject;
 
-public class TimeTableActivity extends AppCompatActivity{
+public class TimeTableActivity extends AppCompatActivity {
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
     @Inject
@@ -112,7 +112,7 @@ public class TimeTableActivity extends AppCompatActivity{
                 dialog.dismiss();
                 setValues();
             });
-            dialog=builder.create();
+            dialog = builder.create();
             dialog.show();
             return true;
         }

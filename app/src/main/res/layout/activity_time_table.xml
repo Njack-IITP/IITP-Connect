@@ -44,31 +44,46 @@
             style="@style/timetable_time_heading"
             android:gravity="center" />
 
-        <View style="@style/time_table_vertical_divider" />
+        <View
+            android:layout_rowSpan="0"
+            android:layout_columnSpan="0"
+            style="@style/time_table_vertical_divider" />
 
         <TextView
             style="@style/timetable_time_heading"
             android:text="Mon" />
 
-        <View style="@style/time_table_vertical_divider" />
+        <View
+            android:layout_rowSpan="0"
+            android:layout_columnSpan="0"
+            style="@style/time_table_vertical_divider" />
 
         <TextView
             style="@style/timetable_time_heading"
             android:text="Tue" />
 
-        <View style="@style/time_table_vertical_divider" />
+        <View
+            android:layout_rowSpan="0"
+            android:layout_columnSpan="0"
+            style="@style/time_table_vertical_divider" />
 
         <TextView
             style="@style/timetable_time_heading"
             android:text="Wed" />
 
-        <View style="@style/time_table_vertical_divider" />
+        <View
+            android:layout_rowSpan="0"
+            android:layout_columnSpan="0"
+            style="@style/time_table_vertical_divider" />
 
         <TextView
             style="@style/timetable_time_heading"
             android:text="Thu" />
 
-        <View style="@style/time_table_vertical_divider" />
+        <View
+            android:layout_rowSpan="0"
+            android:layout_columnSpan="0"
+            style="@style/time_table_vertical_divider" />
 
         <TextView
             style="@style/timetable_time_heading"
