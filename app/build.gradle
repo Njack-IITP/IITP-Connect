@@ -110,7 +110,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'com.github.jasminb:jsonapi-converter:0.9'
 
     // Butterknife
@@ -165,6 +165,9 @@ dependencies {
 
     // Facebook
     implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
+
+    //Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
