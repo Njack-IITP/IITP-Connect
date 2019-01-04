@@ -23,7 +23,7 @@ public class YoutubeModule {
 
     @Provides
     @Singleton
-    GoogleAccountCredential providesGoogleAccountCredential(Context context) {
+    public GoogleAccountCredential providesGoogleAccountCredential(Context context) {
         String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
         GoogleAccountCredential googleAccountCredential = GoogleAccountCredential.usingOAuth2(
             context, Arrays.asList(SCOPES))
@@ -33,19 +33,19 @@ public class YoutubeModule {
 
     @Provides
     @Singleton
-    HttpTransport providesHttpTransport() {
+    public HttpTransport providesHttpTransport() {
         return AndroidHttp.newCompatibleTransport();
     }
 
     @Provides
     @Singleton
-    JsonFactory providesJsonFactory() {
+    public JsonFactory providesJsonFactory() {
         return JacksonFactory.getDefaultInstance();
     }
 
     @Provides
     @Singleton
-    YouTube providesYoutubeService(HttpTransport httpTransport, JsonFactory jsonFactory, GoogleAccountCredential googleAccountCredential) {
+    public YouTube providesYoutubeService(HttpTransport httpTransport, JsonFactory jsonFactory, GoogleAccountCredential googleAccountCredential) {
         return new YouTube.Builder(
             httpTransport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
