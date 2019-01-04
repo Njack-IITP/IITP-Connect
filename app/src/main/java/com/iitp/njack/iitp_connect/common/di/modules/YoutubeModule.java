@@ -46,7 +46,7 @@ public class YoutubeModule {
     @Provides
     @Singleton
     YouTube providesYoutubeService(HttpTransport httpTransport, JsonFactory jsonFactory, GoogleAccountCredential googleAccountCredential) {
-        return new com.google.api.services.youtube.YouTube.Builder(
+        return new YouTube.Builder(
             httpTransport, jsonFactory, googleAccountCredential)
             .setApplicationName("IITP-Connect")
             .build();

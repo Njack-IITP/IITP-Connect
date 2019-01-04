@@ -89,10 +89,7 @@ public class PlaylistRepository {
     }
 
     private boolean shouldFetch() {
-        if (playlists.getValue() == null || playlists.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(PLAYLISTS)) {
-            return true;
-        }
-        return false;
+        return playlists.getValue() == null || playlists.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(PLAYLISTS);
     }
 
     private void fetchPlaylists() {
