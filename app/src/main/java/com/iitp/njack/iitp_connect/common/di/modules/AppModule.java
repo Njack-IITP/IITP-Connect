@@ -9,7 +9,8 @@ import dagger.Module;
         ViewModelModule.class,
         DaoModule.class,
         AuthModule.class,
-        DataBaseModule.class
+        DataBaseModule.class,
+        YoutubeModule.class
 })
 public class AppModule {
     // Add misc dependencies
