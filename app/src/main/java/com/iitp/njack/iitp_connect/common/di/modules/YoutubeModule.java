@@ -24,7 +24,7 @@ public class YoutubeModule {
     @Provides
     @Singleton
     public GoogleAccountCredential providesGoogleAccountCredential(Context context) {
-        String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
+        String[] SCOPES = { YouTubeScopes.YOUTUBE_READONLY };
         GoogleAccountCredential googleAccountCredential = GoogleAccountCredential.usingOAuth2(
             context, Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
