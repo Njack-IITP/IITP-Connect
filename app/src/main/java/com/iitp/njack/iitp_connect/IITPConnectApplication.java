@@ -28,6 +28,16 @@ public class IITPConnectApplication extends MultiDexApplication implements HasAc
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
+    /**
+     * Reference watcher to be used in detecting leaks in Fragments
+     *
+     * @param context Context needed to access Application
+     * @return ReferenceWatcher used to catch leaks in fragments
+     */
+    public static RefWatcher getRefWatcher(Context context) {
+        return ((IITPConnectApplication) context.getApplicationContext()).refWatcher;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
