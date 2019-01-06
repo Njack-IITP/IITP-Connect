@@ -7,9 +7,12 @@ import android.provider.ContactsContract;
 import com.iitp.njack.iitp_connect.common.di.IITPConnectViewModelFactory;
 import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailViewModel;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarViewModel;
+import com.iitp.njack.iitp_connect.core.facebook.feed.FacebookFeedView;
+import com.iitp.njack.iitp_connect.core.facebook.feed.FacebookFeedViewModel;
 import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableViewModel;
+import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 
 import dagger.Binds;
 import dagger.Module;
@@ -42,6 +45,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TimeTableViewModel.class)
     public abstract ViewModel bindTimeTableViewModel(TimeTableViewModel timeTableViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FacebookFeedViewModel.class)
+    public abstract ViewModel bindFacebookFeedViewModel(FacebookFeedViewModel facebookFeedViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);
