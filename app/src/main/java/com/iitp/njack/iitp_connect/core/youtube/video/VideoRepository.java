@@ -101,7 +101,7 @@ public class VideoRepository {
             .subscribe(new Observer<List<YoutubeVideo>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-
+                    compositeDisposable.add(d);
                 }
 
                 @Override

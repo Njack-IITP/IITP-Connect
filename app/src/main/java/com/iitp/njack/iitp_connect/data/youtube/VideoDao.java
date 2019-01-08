@@ -18,5 +18,4 @@ public interface VideoDao {
 
     @Query("DELETE FROM " + YoutubeVideo.TABLE_NAME)
     void deleteAll();
-
 }
