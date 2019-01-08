@@ -19,6 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class VideoRepository {
     private static final String VIDEOS = "videos";
@@ -75,7 +76,7 @@ public class VideoRepository {
                 }
                 @Override
                 public void onError(Throwable e) {
-                    //nothing here
+                    Timber.e(e);
                 }
 
                 @Override
@@ -88,10 +89,7 @@ public class VideoRepository {
     }
 
     private boolean shouldFetch() {
-        if (videos.getValue() == null || videos.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(VIDEOS)) {
-            return true;
-        }
-        return false;
+        return (videos.getValue() == null || videos.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(VIDEOS));
     }
 
     private void fetchVideos() {
@@ -112,7 +110,8 @@ public class VideoRepository {
 
                 @Override
                 public void onError(Throwable e) {
-                    e.printStackTrace();
+                    Timber.e(e);
+                    repoListRateLimit.reset(VIDEOS);
                 }
 
                 @Override
