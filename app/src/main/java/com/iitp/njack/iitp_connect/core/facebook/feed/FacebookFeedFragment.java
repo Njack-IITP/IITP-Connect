@@ -8,6 +8,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.common.view.BaseFragment;
+import com.iitp.njack.iitp_connect.common.di.Injectable;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 import com.iitp.njack.iitp_connect.data.network.Status;
 import com.iitp.njack.iitp_connect.databinding.FragmentFacebookFeedBinding;
@@ -30,7 +31,7 @@ import javax.inject.Inject;
 import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
 
 
-public class FacebookFeedFragment extends BaseFragment implements FacebookFeedView {
+public class FacebookFeedFragment extends Fragment implements FacebookFeedView, Injectable {
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -109,10 +110,10 @@ public class FacebookFeedFragment extends BaseFragment implements FacebookFeedVi
         });
     }
 
-    @Override
-    protected int getTitle() {
-        return R.string.facebook_feed;
-    }
+    //@Override
+    //protected int getTitle() {
+    //    return R.string.facebook_feed;
+    //}
 
     private void setupRefreshListener() {
         refreshLayout = binding.swipeContainer;
