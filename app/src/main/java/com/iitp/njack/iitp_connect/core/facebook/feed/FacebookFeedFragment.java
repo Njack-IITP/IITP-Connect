@@ -110,11 +110,6 @@ public class FacebookFeedFragment extends Fragment implements FacebookFeedView, 
         });
     }
 
-    //@Override
-    //protected int getTitle() {
-    //    return R.string.facebook_feed;
-    //}
-
     private void setupRefreshListener() {
         refreshLayout = binding.swipeContainer;
         refreshLayout.setOnRefreshListener(() -> {
