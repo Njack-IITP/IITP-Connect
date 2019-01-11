@@ -9,19 +9,18 @@ import com.bumptech.glide.request.RequestOptions;
 import com.iitp.njack.iitp_connect.common.Pipe;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 import com.iitp.njack.iitp_connect.databinding.FacebookPostItemBinding;
+import com.iitp.njack.iitp_connect.ui.GlideApp;
 
 public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
     private final FacebookPostItemBinding binding;
     private FacebookPost facebookPost;
     private Pipe<Long> clickAction;
     private Context context;
-    private Glide glide;
 
-    public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context, Glide glide) {
+    public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context) {
         super(binding.getRoot());
         this.binding = binding;
         this.context = context;
-        this.glide = glide;
 
         binding.getRoot().setOnClickListener(view -> {
             if (clickAction != null) {
@@ -35,18 +34,16 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
         binding.setFacebookPost(facebookPost);
         if (facebookPost.getPostpic() != null) {
             binding.imgViewPostPic.setVisibility(View.VISIBLE);
-            glide.with(context)
+            Glide.with(context)
                 .load(facebookPost.getPostpic())
-                .apply(new RequestOptions()
-                    .dontAnimate())
+                //.dontAnimate()
                 .into(binding.imgViewPostPic);
         } else {
             binding.imgViewPostPic.setVisibility(View.GONE);
         }
-        glide.with(context)
+        Glide.with(context)
             .load(facebookPost.getPropic())
-            .apply(new RequestOptions()
-                .dontAnimate())
+            //.dontAnimate()
             .into(binding.imgViewProPic);
         binding.executePendingBindings();
     }

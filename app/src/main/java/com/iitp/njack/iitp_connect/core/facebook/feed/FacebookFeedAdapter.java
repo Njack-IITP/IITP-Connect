@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 
@@ -16,11 +15,9 @@ import java.util.List;
 public class FacebookFeedAdapter extends RecyclerView.Adapter<FacebookFeedViewHolder> {
     private final FacebookFeedViewModel facebookFeedViewModel;
     private List<FacebookPost> facebookPosts;
-    private Glide glide;
 
-    public FacebookFeedAdapter(FacebookFeedViewModel facebookFeedViewModel, Glide glide) {
+    public FacebookFeedAdapter(FacebookFeedViewModel facebookFeedViewModel) {
         this.facebookFeedViewModel = facebookFeedViewModel;
-        this.glide = glide;
     }
 
     @NonNull
@@ -28,7 +25,7 @@ public class FacebookFeedAdapter extends RecyclerView.Adapter<FacebookFeedViewHo
     public FacebookFeedViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         FacebookFeedViewHolder facebookFeedViewHolder =
             new FacebookFeedViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
-                R.layout.facebook_post_item, viewGroup, false), viewGroup.getContext(), glide);
+                R.layout.facebook_post_item, viewGroup, false),viewGroup.getContext());
 
         facebookFeedViewHolder.setClickAction(facebookFeedViewModel::openFacebookPostDetails);
         return facebookFeedViewHolder;

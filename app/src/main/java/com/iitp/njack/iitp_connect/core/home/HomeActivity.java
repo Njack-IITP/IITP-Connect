@@ -19,10 +19,12 @@ import android.widget.Toast;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseUser;
-import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.core.fb.feed.FacebookFeedFragment;
+
+
+import com.iitp.njack.iitp_connect.core.facebook.feed.FacebookFeedFragment;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
 import com.iitp.njack.iitp_connect.databinding.MainNavHeaderBinding;
+import com.iitp.njack.iitp_connect.R;
 
 import javax.inject.Inject;
 
