@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.iitp.njack.iitp_connect.common.Pipe;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 import com.iitp.njack.iitp_connect.databinding.FacebookPostItemBinding;
@@ -14,7 +12,7 @@ import com.iitp.njack.iitp_connect.ui.GlideApp;
 public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
     private final FacebookPostItemBinding binding;
     private FacebookPost facebookPost;
-    private Pipe<Long> clickAction;
+    private Pipe<String> clickAction;
     private Context context;
 
     public FacebookFeedViewHolder(FacebookPostItemBinding binding, Context context) {
@@ -24,7 +22,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
 
         binding.getRoot().setOnClickListener(view -> {
             if (clickAction != null) {
-                clickAction.push(facebookPost.getId());
+                clickAction.push(facebookPost.url);
             }
         });
     }
@@ -48,7 +46,7 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
         binding.executePendingBindings();
     }
 
-    public void setClickAction(Pipe<Long> clickAction) {
+    public void setClickAction(Pipe<String> clickAction) {
         this.clickAction = clickAction;
     }
 }

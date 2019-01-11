@@ -5,43 +5,31 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.common.di.Injectable;
-//import com.eventyay.organizer.common.mvp.view.BaseFragment;
 import com.iitp.njack.iitp_connect.common.view.BaseFragment;
-import com.iitp.njack.iitp_connect.core.calendar.detail.ContestDetailActivity;
-import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 import com.iitp.njack.iitp_connect.data.network.Status;
 import com.iitp.njack.iitp_connect.databinding.FragmentFacebookFeedBinding;
 import com.iitp.njack.iitp_connect.ui.ViewUtils;
-//import br.com.ilhasoft.support.validation.Validator;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import dagger.android.support.AndroidSupportInjection;
-import dagger.android.support.DaggerFragment;
-
 import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FacebookFeedFragment extends BaseFragment implements FacebookFeedView {
 
     @Inject
@@ -60,7 +48,7 @@ public class FacebookFeedFragment extends BaseFragment implements FacebookFeedVi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_facebook_feed,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_facebook_feed, container, false);
         facebookFeedViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(FacebookFeedViewModel.class);
 
@@ -70,8 +58,6 @@ public class FacebookFeedFragment extends BaseFragment implements FacebookFeedVi
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
     }
 
     @Override
@@ -163,9 +149,9 @@ public class FacebookFeedFragment extends BaseFragment implements FacebookFeedVi
     }
 
     @Override
-    public void openFacebookPostDetails(Long id) {
-        //Intent intent = new Intent(this, ContestDetailActivity.class);
-        //intent.putExtra(CONTEST_ID, id);
-        //  startActivity(intent);
+    public void openFacebookPostDetails(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }
