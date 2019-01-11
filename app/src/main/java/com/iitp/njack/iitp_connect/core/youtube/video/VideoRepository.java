@@ -1,11 +1,11 @@
-package com.iitp.njack.iitp_connect.core.youtube.playlist;
+package com.iitp.njack.iitp_connect.core.youtube.video;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.iitp.njack.iitp_connect.data.youtube.PlaylistDao;
+import com.iitp.njack.iitp_connect.data.youtube.VideoDao;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubeApi;
-import com.iitp.njack.iitp_connect.data.youtube.YoutubePlaylist;
+import com.iitp.njack.iitp_connect.data.youtube.YoutubeVideo;
 import com.iitp.njack.iitp_connect.utils.RateLimiter;
 
 import java.util.List;
@@ -21,60 +21,59 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PlaylistRepository {
-    private static final String PLAYLISTS = "playlists";
-    private final PlaylistDao playlistDao;
+public class VideoRepository {
+    private static final String VIDEOS = "videos";
     private final RateLimiter<String> repoListRateLimit;
     private YoutubeApi youtubeApi;
-    private String channelId;
+    private VideoDao videoDao;
+    private String playlistId;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private MutableLiveData<List<YoutubePlaylist>> playlists = new MutableLiveData<>();
+    private MutableLiveData<List<YoutubeVideo>> videos = new MutableLiveData<>();
 
     @Inject
-    public PlaylistRepository(PlaylistDao playlistDao,
-                              YoutubeApi youtubeApi,
-                              RateLimiter<String> repoListRateLimit) {
-        this.playlistDao = playlistDao;
+    public VideoRepository(VideoDao videoDao,
+                           YoutubeApi youtubeApi,
+                           RateLimiter<String> repoListRateLimit) {
+        this.videoDao = videoDao;
         this.youtubeApi = youtubeApi;
         this.repoListRateLimit = repoListRateLimit;
     }
 
-    public MutableLiveData<List<YoutubePlaylist>> getPlaylists() {
-        return this.playlists;
+    public MutableLiveData<List<YoutubeVideo>> getVideos() {
+        return this.videos;
     }
 
-    public void getDataFromAPI(String channelId) {
-        this.channelId = channelId;
+    public void getDataFromAPI(String playlistId) {
+        this.playlistId = playlistId;
         loadFromDb();
     }
 
-    private void saveCallResult(List<YoutubePlaylist> playlist) {
+    private void saveCallResult(List<YoutubeVideo> playlist) {
         compositeDisposable.add(
-            Single.just(playlistDao)
+            Single.just(videoDao)
                 .subscribeOn(Schedulers.io())
-                .subscribe(playlistDao1 -> {
-                    playlistDao1.deleteAll();
-                    playlistDao1.addPlayists(playlist);
+                .subscribe(videoDao1 -> {
+                    videoDao1.deleteAll();
+                    videoDao1.addVideos(playlist);
                 }));
     }
 
     private void loadFromDb() {
-        Observable.just(playlistDao).map(playlistDao1 -> playlistDao1.getPlaylistsById(channelId))
+        Observable.just(videoDao).map(videoDao1 -> videoDao1.getVideosById(playlistId))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Observer<LiveData<List<YoutubePlaylist>>>() {
+            .subscribe(new Observer<LiveData<List<YoutubeVideo>>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
                     compositeDisposable.add(d);
                 }
 
                 @Override
-                public void onNext(LiveData<List<YoutubePlaylist>> listLiveData) {
-                    if (listLiveData.getValue() != null) {
-                        playlists.setValue(listLiveData.getValue());
+                public void onNext(LiveData<List<YoutubeVideo>> youtubeVideoLiveData) {
+                    if (youtubeVideoLiveData.getValue() != null) {
+                        videos.setValue(youtubeVideoLiveData.getValue());
                     }
                 }
-
                 @Override
                 public void onError(Throwable e) {
                     Timber.e(e);
@@ -83,36 +82,36 @@ public class PlaylistRepository {
                 @Override
                 public void onComplete() {
                     if (shouldFetch()) {
-                        fetchPlaylists();
+                        fetchVideos();
                     }
                 }
-            });
+                });
     }
 
     private boolean shouldFetch() {
-        return playlists.getValue() == null || playlists.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(PLAYLISTS);
+        return (videos.getValue() == null || videos.getValue().isEmpty() || repoListRateLimit.shouldFetchAndRefresh(VIDEOS));
     }
 
-    private void fetchPlaylists() {
-        Observable.just(channelId).map(s -> youtubeApi.getPlaylistsFromApi(s))
+    private void fetchVideos() {
+        Observable.just(playlistId).map(s -> youtubeApi.getVideosFromApi(s))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Observer<List<YoutubePlaylist>>() {
+            .subscribe(new Observer<List<YoutubeVideo>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
                     compositeDisposable.add(d);
                 }
 
                 @Override
-                public void onNext(List<YoutubePlaylist> youtubePlaylists) {
-                    playlists.setValue(youtubePlaylists);
-                    saveCallResult(youtubePlaylists);
+                public void onNext(List<YoutubeVideo> youtubeVideos) {
+                    videos.setValue(youtubeVideos);
+                    saveCallResult(youtubeVideos);
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     Timber.e(e);
-                    repoListRateLimit.reset(PLAYLISTS);
+                    repoListRateLimit.reset(VIDEOS);
                 }
 
                 @Override
@@ -122,4 +121,3 @@ public class PlaylistRepository {
             });
     }
 }
-
