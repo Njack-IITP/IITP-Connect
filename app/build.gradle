@@ -167,7 +167,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
 
     //Circular ImageView
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     //Testing
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
