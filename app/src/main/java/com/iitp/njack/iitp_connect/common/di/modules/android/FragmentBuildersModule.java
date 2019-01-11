@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class FragmentBuildersModule {
     @ContributesAndroidInjector
-    abstract FacebookFeedFragment contributeFacebookFeedFragment();
+    abstract FacebookFeedFragment contributesFacebookFeedFragment();
 }

@@ -34,16 +34,16 @@ public class FacebookFeedViewHolder extends RecyclerView.ViewHolder {
         binding.setFacebookPost(facebookPost);
         if (facebookPost.getPostpic() != null) {
             binding.imgViewPostPic.setVisibility(View.VISIBLE);
-            Glide.with(context)
+            GlideApp.with(context)
                 .load(facebookPost.getPostpic())
-                //.dontAnimate()
+                .dontAnimate()
                 .into(binding.imgViewPostPic);
         } else {
             binding.imgViewPostPic.setVisibility(View.GONE);
         }
-        Glide.with(context)
+        GlideApp.with(context)
             .load(facebookPost.getPropic())
-            //.dontAnimate()
+            .dontAnimate()
             .into(binding.imgViewProPic);
         binding.executePendingBindings();
     }
