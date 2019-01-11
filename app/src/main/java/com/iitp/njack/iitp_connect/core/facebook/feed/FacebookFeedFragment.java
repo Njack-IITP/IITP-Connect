@@ -42,7 +42,7 @@ public class FacebookFeedFragment extends Fragment implements FacebookFeedView, 
 
     @Inject
     public FacebookFeedFragment() {
-        // Required empty public constructor
+        // nothing here
     }
 
     @Override
