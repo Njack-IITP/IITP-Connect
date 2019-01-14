@@ -25,7 +25,7 @@ public class FacebookFeedAdapter extends RecyclerView.Adapter<FacebookFeedViewHo
     public FacebookFeedViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         FacebookFeedViewHolder facebookFeedViewHolder =
             new FacebookFeedViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
-                R.layout.facebook_post_item, viewGroup, false),viewGroup.getContext());
+                R.layout.facebook_post_item, viewGroup, false), viewGroup.getContext());
 
         facebookFeedViewHolder.setClickAction(facebookFeedViewModel::openFacebookPostDetails);
         return facebookFeedViewHolder;

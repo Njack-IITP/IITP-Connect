@@ -34,7 +34,7 @@ import static com.iitp.njack.iitp_connect.ui.ViewUtils.showView;
 public class FacebookFeedFragment extends Fragment implements FacebookFeedView, Injectable {
 
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
     private FacebookFeedViewModel facebookFeedViewModel;
     private FragmentFacebookFeedBinding binding;
     private SwipeRefreshLayout refreshLayout;
