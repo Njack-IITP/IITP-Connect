@@ -24,7 +24,7 @@ public abstract class ActivityBuildersModule {
     @ContributesAndroidInjector
     abstract ContestDetailActivity contributeContestDetailActivity();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = FragmentBuildersModule.class)
     abstract HomeActivity contributeHomeActivity();
 
     @ContributesAndroidInjector
