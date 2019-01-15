@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,21 +20,28 @@ import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.core.facebook.feed.FacebookFeedFragment;
 import com.iitp.njack.iitp_connect.databinding.ActivityHomeBinding;
 import com.iitp.njack.iitp_connect.databinding.MainNavHeaderBinding;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+
 /**
  * The HomeActivity which acts as the entry point to all the other Activities and Fragments
  */
 public class HomeActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener, HasSupportFragmentInjector {
 
     private static final int RC_SIGN_IN = 123;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
+    @Inject
+    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
     private ActivityHomeBinding binding;
     private MainNavHeaderBinding headerBinding;
@@ -69,6 +77,12 @@ public class HomeActivity extends AppCompatActivity
         };
 
         authViewModel.getFirebaseAuthLiveData().observe(this, authObserver);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new FacebookFeedFragment())
+                .commit();
+        }
     }
 
     @Override
@@ -114,5 +128,10 @@ public class HomeActivity extends AppCompatActivity
                 Toast.makeText(this, R.string.log_in_success, Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return dispatchingAndroidInjector;
     }
 }

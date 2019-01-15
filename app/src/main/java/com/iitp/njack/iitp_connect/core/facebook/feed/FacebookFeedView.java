@@ -7,5 +7,5 @@ import com.iitp.njack.iitp_connect.common.view.Refreshable;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPost;
 
 public interface FacebookFeedView extends Progressive, Erroneous, Refreshable, Emptiable<FacebookPost> {
-    void openFacebookPostDetails(Long id);
+    void openFacebookPostDetails(String url);
 }
