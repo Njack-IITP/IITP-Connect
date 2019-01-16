@@ -19,7 +19,7 @@ public class FacebookFeedViewModel extends ViewModel {
     private final FacebookFeedRepository facebookFeedRepository;
     private final RateLimiter<String> repoListRateLimit;
     private LiveData<Resource<List<FacebookPost>>> facebookPosts;
-    private SingleEventLiveData<Long> clickAction = new SingleEventLiveData<>();
+    private SingleEventLiveData<String> clickAction = new SingleEventLiveData<>();
 
     @Inject
     public FacebookFeedViewModel(FacebookFeedRepository facebookFeedRepository,
@@ -37,11 +37,11 @@ public class FacebookFeedViewModel extends ViewModel {
         return facebookPosts;
     }
 
-    public void openFacebookPostDetails(Long id) {
-        clickAction.setValue(id);
+    public void openFacebookPostDetails(String url) {
+        clickAction.setValue(url);
     }
 
-    protected LiveData<Long> getSelectedFacebookPost() {
+    protected LiveData<String> getSelectedFacebookPost() {
         return clickAction;
     }
 }
