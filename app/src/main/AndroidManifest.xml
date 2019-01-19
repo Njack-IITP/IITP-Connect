@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:name=".IITPConnectApplication"
@@ -48,6 +49,7 @@
 
         <activity android:name=".core.profile.ProfileActivity" />
         <activity android:name=".core.timetable.TimeTableActivity"></activity>
+        <activity android:name=".core.youtube.playlist.YoutubeActivity" />
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import com.iitp.njack.iitp_connect.core.facebook.feed.FacebookFeedViewModel;
 import com.iitp.njack.iitp_connect.core.home.AuthViewModel;
 import com.iitp.njack.iitp_connect.core.profile.ProfileViewModel;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableViewModel;
+import com.iitp.njack.iitp_connect.core.youtube.playlist.PlaylistViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -47,6 +48,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FacebookFeedViewModel.class)
     public abstract ViewModel bindFacebookFeedViewModel(FacebookFeedViewModel facebookFeedViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PlaylistViewModel.class)
+    public abstract ViewModel bindPlaylistViewModel(PlaylistViewModel playlistViewModel);
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(IITPConnectViewModelFactory factory);

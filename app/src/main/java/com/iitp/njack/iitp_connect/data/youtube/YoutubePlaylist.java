@@ -25,4 +25,5 @@ public class YoutubePlaylist {
     public String title;
     public String date;
     public Long itemCount;
+    public String imageUrl;
 }

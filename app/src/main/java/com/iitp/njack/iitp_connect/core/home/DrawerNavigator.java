@@ -14,6 +14,7 @@ import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
+import com.iitp.njack.iitp_connect.core.youtube.playlist.YoutubeActivity;
 
 import java.util.Arrays;
 
@@ -67,7 +68,7 @@ public class DrawerNavigator {
                 context.startActivity(intent);
             }
         } else if (id == R.id.nav_time_table) {
-            Intent intent = new Intent(context, TimeTableActivity.class);
+            Intent intent = new Intent(context, YoutubeActivity.class);
             context.startActivity(intent);
         }
     }

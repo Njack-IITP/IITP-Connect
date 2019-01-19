@@ -8,11 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.iitp.njack.iitp_connect.BR;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubePlaylist;
 
 import java.util.List;
 
-public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
+public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.PlaylistViewHolder> {
     List<YoutubePlaylist> playlists;
     PlaylistViewModel playlistViewModel;
     private int layoutId;
@@ -51,5 +52,20 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
     @Override
     public int getItemCount() {
         return playlists == null ? 0 : playlists.size();
+    }
+
+    public class PlaylistViewHolder extends RecyclerView.ViewHolder {
+        private final ViewDataBinding binding;
+
+        public PlaylistViewHolder(ViewDataBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        void bind(PlaylistViewModel playlistViewModel, Integer position) {
+            binding.setVariable(BR.viewModel, playlistViewModel);
+            binding.setVariable(BR.position, position);
+            binding.executePendingBindings();
+        }
     }
 }
