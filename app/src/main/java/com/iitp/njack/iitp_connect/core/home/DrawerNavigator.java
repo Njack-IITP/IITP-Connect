@@ -68,7 +68,7 @@ public class DrawerNavigator {
                 context.startActivity(intent);
             }
         } else if (id == R.id.nav_time_table) {
-            Intent intent = new Intent(context, YoutubeActivity.class);
+            Intent intent = new Intent(context, TimeTableActivity.class);
             context.startActivity(intent);
         }
     }

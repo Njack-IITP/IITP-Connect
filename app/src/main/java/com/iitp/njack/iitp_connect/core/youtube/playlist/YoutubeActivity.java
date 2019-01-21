@@ -15,14 +15,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.services.youtube.YouTubeScopes;
 import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.databinding.ActivityYoutubeBinding;
 
@@ -30,6 +28,7 @@ import javax.inject.Inject;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
+import timber.log.Timber;
 
 public class YoutubeActivity extends AppCompatActivity {
     private static final int REQUEST_ACCOUNT_PICKER = 1000;
@@ -37,7 +36,6 @@ public class YoutubeActivity extends AppCompatActivity {
     private static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
     private static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = {YouTubeScopes.YOUTUBE_READONLY};
     @Inject
     GoogleAccountCredential googleAccountCredential;
     @Inject
@@ -45,25 +43,33 @@ public class YoutubeActivity extends AppCompatActivity {
     private SwipeRefreshLayout refreshLayout;
     private PlaylistViewModel playlistViewModel;
     private ActivityYoutubeBinding binding;
-    private String channelId ="UC_x5XG1OV2P6uZZ5FSM9Ttw";// "UCWhU42H5JBpH49KtoWt2ZpQ";//
+    private String channelId = "UC_x5XG1OV2P6uZZ5FSM9Ttw";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        channelId = getIntent().getStringExtra("channelId") == null ? "UC_x5XG1OV2P6uZZ5FSM9Ttw" :getIntent().getStringExtra("channelId");
-        setupbindings(savedInstanceState);
-    }
-
-    private void setupbindings(Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_youtube);
         playlistViewModel = ViewModelProviders.of(this, viewModelFactory).get(PlaylistViewModel.class);
-        getResultsFromApi();
+
         binding.setModel(playlistViewModel);
-        setUpListUpdate();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        getResultsFromApi();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        refreshLayout.setOnRefreshListener(null);
     }
 
     private void setUpListUpdate() {
         playlistViewModel.loading.set(View.VISIBLE);
-        playlistViewModel.fetchList(channelId);
+        playlistViewModel.fetchList(channelId, false);
         playlistViewModel.getPlaylists().observe(this, youtubePlaylists -> {
             playlistViewModel.loading.set(View.GONE);
             if (youtubePlaylists.size() == 0) {
@@ -81,9 +87,7 @@ public class YoutubeActivity extends AppCompatActivity {
         playlistViewModel.getSelected().observe(this, youtubePlaylist -> {
             if (youtubePlaylist != null) {
                 Toast.makeText(YoutubeActivity.this, "you selected a " + youtubePlaylist.getPlaylistId(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(YoutubeActivity.this, VideoActivity.class);
-//                intent.putExtra("playlist_id", youtubePlaylist.getPlaylistId());
-//                startActivity(intent);
+                //TODO: Transfer Intent
             }
         });
     }
@@ -92,8 +96,7 @@ public class YoutubeActivity extends AppCompatActivity {
         refreshLayout = binding.swipeContainer;
         refreshLayout.setOnRefreshListener(() -> {
             refreshLayout.setRefreshing(false);
-            playlistViewModel.fetchList(channelId);
-            Toast.makeText(this, "Refreshing", Toast.LENGTH_SHORT).show();
+            playlistViewModel.fetchList(channelId, true);
         });
     }
 
@@ -103,7 +106,9 @@ public class YoutubeActivity extends AppCompatActivity {
         } else if (googleAccountCredential.getSelectedAccountName() == null) {
             chooseAccount();
         } else if (!isDeviceOnline()) {
-            Log.e("network error", "No network connection available.");
+            Timber.e("No network connection available.");
+        } else {
+            setUpListUpdate();
         }
     }
 
@@ -139,7 +144,7 @@ public class YoutubeActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_GOOGLE_PLAY_SERVICES:
                 if (resultCode != RESULT_OK) {
-                    Log.e("google", "google play services not found");
+                    Timber.e("google play services not found");
                 } else {
                     getResultsFromApi();
                 }

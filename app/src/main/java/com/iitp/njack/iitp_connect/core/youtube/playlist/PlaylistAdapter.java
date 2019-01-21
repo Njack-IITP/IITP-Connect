@@ -1,19 +1,20 @@
 package com.iitp.njack.iitp_connect.core.youtube.playlist;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.iitp.njack.iitp_connect.BR;
+import com.iitp.njack.iitp_connect.R;
+import com.iitp.njack.iitp_connect.core.youtube.playlist.viewholder.PlaylistViewHolder;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubePlaylist;
 
 import java.util.List;
 
-public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.PlaylistViewHolder> {
+public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
     List<YoutubePlaylist> playlists;
     PlaylistViewModel playlistViewModel;
     private int layoutId;
@@ -23,20 +24,45 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
         this.playlistViewModel = playlistViewModel;
     }
 
-    private int getLayoutIdForPosition(int position) {
-        return layoutId;
-    }
+    public void setPlaylists(List<YoutubePlaylist> newPlaylists) {
+        if (playlists == null) {
+            playlists = newPlaylists;
+            notifyItemRangeInserted(0, newPlaylists.size());
+        } else {
+            DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                @Override
+                public int getOldListSize() {
+                    return playlists.size();
+                }
 
-    public void setPlaylists(List<YoutubePlaylist> playlists) {
-        this.playlists = playlists;
+                @Override
+                public int getNewListSize() {
+                    return newPlaylists.size();
+                }
+
+                @Override
+                public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                    return playlists.get(oldItemPosition).getPlaylistId() ==
+                        newPlaylists.get(newItemPosition).getPlaylistId();
+                }
+
+                @Override
+                public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                    return playlists.get(oldItemPosition).equals(newPlaylists.get(newItemPosition));
+                }
+            });
+            playlists = newPlaylists;
+            result.dispatchUpdatesTo(this);
+        }
     }
 
     @NonNull
     @Override
     public PlaylistViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        ViewDataBinding binding = DataBindingUtil.inflate(layoutInflater, i, viewGroup, false);
-        return new PlaylistViewHolder(binding);
+        PlaylistViewHolder playlistViewHolder =
+            new PlaylistViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
+                R.layout.playlist_item, viewGroup, false));
+        return playlistViewHolder;
     }
 
     @Override
@@ -45,27 +71,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return getLayoutIdForPosition(position);
-    }
-
-    @Override
     public int getItemCount() {
         return playlists == null ? 0 : playlists.size();
-    }
-
-    public class PlaylistViewHolder extends RecyclerView.ViewHolder {
-        private final ViewDataBinding binding;
-
-        public PlaylistViewHolder(ViewDataBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-
-        void bind(PlaylistViewModel playlistViewModel, Integer position) {
-            binding.setVariable(BR.viewModel, playlistViewModel);
-            binding.setVariable(BR.position, position);
-            binding.executePendingBindings();
-        }
     }
 }
