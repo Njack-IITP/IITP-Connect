@@ -6,7 +6,6 @@ import android.databinding.ObservableInt;
 import android.support.annotation.VisibleForTesting;
 import android.view.View;
 
-import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubePlaylist;
 import com.iitp.njack.iitp_connect.utils.RateLimiter;
 
@@ -31,7 +30,7 @@ public class PlaylistViewModel extends ViewModel {
         this.playlistRepository = playlistRepository;
         this.repoRateListLimit = repoListRateLimit;
         selected = new MutableLiveData<>();
-        playlistAdapter = new PlaylistAdapter(R.layout.playlist_item, this);
+        playlistAdapter = new PlaylistAdapter(this);
         loading = new ObservableInt(View.GONE);
         showEmpty = new ObservableInt(View.GONE);
 
@@ -39,7 +38,7 @@ public class PlaylistViewModel extends ViewModel {
     }
 
     public void fetchList(String channelId, boolean reload) {
-        if(reload || repoRateListLimit.shouldFetch(PLAYLIST_VIEW_MODEL)) {
+        if (reload || repoRateListLimit.shouldFetch(PLAYLIST_VIEW_MODEL)) {
             playlistRepository.getDataFromAPI(channelId);
             repoRateListLimit.refreshRateLimiter(PLAYLIST_VIEW_MODEL);
         }

@@ -1,7 +1,6 @@
 package com.iitp.njack.iitp_connect.core.youtube.playlist;
 
 import android.databinding.DataBindingUtil;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -15,12 +14,10 @@ import com.iitp.njack.iitp_connect.data.youtube.YoutubePlaylist;
 import java.util.List;
 
 public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
-    List<YoutubePlaylist> playlists;
-    PlaylistViewModel playlistViewModel;
-    private int layoutId;
+    private List<YoutubePlaylist> playlists;
+    private PlaylistViewModel playlistViewModel;
 
-    public PlaylistAdapter(@LayoutRes int layoutId, PlaylistViewModel playlistViewModel) {
-        this.layoutId = layoutId;
+    public PlaylistAdapter(PlaylistViewModel playlistViewModel) {
         this.playlistViewModel = playlistViewModel;
     }
 

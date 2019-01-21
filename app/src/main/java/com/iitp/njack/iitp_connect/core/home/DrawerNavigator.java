@@ -14,7 +14,6 @@ import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.core.calendar.list.CodingCalendarActivity;
 import com.iitp.njack.iitp_connect.core.profile.ProfileActivity;
 import com.iitp.njack.iitp_connect.core.timetable.TimeTableActivity;
-import com.iitp.njack.iitp_connect.core.youtube.playlist.YoutubeActivity;
 
 import java.util.Arrays;
 

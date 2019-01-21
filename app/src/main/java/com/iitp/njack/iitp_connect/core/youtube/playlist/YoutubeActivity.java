@@ -37,9 +37,9 @@ public class YoutubeActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
     @Inject
-    GoogleAccountCredential googleAccountCredential;
+    public GoogleAccountCredential googleAccountCredential;
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
     private SwipeRefreshLayout refreshLayout;
     private PlaylistViewModel playlistViewModel;
     private ActivityYoutubeBinding binding;
