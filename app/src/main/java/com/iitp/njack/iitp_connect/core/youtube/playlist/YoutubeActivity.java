@@ -171,6 +171,8 @@ public class YoutubeActivity extends AppCompatActivity {
                     getResultsFromApi();
                 }
                 break;
+            default:
+                break;
         }
     }
 
