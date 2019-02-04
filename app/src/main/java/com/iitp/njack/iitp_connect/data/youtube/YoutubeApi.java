@@ -45,7 +45,8 @@ public class YoutubeApi {
                     playlist1.getId(),
                     playlist1.getSnippet().getTitle(),
                     playlist1.getSnippet().getPublishedAt().toStringRfc3339(),
-                    playlist1.getContentDetails().getItemCount()));
+                    playlist1.getContentDetails().getItemCount(),
+                    playlist1.getSnippet().getThumbnails().getDefault().getUrl()));
             }
         }
         return playlistsInfo;

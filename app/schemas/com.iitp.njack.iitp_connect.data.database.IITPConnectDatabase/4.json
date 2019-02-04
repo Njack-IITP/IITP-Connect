@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "fb6d456eac40dcbf8f18fefa6449aa7a",
+    "identityHash": "8f5fb30ae18ca9d6ef3a6a43b1b9be81",
     "entities": [
       {
         "tableName": "contests",
@@ -124,7 +124,7 @@
       },
       {
         "tableName": "playlists",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`channelId` TEXT, `playlistId` TEXT NOT NULL, `title` TEXT, `date` TEXT, `itemCount` INTEGER, PRIMARY KEY(`playlistId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`channelId` TEXT, `playlistId` TEXT NOT NULL, `title` TEXT, `date` TEXT, `itemCount` INTEGER, `imageUrl` TEXT, PRIMARY KEY(`playlistId`))",
         "fields": [
           {
             "fieldPath": "channelId",
@@ -154,6 +154,12 @@
             "fieldPath": "itemCount",
             "columnName": "itemCount",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -243,7 +249,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"fb6d456eac40dcbf8f18fefa6449aa7a\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8f5fb30ae18ca9d6ef3a6a43b1b9be81\")"
     ]
   }
 }
