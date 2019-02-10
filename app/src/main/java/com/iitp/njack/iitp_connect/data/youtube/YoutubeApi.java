@@ -59,8 +59,6 @@ public class YoutubeApi {
             Service.playlistItems().list("id,contentDetails,snippet");
 
         playlistItemRequest.setPlaylistId(playlistId);
-        playlistItemRequest.setFields(
-            "items(contentDetails,snippet/title,snippet),nextPageToken,pageInfo");
         String nextToken = "";
 
         do {
@@ -77,7 +75,7 @@ public class YoutubeApi {
                 , playlistId
                 , playlistItem.getSnippet().getTitle()
                 , playlistItem.getSnippet().getPublishedAt().toStringRfc3339()
-                , playlistItem.getSnippet().getThumbnails().getStandard().getUrl()));
+                , playlistItem.getSnippet().getThumbnails().getDefault().getUrl()));
         }
         return videos;
     }
