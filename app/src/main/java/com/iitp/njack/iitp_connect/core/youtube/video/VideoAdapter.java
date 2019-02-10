@@ -1,16 +1,13 @@
 package com.iitp.njack.iitp_connect.core.youtube.video;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.iitp.njack.iitp_connect.BR;
+
 import com.iitp.njack.iitp_connect.R;
-import com.iitp.njack.iitp_connect.core.youtube.playlist.viewholder.PlaylistViewHolder;
 import com.iitp.njack.iitp_connect.core.youtube.video.viewholder.VideoViewHolder;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubeVideo;
 

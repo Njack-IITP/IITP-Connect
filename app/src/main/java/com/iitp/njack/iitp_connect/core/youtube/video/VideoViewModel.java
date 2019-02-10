@@ -6,7 +6,6 @@ import android.databinding.ObservableInt;
 import android.support.annotation.VisibleForTesting;
 import android.view.View;
 
-import com.iitp.njack.iitp_connect.R;
 import com.iitp.njack.iitp_connect.data.youtube.YoutubeVideo;
 import com.iitp.njack.iitp_connect.utils.RateLimiter;
 

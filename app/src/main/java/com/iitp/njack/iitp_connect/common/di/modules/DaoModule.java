@@ -10,6 +10,7 @@ import com.iitp.njack.iitp_connect.data.database.IITPConnectDatabase;
 import com.iitp.njack.iitp_connect.data.facebook.FacebookPostDao;
 import com.iitp.njack.iitp_connect.data.user.UserDao;
 import com.iitp.njack.iitp_connect.data.youtube.PlaylistDao;
+import com.iitp.njack.iitp_connect.data.youtube.VideoDao;
 
 import javax.inject.Singleton;
 
@@ -52,5 +53,11 @@ public class DaoModule {
     @Provides
     public PlaylistDao providesPlaylistDao(IITPConnectDatabase iitpConnectDatabase) {
         return iitpConnectDatabase.playlistDao();
+    }
+
+    @Singleton
+    @Provides
+    public VideoDao providesVideoDao(IITPConnectDatabase iitpConnectDatabase) {
+        return iitpConnectDatabase.videoDao();
     }
 }
