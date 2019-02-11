@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.iitp.njack.iitp_connect.R;
@@ -20,7 +19,10 @@ import com.iitp.njack.iitp_connect.databinding.ActivityVideoBinding;
 
 import javax.inject.Inject;
 
+import static com.iitp.njack.iitp_connect.core.youtube.playlist.YoutubeActivity.PLAYLIST_ID;
+
 public class VideoActivity extends AppCompatActivity {
+    public static final String VIDEO_ID = "videoId";
     @Inject
     public GoogleAccountCredential googleAccountCredential;
     @Inject
@@ -37,7 +39,7 @@ public class VideoActivity extends AppCompatActivity {
         activityVideoBinding = DataBindingUtil.setContentView(this, R.layout.activity_video);
         videoViewModel = ViewModelProviders.of(this, viewModelFactory).get(VideoViewModel.class);
 
-        playlistId = getIntent().getStringExtra("playlistId");
+        playlistId = getIntent().getStringExtra(PLAYLIST_ID);
         if (playlistId == null) {
             playlistId = "PLOU2XLYxmsILACK8NF7UHElmmZzudR7c7";
         }
@@ -78,9 +80,8 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable YoutubeVideo youtubeVideo) {
                 if (youtubeVideo != null) {
-                    Toast.makeText(VideoActivity.this, "you selected a " + youtubeVideo.getVideoId(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(VideoActivity.this, VideoPlayActivity.class);
-                    intent.putExtra("video_id", youtubeVideo.getVideoId());
+                    intent.putExtra(VIDEO_ID, youtubeVideo.getVideoId());
                     startActivity(intent);
                 }
             }

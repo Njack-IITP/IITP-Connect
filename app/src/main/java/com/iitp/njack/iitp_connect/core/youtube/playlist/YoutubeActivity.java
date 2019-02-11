@@ -16,7 +16,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -31,7 +30,10 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import timber.log.Timber;
 
+import static com.iitp.njack.iitp_connect.core.youtube.ChannelSelectActivity.CHANNEL_ID;
+
 public class YoutubeActivity extends AppCompatActivity {
+    public static final String PLAYLIST_ID = "playlistId";
     private static final int REQUEST_ACCOUNT_PICKER = 1000;
     private static final int REQUEST_AUTHORIZATION = 1001;
     private static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
@@ -59,8 +61,8 @@ public class YoutubeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(getIntent().getStringExtra("channelId")!=null){
-            channelId = getIntent().getStringExtra("channelId");
+        if (getIntent().getStringExtra(CHANNEL_ID) != null) {
+            channelId = getIntent().getStringExtra(CHANNEL_ID);
             Timber.v(channelId);
         }
         getResultsFromApi();
@@ -91,9 +93,8 @@ public class YoutubeActivity extends AppCompatActivity {
     private void setUpListClick() {
         playlistViewModel.getSelected().observe(this, youtubePlaylist -> {
             if (youtubePlaylist != null) {
-                Toast.makeText(YoutubeActivity.this, "you selected a " + youtubePlaylist.getPlaylistId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, VideoActivity.class);
-                intent.putExtra("playlistId", youtubePlaylist.getPlaylistId());
+                intent.putExtra(PLAYLIST_ID, youtubePlaylist.getPlaylistId());
                 startActivity(intent);
             }
         });

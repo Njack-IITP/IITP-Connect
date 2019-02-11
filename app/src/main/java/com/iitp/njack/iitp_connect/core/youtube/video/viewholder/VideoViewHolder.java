@@ -6,7 +6,7 @@ import com.iitp.njack.iitp_connect.core.youtube.video.VideoViewModel;
 import com.iitp.njack.iitp_connect.databinding.VideoItemBinding;
 
 public class VideoViewHolder extends RecyclerView.ViewHolder {
-    final VideoItemBinding binding;
+    private final VideoItemBinding binding;
 
     public VideoViewHolder(VideoItemBinding binding) {
         super(binding.getRoot());
