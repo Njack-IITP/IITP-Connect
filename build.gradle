@@ -39,7 +39,7 @@ ext {
     architectureComponentsVersion = '1.1.1'
 
     // lombok
-    lombokVersion = '1.16.20'
+    lombokVersion = '1.18.6'
 
     //retrofit and ok-http
     retrofitVersion = '2.5.0'
