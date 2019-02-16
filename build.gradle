@@ -65,7 +65,7 @@ ext {
     stetho = '1.5.0'
 
     // roboelectric
-    roboelectric = '4.1'
+    roboelectric = '4.2'
 
     //glide
     glide = '4.8.0'
