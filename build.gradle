@@ -68,5 +68,5 @@ ext {
     roboelectric = '4.1'
 
     //glide
-    glide = '4.8.0'
+    glide = '4.9.0'
 }
