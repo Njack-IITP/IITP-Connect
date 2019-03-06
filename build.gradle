@@ -49,7 +49,7 @@ ext {
     butterknifeVersion = '8.8.1'
 
     // threetenbp
-    threetenbpVersion = '1.1.1'
+    threetenbpVersion = '1.1.2'
 
     // dagger
     daggerVersion = '2.21'
@@ -58,7 +58,7 @@ ext {
     jacksonVersion = '2.9.8'
 
     // rx java
-    rxjavaVersion = '2.2.6'
+    rxjavaVersion = '2.2.7'
     rxAndroidVersion = '2.1.0'
 
     //stetho
