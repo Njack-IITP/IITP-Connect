@@ -59,7 +59,7 @@ ext {
 
     // rx java
     rxjavaVersion = '2.2.7'
-    rxAndroidVersion = '2.1.0'
+    rxAndroidVersion = '2.1.1'
 
     //stetho
     stetho = '1.5.0'
