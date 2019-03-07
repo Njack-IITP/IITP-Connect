@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="org.fossasia.openevent.app.core.main.MainActivity">
+        tools:context="com.iitp.njack.iitp_connect.core.home.HomeActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -20,5 +20,12 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
     </android.support.design.widget.CoordinatorLayout>
 </layout>
