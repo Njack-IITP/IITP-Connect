@@ -174,7 +174,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-inline:2.24.0'
+    testImplementation 'org.mockito:mockito-inline:2.25.0'
     testImplementation 'org.json:json:20180813'
     testImplementation "org.robolectric:robolectric:$rootProject.roboelectric"
 
@@ -184,7 +184,7 @@ dependencies {
     implementation('com.google.api-client:google-api-client-android:1.28.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-    implementation('com.google.apis:google-api-services-youtube:v3-rev20180511-1.28.0') {
+    implementation('com.google.apis:google-api-services-youtube:v3-rev20190128-1.28.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation 'com.google.code.gson:gson:2.8.5'
