@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.iitp.njack.iitp_connect">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -49,7 +48,18 @@
 
         <activity android:name=".core.profile.ProfileActivity" />
         <activity android:name=".core.timetable.TimeTableActivity"></activity>
-        <activity android:name=".core.youtube.playlist.YoutubeActivity" />
+        <activity android:name=".core.youtube.playlist.YoutubeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".core.youtube.ChannelSelectActivity" />
+        </activity>
+        <activity android:name=".core.youtube.video.VideoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".core.youtube.playlist.YoutubeActivity" />
+        </activity>
+        <activity android:name=".core.youtube.VideoPlayActivity" />
+        <activity android:name=".core.youtube.ChannelSelectActivity" />
     </application>
 
 </manifest>
