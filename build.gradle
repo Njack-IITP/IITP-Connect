@@ -43,7 +43,7 @@ ext {
 
     //retrofit and ok-http
     retrofitVersion = '2.5.0'
-    okhttpVersion = '3.13.1'
+    okhttpVersion = '3.14.0'
 
     // butterknife
     butterknifeVersion = '8.8.1'
