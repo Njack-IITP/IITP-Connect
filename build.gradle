@@ -58,14 +58,14 @@ ext {
     jacksonVersion = '2.9.8'
 
     // rx java
-    rxjavaVersion = '2.2.7'
+    rxjavaVersion = '2.2.8'
     rxAndroidVersion = '2.1.1'
 
     //stetho
-    stetho = '1.5.0'
+    stetho = '1.5.1'
 
     // roboelectric
-    roboelectric = '4.2'
+    roboelectric = '4.2.1'
 
     //glide
     glide = '4.9.0'
