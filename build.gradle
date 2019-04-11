@@ -52,7 +52,7 @@ ext {
     threetenbpVersion = '1.2.0'
 
     // dagger
-    daggerVersion = '2.21'
+    daggerVersion = '2.22.1'
 
     // jackson
     jacksonVersion = '2.9.8'
