@@ -188,7 +188,7 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.google.http-client:google-http-client-gson:1.28.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.29.0'
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
