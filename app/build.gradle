@@ -164,7 +164,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.2'
 
     // Facebook
-    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+    implementation 'com.facebook.android:facebook-android-sdk:5.1.1'
 
     //Circular ImageView
     implementation 'de.hdodenhof:circleimageview:3.0.0'
