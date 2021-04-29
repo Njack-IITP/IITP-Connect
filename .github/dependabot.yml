@@ -1,0 +1,40 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "07:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.google.apis:google-api-services-youtube
+    versions:
+    - v3-rev20201214-1.31.0
+    - v3-rev20210206-1.31.0
+    - v3-rev20210210-1.31.0
+    - v3-rev20210406-1.31.0
+    - v3-rev20210407-1.31.0
+  - dependency-name: com.google.http-client:google-http-client-gson
+    versions:
+    - 1.38.1
+    - 1.39.0
+    - 1.39.1
+  - dependency-name: com.facebook.android:facebook-android-sdk
+    versions:
+    - 9.0.0
+    - 9.1.0
+  - dependency-name: org.projectlombok:lombok
+    versions:
+    - 1.18.18
+  - dependency-name: com.google.firebase:firebase-core
+    versions:
+    - 18.0.2
+  - dependency-name: com.android.tools.build:gradle
+    versions:
+    - 4.1.2
+  - dependency-name: com.squareup.okhttp3:logging-interceptor
+    versions:
+    - 4.9.0
+  - dependency-name: com.squareup.okhttp3:okhttp
+    versions:
+    - 4.9.0
